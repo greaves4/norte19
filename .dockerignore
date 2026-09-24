@@ -1,0 +1,14 @@
+.git
+node_modules
+node_modules.nosync
+.next
+.next.nosync
+.env*
+!.env.example
+public/pdf.worker.min.mjs
+*.tsbuildinfo
+Dockerfile
+.dockerignore
+README.md
+CLAUDE.md
+.DS_Store

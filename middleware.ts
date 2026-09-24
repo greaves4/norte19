@@ -24,7 +24,7 @@ export function middleware(request: NextRequest) {
       response.cookies.set(cookie, esperado, {
         httpOnly: true,
         sameSite: "lax",
-        secure: request.nextUrl.protocol === "https:",
+        secure: esHttps(request),
         path: `/${prototipo}`,
         maxAge: COOKIE_MAX_AGE,
       });
@@ -49,6 +49,12 @@ function redirigirAAcceso(request: NextRequest, prototipo: string, error: boolea
   acceso.searchParams.set("next", destino.pathname + destino.search);
   if (error) acceso.searchParams.set("error", "1");
   return NextResponse.redirect(acceso);
+}
+
+// Detrás de un proxy manda el protocolo que vio el navegador.
+function esHttps(request: NextRequest) {
+  const proto = request.headers.get("x-forwarded-proto")?.split(",")[0].trim();
+  return proto ? proto === "https" : request.nextUrl.protocol === "https:";
 }
 
 export const config = {

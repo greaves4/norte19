@@ -51,13 +51,26 @@ https://<dominio>/desarrollo?code=<PROTO_CODE_DESARROLLO>
 
 Sin código válido, la ruta muestra la página de acceso. Un código no abre los otros prototipos.
 
-## Deploy en Vercel
+## Deploy en Coolify
 
-1. Importar el repositorio en Vercel (framework Next.js; `vercel.json` ya define install y build).
-2. Definir las tres variables `PROTO_CODE_*` en Production y Preview.
-3. Desplegar y probar cada liga.
+El repositorio trae un `Dockerfile` (Next.js standalone, Node 22, puerto 3000).
 
-`vercel.json` crea el enlace `node_modules → node_modules.nosync` antes de instalar, porque el proyecto instala dependencias en `node_modules.nosync` para que iCloud no las desaloje en local (ver `CLAUDE.md`).
+1. En Coolify, crear un recurso desde el repositorio con build pack **Dockerfile**.
+2. Puerto expuesto: `3000`. La imagen incluye un healthcheck sobre `/`.
+3. Variables de entorno (runtime): `PROTO_CODE_FUND`, `PROTO_CODE_CONTRATOS`, `PROTO_CODE_DESARROLLO`.
+4. Opcional: `NEXT_PUBLIC_DEMO=0` como build argument oculta la barra de demo (se fija al compilar).
+5. Asignar el dominio con HTTPS, desplegar y probar cada liga.
+
+Las redirecciones del acceso son relativas y la cookie se marca `Secure` según `X-Forwarded-Proto`, así que funcionan detrás del proxy de Coolify.
+
+En la imagen, pnpm instala en `node_modules` normal: el Dockerfile quita `modulesDir` de `pnpm-workspace.yaml`, que solo existe para que iCloud no desaloje dependencias en local (ver `CLAUDE.md`).
+
+Para probar la imagen en local:
+
+```bash
+docker build -t norte19-prototipos .
+docker run --rm -p 3000:3000 --env-file .env.local norte19-prototipos
+```
 
 ## Demo
 

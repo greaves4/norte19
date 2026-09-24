@@ -55,6 +55,10 @@ Prototipos navegables y semi-funcionales para tres propuestas de Geek Vibes a No
 - Componentes shadcn con preset `base-nova` (Base UI). Agregar componentes con `pnpm dlx shadcn@latest add <componente>`.
 - Pruebas con vitest: `pnpm test`.
 
+## Deploy
+- Coolify con el `Dockerfile` (standalone con `NEXT_OUTPUT=standalone`, puerto 3000). Los códigos `PROTO_CODE_*` se leen en runtime.
+- No hay Docker en la Mac de desarrollo: para validar cambios al Dockerfile, reproducir sus pasos en una carpeta limpia fuera de iCloud y correr `node server.js`.
+
 ## iCloud
 El proyecto vive en ~/Documents, que se sincroniza con iCloud. Para que iCloud no desaloje dependencias ni artefactos de build:
 - pnpm instala en `node_modules.nosync` (`modulesDir` en pnpm-workspace.yaml) y `node_modules` es un enlace simbólico a esa carpeta.
