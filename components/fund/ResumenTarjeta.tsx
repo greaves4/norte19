@@ -1,6 +1,6 @@
 "use client";
 
-import { addDays, differenceInCalendarDays } from "date-fns";
+import { differenceInCalendarDays } from "date-fns";
 import { CreditCard } from "lucide-react";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,7 +8,8 @@ import { useNow } from "@/lib/demo";
 import { hotelPorId } from "@/lib/fixtures/fund";
 import { fecha, mxn } from "@/lib/format";
 import { useFund } from "@/lib/store/fund";
-import { DIAS_CORTE, ESTATUS_TARJETA, NOMBRE_CORTE } from "@/lib/types/fund";
+import { proximoCorte } from "@/lib/sim/fund/refondeo";
+import { ESTATUS_TARJETA, NOMBRE_CORTE } from "@/lib/types/fund";
 
 // Cabecera de la tarjeta del hotel: nunca muestra más que los últimos cuatro dígitos.
 export function ResumenTarjeta({ tarjetaId }: { tarjetaId: string }) {
@@ -21,8 +22,8 @@ export function ResumenTarjeta({ tarjetaId }: { tarjetaId: string }) {
   const gastoCorte = movimientos
     .filter((m) => m.tarjetaId === tarjeta.id && (!tarjeta.ultimoFondeo || m.fecha > tarjeta.ultimoFondeo))
     .reduce((s, m) => s + m.total, 0);
-  const proximoCorte = tarjeta.ultimoFondeo ? addDays(new Date(tarjeta.ultimoFondeo), DIAS_CORTE[tarjeta.corte]) : null;
-  const diasAlCorte = proximoCorte ? differenceInCalendarDays(proximoCorte, now) : null;
+  const corte = proximoCorte(tarjeta, now);
+  const diasAlCorte = corte ? differenceInCalendarDays(corte, now) : null;
 
   const datos = [
     { etiqueta: "Saldo disponible", valor: mxn(tarjeta.saldo), destacado: true },
@@ -30,7 +31,7 @@ export function ResumenTarjeta({ tarjetaId }: { tarjetaId: string }) {
     { etiqueta: "Gasto del corte", valor: mxn(gastoCorte) },
     {
       etiqueta: `Próximo corte · ${NOMBRE_CORTE[tarjeta.corte].toLowerCase()}`,
-      valor: proximoCorte ? fecha(proximoCorte, "EEE d MMM") : "Sin fondeos",
+      valor: corte ? fecha(corte, "EEE d MMM") : "Sin fondeos",
       nota: diasAlCorte === null ? undefined : diasAlCorte <= 0 ? "Hoy" : `En ${diasAlCorte} ${diasAlCorte === 1 ? "día" : "días"}`,
     },
   ];

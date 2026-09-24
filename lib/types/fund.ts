@@ -194,3 +194,9 @@ export const NOMBRE_CORTE: Record<Corte, string> = {
 };
 
 export const DIAS_CORTE: Record<Corte, number> = { semanal: 7, quincenal: 15, mensual: 30 };
+
+export const NOMBRE_TIPO_FONDEO: Record<TipoFondeo, string> = {
+  manual: "Manual",
+  automatico: "Automático",
+  carga_masiva: "Carga masiva",
+};

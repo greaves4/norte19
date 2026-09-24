@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { EnConstruccion } from "@/components/fund/EnConstruccion";
+import { PanelTesoreria } from "@/components/fund/PanelTesoreria";
 
 export const metadata: Metadata = { title: "Panel de tarjetas · Fund" };
 
 export default function Page() {
-  return <EnConstruccion titulo="Panel de tarjetas" descripcion="Tarjetas, saldos, re-fondeos y excepciones." />;
+  return <PanelTesoreria />;
 }

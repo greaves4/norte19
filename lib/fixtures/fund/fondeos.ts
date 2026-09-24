@@ -4,9 +4,10 @@ import { DIAS_CORTE, type Fondeo, type Movimiento, type Tarjeta } from "@/lib/ty
 
 const ACTORES_TESORERIA = ["Viviana Torres", "Jaime Vicente Martínez"];
 const DIAS_HISTORIAL = 90;
+const DIAS_MOVIMIENTOS = 60;
 
 // Fondeos de los últimos 3 meses según el corte de cada tarjeta. El monto repone lo gastado en el periodo
-// anterior; antes de la ventana de movimientos (60 días) se usa un monto aproximado.
+// anterior; si no hubo gasto no hay fondeo. Antes de la ventana de movimientos (60 días) se usa un monto aproximado.
 export function crearFondeos(rng: Rng, tarjetas: Tarjeta[], movimientos: Movimiento[], hoy: Date): Fondeo[] {
   const fondeos: Fondeo[] = [];
 
@@ -28,7 +29,10 @@ export function crearFondeos(rng: Rng, tarjetas: Tarjeta[], movimientos: Movimie
       const repuesto = movimientos
         .filter((m) => m.tarjetaId === t.id && new Date(m.fecha) > desde && new Date(m.fecha) <= fecha)
         .reduce((sum, m) => sum + m.total, 0);
-      const monto = repuesto > 0 ? redondear(repuesto) : rng.int(Math.round(t.presupuesto * 0.004), Math.round(t.presupuesto * 0.0085)) * 100;
+      const antesDeLosMovimientos = fecha < sumarDias(hoy, -DIAS_MOVIMIENTOS);
+      const aproximado = rng.int(Math.round(t.presupuesto * 0.002), Math.round(t.presupuesto * 0.004)) * 100;
+      if (repuesto === 0 && !antesDeLosMovimientos) return;
+      const monto = repuesto > 0 ? redondear(repuesto) : aproximado;
       fondeos.push({
         id: "",
         tarjetaId: t.id,

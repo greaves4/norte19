@@ -89,4 +89,5 @@ Plataforma de gestión de caja chica hotelera. Tres perfiles (`PerfilFund`): hot
 - `MovimientosGrid` + `MovimientoDetalle` (sheet con timeline) se reutilizan en las vistas de movimientos. Tablet: columnas con `hideBelow: "xl"`; móvil: la celda de proveedor muestra fecha y estatus.
 - Toasts con `toast` de sonner (Toaster en app/layout.tsx, arriba a la derecha por la DemoBar).
 - Supervisor (`lib/sim/fund/supervision.ts`): la bandeja incluye pendientes y extemporáneos con autorización solicitada (`enBandeja`, `esperaAutorizacion`); las validaciones al revisar se evalúan contra la fecha de registro. Los 8 movimientos de Cancún que revisa el Supervisor (pendientes, rechazado y autorizado) tienen los mismos montos y UUID que su comprobante estático; hay prueba que lo verifica.
-- Vistas de Tesorería aún son `EnConstruccion` (F5–F6).
+- Tesorería: `lib/sim/fund/refondeo.ts` (fórmula del documento, `proximoCorte` por calendario), `payconnect.ts` (`dispersar`/`dispersarLote` registran el fondeo y devuelven pasos para ProgressRunner; `alTerminarPaso` actualiza enviado → aceptado → depositado) y `cargaMasiva.ts` (plantilla, ejemplo generado, lectura con SheetJS y validación previa). `DialogoDispersion` muestra la dispersión; si se cierra antes, `finalizar()` completa el depósito.
+- Monitor y Reportes de Tesorería aún son `EnConstruccion` (F6).

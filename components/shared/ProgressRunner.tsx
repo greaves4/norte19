@@ -27,6 +27,8 @@ type Props = {
   steps: RunnerStep[];
   onDone?: () => void;
   onStatusChange?: (status: RunnerStatus) => void;
+  // Se llama al terminar cada paso (también los que se completan con "Saltar").
+  onStepDone?: (stepId: string) => void;
   autoStart?: boolean;
   title?: string;
   ref?: React.Ref<ProgressRunnerHandle>;
@@ -37,7 +39,7 @@ type LogLine = { t: number; text: string };
 
 const TICK_MS = 100;
 
-export function ProgressRunner({ steps, onDone, onStatusChange, autoStart = false, title, ref, className }: Props) {
+export function ProgressRunner({ steps, onDone, onStatusChange, onStepDone, autoStart = false, title, ref, className }: Props) {
   const [status, setStatus] = useState<RunnerStatus>("idle");
   const [index, setIndex] = useState(0); // paso en curso
   const [stepElapsed, setStepElapsed] = useState(0);
@@ -45,8 +47,8 @@ export function ProgressRunner({ steps, onDone, onStatusChange, autoStart = fals
   const [log, setLog] = useState<LogLine[]>([]);
   const logRef = useRef<HTMLOListElement>(null);
 
-  const callbacks = useRef({ onDone, onStatusChange });
-  callbacks.current = { onDone, onStatusChange };
+  const callbacks = useRef({ onDone, onStatusChange, onStepDone });
+  callbacks.current = { onDone, onStatusChange, onStepDone };
 
   const total = steps.reduce((sum, s) => sum + s.durationMs, 0);
   const completedMs = steps.slice(0, index).reduce((sum, s) => sum + s.durationMs, 0);
@@ -83,6 +85,7 @@ export function ProgressRunner({ steps, onDone, onStatusChange, autoStart = fals
       ...steps.slice(index).flatMap((s) => (s.log ?? []).map((text) => ({ t: elapsed, text }))),
       { t: elapsed, text: "Proceso saltado en modo demo" },
     ]);
+    steps.slice(index).forEach((s) => callbacks.current.onStepDone?.(s.id));
     setIndex(steps.length);
     changeStatus("done");
   }, [steps, index, elapsed, changeStatus]);
@@ -122,6 +125,7 @@ export function ProgressRunner({ steps, onDone, onStatusChange, autoStart = fals
     ]);
     setStepElapsed(0);
     setIndex(index + 1);
+    callbacks.current.onStepDone?.(step.id);
     if (!next) changeStatus("done");
   }, [status, steps, index, stepElapsed, elapsed, changeStatus]);
 
@@ -180,7 +184,7 @@ export function ProgressRunner({ steps, onDone, onStatusChange, autoStart = fals
           {log.map((line, i) => (
             <li key={i} className="flex gap-2">
               <span className="text-muted-foreground tabular-nums">{formatSeconds(line.t).padStart(6)}</span>
-              <span>{line.text}</span>
+              <span className="min-w-0 break-all">{line.text}</span>
             </li>
           ))}
         </ol>
