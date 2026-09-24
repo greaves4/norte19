@@ -88,4 +88,5 @@ Plataforma de gestión de caja chica hotelera. Tres perfiles (`PerfilFund`): hot
 - `components/fund/FundShell.tsx`: navegación por perfil (`INICIO_PERFIL`), redirige a /fund sin perfil y a la sección del perfil si la ruta no coincide (cambiar de perfil en la DemoBar lleva a su inicio). /fund (selector) se muestra sin barra lateral.
 - `MovimientosGrid` + `MovimientoDetalle` (sheet con timeline) se reutilizan en las vistas de movimientos. Tablet: columnas con `hideBelow: "xl"`; móvil: la celda de proveedor muestra fecha y estatus.
 - Toasts con `toast` de sonner (Toaster en app/layout.tsx, arriba a la derecha por la DemoBar).
-- Vistas de Supervisor y Tesorería aún son `EnConstruccion` (F4–F6).
+- Supervisor (`lib/sim/fund/supervision.ts`): la bandeja incluye pendientes y extemporáneos con autorización solicitada (`enBandeja`, `esperaAutorizacion`); las validaciones al revisar se evalúan contra la fecha de registro. Los 8 movimientos de Cancún que revisa el Supervisor (pendientes, rechazado y autorizado) tienen los mismos montos y UUID que su comprobante estático; hay prueba que lo verifica.
+- Vistas de Tesorería aún son `EnConstruccion` (F5–F6).

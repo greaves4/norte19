@@ -6,7 +6,8 @@ import {
   type Proveedor,
 } from "@/lib/fixtures/fund/proveedores";
 import { categoriaPorClave } from "@/lib/fixtures/fund/categorias";
-import { redondear, sumarHoras, uuid, type Rng } from "@/lib/fixtures/fund/semilla";
+import { sumarHoras, uuid, type Rng } from "@/lib/fixtures/fund/semilla";
+import { calcularTotales, uuidDesdeTexto } from "@/lib/sim/fund/cfdiXml";
 import type { EstatusMovimiento, EventoMovimiento, Hotel, Movimiento } from "@/lib/types/fund";
 
 const TOTAL_MOVIMIENTOS = 120;
@@ -42,6 +43,8 @@ type Plan = {
   estatus: EstatusMovimiento;
   extemporaneo?: boolean;
   excepcion?: boolean;
+  // Mismos conceptos, montos y UUID que el comprobante estático del proveedor (lo que el Supervisor revisa).
+  igualAlComprobante?: boolean;
 };
 
 // 120 movimientos de los últimos 60 días. Determinista: depende solo de la semilla y de `hoy`.
@@ -52,10 +55,10 @@ export function crearMovimientos(rng: Rng, hoy: Date): Movimiento[] {
 
   // Cancún: 6 pendientes recientes, 1 rechazado sin autorizar, 1 autorizado y el resto aprobados.
   for (const p of PENDIENTES_CANCUN) {
-    planes.push({ hotel: cancun, proveedor: proveedorPorSlug(p.proveedor)!, fecha: sumarHoras(hoy, -p.horasAtras), estatus: "pendiente" });
+    planes.push({ hotel: cancun, proveedor: proveedorPorSlug(p.proveedor)!, fecha: sumarHoras(hoy, -p.horasAtras), estatus: "pendiente", igualAlComprobante: true });
   }
-  planes.push({ hotel: cancun, proveedor: proveedorPorSlug("materiales-construccion")!, fecha: fechaAtras(rng, hoy, 9, 11), estatus: "rechazado" });
-  planes.push({ hotel: cancun, proveedor: proveedorPorSlug("taxis-ejecutivos")!, fecha: fechaAtras(rng, hoy, 18, 22), estatus: "autorizado" });
+  planes.push({ hotel: cancun, proveedor: proveedorPorSlug("materiales-construccion")!, fecha: fechaAtras(rng, hoy, 9, 11), estatus: "rechazado", igualAlComprobante: true });
+  planes.push({ hotel: cancun, proveedor: proveedorPorSlug("taxis-ejecutivos")!, fecha: fechaAtras(rng, hoy, 18, 22), estatus: "autorizado", igualAlComprobante: true });
   const restantesCancun = MOVIMIENTOS_CANCUN - planes.length;
   for (let i = 0; i < restantesCancun; i++) {
     // Repartidos de forma pareja entre hace 58 y hace 3 días.
@@ -90,17 +93,17 @@ export function crearMovimientos(rng: Rng, hoy: Date): Movimiento[] {
 function construir(rng: Rng, plan: Plan, id: string, hoy: Date): Movimiento {
   const { hotel, proveedor, fecha, estatus } = plan;
   const cantidad = rng.int(1, proveedor.conceptos.length);
-  const conceptos = proveedor.conceptos.slice(0, cantidad).map((c) => ({
-    descripcion: c.descripcion,
-    claveProdServ: c.claveProdServ,
-    importe: rng.money(c.min, c.max),
-  }));
-  const subtotal = redondear(conceptos.reduce((s, c) => s + c.importe, 0));
-  const iva = redondear(subtotal * 0.16);
-  const total = redondear(subtotal + iva);
+  // Igual al comprobante: todos los conceptos al punto medio, como los genera scripts/generar-comprobantes-fund.mts.
+  const plantillas = plan.igualAlComprobante ? proveedor.conceptos : proveedor.conceptos.slice(0, cantidad);
+  const importes = plantillas.map((c) => (plan.igualAlComprobante ? Math.round((c.min + c.max) / 2) : rng.money(c.min, c.max)));
+  const { partidas, subtotal, iva, total } = calcularTotales(
+    plantillas.map((c, i) => ({ claveProdServ: c.claveProdServ, cantidad: 1, claveUnidad: "E48", unidad: "Servicio", descripcion: c.descripcion, valorUnitario: importes[i] })),
+  );
+  const conceptos = partidas.map((p) => ({ descripcion: p.descripcion, claveProdServ: p.claveProdServ, importe: p.importe }));
   // La factura se emite hasta 40 h antes del registro; los extemporáneos, de 4 a 6 días antes.
   const emision = plan.extemporaneo ? sumarHoras(fecha, -rng.int(96, 144)) : sumarHoras(fecha, -rng.int(1, 40));
-  const folio = uuid(rng);
+  const aleatorio = uuid(rng);
+  const folio = plan.igualAlComprobante ? uuidDesdeTexto(`proveedor-${proveedor.slug}`) : aleatorio;
   const tipoComprobante = rng.next() < 0.7 ? "pdf" : "imagen";
 
   const base: Movimiento = {

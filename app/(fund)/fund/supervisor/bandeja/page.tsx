@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { EnConstruccion } from "@/components/fund/EnConstruccion";
+import { BandejaSupervisor } from "@/components/fund/BandejaSupervisor";
 
 export const metadata: Metadata = { title: "Bandeja · Fund" };
 
 export default function Page() {
-  return <EnConstruccion titulo="Bandeja" descripcion="Movimientos pendientes de aprobación del hotel." />;
+  return <BandejaSupervisor />;
 }

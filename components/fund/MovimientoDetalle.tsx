@@ -10,7 +10,7 @@ import { categoriaPorClave, categoriaPorId, nombreCentroCostos } from "@/lib/fix
 import { fechaHora, mxn } from "@/lib/format";
 import { ESTATUS_MOVIMIENTO, type Comprobante, type Movimiento, type TipoEvento } from "@/lib/types/fund";
 
-const TONO_EVENTO: Record<TipoEvento, StatusTone> = {
+export const TONO_EVENTO: Record<TipoEvento, StatusTone> = {
   registrado: "neutral",
   enviado: "info",
   aprobado: "success",

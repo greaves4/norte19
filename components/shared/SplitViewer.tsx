@@ -26,9 +26,11 @@ type Props = {
   defaultSplit?: number;
   // Define la altura; por defecto ocupa el alto disponible del contenedor.
   className?: string;
+  // Se llama cuando el documento termina de mostrarse (primera página del PDF o imagen).
+  onDocumentLoad?: () => void;
 };
 
-export function SplitViewer({ document: doc, children, defaultSplit = 50, className }: Props) {
+export function SplitViewer({ document: doc, children, defaultSplit = 50, className, onDocumentLoad }: Props) {
   const isMobile = useIsMobile();
   const [split, setSplit] = useState(clamp(defaultSplit));
   const containerRef = useRef<HTMLDivElement>(null);
@@ -41,7 +43,7 @@ export function SplitViewer({ document: doc, children, defaultSplit = 50, classN
           <TabsTrigger value="datos">Datos</TabsTrigger>
         </TabsList>
         <TabsContent value="documento" className="min-h-0 flex-1 border">
-          <DocumentViewer document={doc} />
+          <DocumentViewer document={doc} onLoad={onDocumentLoad} />
         </TabsContent>
         <TabsContent value="datos" className="min-h-0 flex-1 overflow-auto">
           {children}
@@ -82,7 +84,7 @@ export function SplitViewer({ document: doc, children, defaultSplit = 50, classN
   return (
     <div ref={containerRef} className={cn("flex h-full min-h-[480px] border", className)}>
       <div className="min-w-0 overflow-hidden" style={{ width: `${split}%` }}>
-        <DocumentViewer document={doc} />
+        <DocumentViewer document={doc} onLoad={onDocumentLoad} />
       </div>
       <div
         role="separator"

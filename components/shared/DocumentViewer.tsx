@@ -16,7 +16,7 @@ const ZOOM_MIN = 0.5;
 const ZOOM_MAX = 3;
 const ZOOM_STEP = 0.25;
 
-export default function DocumentViewer({ document: doc }: { document: ViewerDocument }) {
+export default function DocumentViewer({ document: doc, onLoad }: { document: ViewerDocument; onLoad?: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   const [zoom, setZoom] = useState(1);
@@ -116,6 +116,7 @@ export default function DocumentViewer({ document: doc }: { document: ViewerDocu
                 renderTextLayer={false}
                 renderAnnotationLayer={false}
                 loading={<Skeleton className="aspect-[8.5/11]" style={{ width: pageWidth }} />}
+                onRenderSuccess={onLoad}
                 className="shadow-sm"
               />
             </Document>
@@ -126,6 +127,7 @@ export default function DocumentViewer({ document: doc }: { document: ViewerDocu
             src={doc.src}
             alt={doc.title ?? "Documento"}
             onError={() => setError(true)}
+            onLoad={onLoad}
             className="mx-auto h-auto max-w-none"
             style={{ width: `${zoom * 100}%` }}
           />

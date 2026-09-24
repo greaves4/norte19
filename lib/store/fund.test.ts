@@ -49,6 +49,23 @@ describe("store de Fund", () => {
     expect(store().autorizarRechazado(pendiente.id, "Ricardo Salas Uc", "otra vez")).toBe(false);
   });
 
+  it("autoriza o rechaza extemporáneos con autorización solicitada", () => {
+    const a = store().crearMovimiento({ ...NUEVO, uuid: "A", extemporaneo: true }, "Mariana Cruz Pech");
+    const b = store().crearMovimiento({ ...NUEVO, uuid: "B", extemporaneo: true }, "Mariana Cruz Pech");
+    const normal = store().crearMovimiento({ ...NUEVO, uuid: "C" }, "Mariana Cruz Pech");
+
+    expect(store().autorizarExtemporaneo(a, "Ricardo Salas Uc")).toBe(true);
+    expect(mov(a).estatus).toBe("aprobado");
+    expect(mov(a).timeline.at(-1)?.titulo).toBe("Aprobado fuera de ventana");
+
+    expect(store().rechazar(b, "Ricardo Salas Uc", "Sin justificación del retraso")).toBe(true);
+    expect(mov(b).estatus).toBe("rechazado");
+
+    // Un registrado normal no se puede aprobar ni rechazar sin pasar por supervisión.
+    expect(store().autorizarExtemporaneo(normal, "Ricardo Salas Uc")).toBe(false);
+    expect(store().rechazar(normal, "Ricardo Salas Uc", "No aplica")).toBe(false);
+  });
+
   it("resuelve excepciones de categoría", () => {
     const [a, b] = store().movimientos.filter((m) => m.excepcionSolicitada?.estatus === "pendiente");
     expect(store().resolverExcepcion(a.id, true)).toBe(true);

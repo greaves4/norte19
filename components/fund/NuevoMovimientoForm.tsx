@@ -1,10 +1,11 @@
 "use client";
 
-import { ArrowLeft, CircleAlert, CircleCheck, CircleDashed, OctagonX, Send } from "lucide-react";
+import { ArrowLeft, Send } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
+import { FilaValidacion } from "@/components/fund/Validaciones";
 import { GateBanner } from "@/components/shared/GateBanner";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { UploadZone, type UploadValue } from "@/components/shared/UploadZone";
@@ -26,8 +27,6 @@ import {
   validarDocumental,
   validarRfcReceptor,
   validarVentana3Dias,
-  type NivelValidacion,
-  type ResultadoValidacion,
 } from "@/lib/sim/fund/validaciones";
 import { useFund } from "@/lib/store/fund";
 import { cn } from "@/lib/utils";
@@ -373,41 +372,6 @@ function DatosCfdi({ cfdi, categoriasBloqueadas }: { cfdi: Cfdi; categoriasBloqu
         </ul>
       </div>
     </div>
-  );
-}
-
-// TODO tokens: colores de semáforo para ok y advertencia; hoy se distinguen por ícono.
-const ICONO_NIVEL: Record<NivelValidacion, typeof CircleCheck> = {
-  ok: CircleCheck,
-  advertencia: CircleAlert,
-  bloqueo: OctagonX,
-  pendiente: CircleDashed,
-};
-
-const TEXTO_NIVEL: Record<NivelValidacion, string> = {
-  ok: "Correcto",
-  advertencia: "Advertencia",
-  bloqueo: "Bloqueo",
-  pendiente: "Pendiente",
-};
-
-function FilaValidacion({ validacion: v }: { validacion: ResultadoValidacion }) {
-  const Icono = ICONO_NIVEL[v.nivel];
-  return (
-    <li className="flex gap-3" data-nivel={v.nivel}>
-      <Icono
-        className={cn(
-          "mt-0.5 size-4 shrink-0",
-          v.nivel === "bloqueo" && "text-destructive",
-          (v.nivel === "pendiente" || v.nivel === "advertencia") && "text-muted-foreground",
-        )}
-        aria-label={TEXTO_NIVEL[v.nivel]}
-      />
-      <div className="flex flex-col gap-0.5">
-        <span className={cn("text-sm font-medium", v.nivel === "bloqueo" && "text-destructive")}>{v.titulo}</span>
-        <span className="text-sm text-muted-foreground">{v.detalle}</span>
-      </div>
-    </li>
   );
 }
 

@@ -20,6 +20,7 @@ import { DemoBar, type DemoProfile } from "@/components/shared/DemoBar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useDemo, useDemoHydrated } from "@/lib/demo";
 import { HOTEL_DEMO_ID, hotelPorId, USUARIOS_DEMO } from "@/lib/fixtures/fund";
+import { enBandeja } from "@/lib/sim/fund/supervision";
 import { useFund, useFundHydrated } from "@/lib/store/fund";
 import type { PerfilFund } from "@/lib/types/fund";
 
@@ -73,9 +74,7 @@ export function FundShell({ children }: { children: React.ReactNode }) {
   const fundHydrated = useFundHydrated();
   const { profile } = useDemo();
   const perfil = esPerfilFund(profile) ? profile : null;
-  const pendientes = useFund(
-    (s) => s.movimientos.filter((m) => m.hotelId === HOTEL_DEMO_ID && m.estatus === "pendiente").length,
-  );
+  const pendientes = useFund((s) => s.movimientos.filter((m) => m.hotelId === HOTEL_DEMO_ID && enBandeja(m)).length);
 
   // /fund/<seccion>/…: sin perfil se va al selector; con otro perfil, a su inicio.
   const seccion = pathname.split("/")[2];

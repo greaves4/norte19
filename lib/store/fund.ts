@@ -30,6 +30,7 @@ type AccionesFund = {
   aprobar: (id: string, actor: string) => boolean;
   rechazar: (id: string, actor: string, motivo: string) => boolean;
   autorizarRechazado: (id: string, actor: string, motivo: string) => boolean;
+  autorizarExtemporaneo: (id: string, actor: string) => boolean;
   solicitarExcepcion: (id: string, categoriaId: string, actor: string) => boolean;
   resolverExcepcion: (id: string, aprobada: boolean, actor?: string) => boolean;
   bloquearCategoria: (tarjetaId: string, categoriaId: string, bloqueada: boolean) => void;
@@ -47,6 +48,11 @@ export type FundStore = EstadoFund & AccionesFund;
 function estadoInicial(): EstadoFund {
   const datos = crearDatosFund(demoNow());
   return { ...datos, secuencia: datos.movimientos.length };
+}
+
+// Registrado fuera de la ventana de 3 días, con autorización solicitada y sin excepción de categoría pendiente.
+export function esperaAutorizacion(m: Movimiento | undefined) {
+  return Boolean(m && m.estatus === "registrado" && m.extemporaneo && m.excepcionSolicitada?.estatus !== "pendiente");
 }
 
 function evento(tipo: TipoEvento, titulo: string, actor: string, descripcion?: string): EventoMovimiento {
@@ -119,13 +125,28 @@ export const useFund = create<FundStore>()(
         aprobar: (id, actor) =>
           transicion(id, ["pendiente"], () => ({ estatus: "aprobado" }), evento("aprobado", "Aprobado", actor)),
 
-        rechazar: (id, actor, motivo) =>
-          transicion(
+        // También rechaza un extemporáneo que espera autorización del supervisor.
+        rechazar: (id, actor, motivo) => {
+          const m = get().movimientos.find((x) => x.id === id);
+          if (m?.estatus !== "pendiente" && !esperaAutorizacion(m)) return false;
+          return transicion(
             id,
-            ["pendiente"],
+            ["pendiente", "registrado"],
             () => ({ estatus: "rechazado", motivoRechazo: motivo }),
             evento("rechazado", "Rechazado", actor, motivo),
-          ),
+          );
+        },
+
+        // Extemporáneo (fuera de la ventana de 3 días) que el supervisor autoriza: queda aprobado.
+        autorizarExtemporaneo: (id, actor) =>
+          esperaAutorizacion(get().movimientos.find((m) => m.id === id))
+            ? transicion(
+                id,
+                ["registrado"],
+                () => ({ estatus: "aprobado" }),
+                evento("aprobado", "Aprobado fuera de ventana", actor, "Autorización del supervisor por registro extemporáneo."),
+              )
+            : false,
 
         autorizarRechazado: (id, actor, motivo) =>
           transicion(

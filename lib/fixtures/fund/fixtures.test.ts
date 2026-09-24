@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   CATEGORIAS,
@@ -11,6 +13,7 @@ import {
   categoriaPorClave,
   crearDatosFund,
 } from "@/lib/fixtures/fund";
+import { parseCfdi } from "@/lib/sim/fund/cfdi";
 
 const HOY = new Date("2026-09-23T15:00:00-06:00");
 const datos = crearDatosFund(HOY);
@@ -114,5 +117,22 @@ describe("fixtures de Fund", () => {
       return sistema === b.monto ? [] : ["no_cuadrado"];
     });
     expect(problemas.sort()).toEqual(["no_cuadrado", "sin_registro"]);
+  });
+
+  it("los movimientos que revisa el Supervisor coinciden con su comprobante", () => {
+    const revisables = datos.movimientos.filter(
+      (m) => m.hotelId === HOTEL_DEMO_ID && ["pendiente", "rechazado", "autorizado"].includes(m.estatus),
+    );
+    expect(revisables).toHaveLength(8);
+    for (const m of revisables) {
+      const xml = m.comprobantes.find((c) => c.tipo === "xml")!.src;
+      const cfdi = parseCfdi(readFileSync(join(process.cwd(), "public", xml), "utf8"));
+      expect({ uuid: m.uuid, total: m.total, subtotal: m.subtotal, iva: m.iva }).toEqual({
+        uuid: cfdi.uuid,
+        total: cfdi.total,
+        subtotal: cfdi.subtotal,
+        iva: cfdi.iva,
+      });
+    }
   });
 });
