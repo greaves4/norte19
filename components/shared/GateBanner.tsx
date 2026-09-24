@@ -1,5 +1,5 @@
 import { CircleCheck, Lock, TriangleAlert } from "lucide-react";
-import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export type GateVariant = "bloqueado" | "advertencia" | "aprobado";
 
@@ -26,7 +26,7 @@ export function GateBanner({ variant, title, description, items = [], action, cl
     >
       <Icon />
       <AlertTitle>{title}</AlertTitle>
-      {(description || items.length > 0) && (
+      {(description || items.length > 0 || action) && (
         <AlertDescription>
           {description && <p>{description}</p>}
           {items.length > 0 && (
@@ -36,9 +36,10 @@ export function GateBanner({ variant, title, description, items = [], action, cl
               ))}
             </ul>
           )}
+          {/* Debajo del texto y no en la esquina: en móvil la acción absoluta tapaba el título. */}
+          {action && <div className="mt-2 flex flex-wrap gap-2">{action}</div>}
         </AlertDescription>
       )}
-      {action && <AlertAction>{action}</AlertAction>}
     </Alert>
   );
 }

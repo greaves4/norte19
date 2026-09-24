@@ -6,6 +6,7 @@ import {
   type Row,
   type RowData,
   type RowSelectionState,
+  type SortingState,
   columnFilteringFeature,
   createColumnHelper,
   createFilteredRowModel,
@@ -70,6 +71,8 @@ export type DataGridColumnMeta = {
   filter?: { type: "text" } | { type: "select"; options?: DataGridFilterOption[] };
   // Oculta la columna debajo de 768 px.
   hideOnMobile?: boolean;
+  // Oculta la columna debajo de un ancho mayor: "lg" (1024 px) o "xl" (1280 px), p. ej. para tablet.
+  hideBelow?: "lg" | "xl";
   // Encabezado para exportar cuando `header` no es texto.
   label?: string;
   // Valor para Excel; por defecto el valor crudo del accessor.
@@ -109,6 +112,7 @@ export function dataGridColumns<T extends RowData>() {
 const PAGE_SIZES = [10, 25, 50] as const;
 const SELECT_ID = "__select";
 const TODOS = "__todos";
+const EMPTY_SORTING: SortingState = [];
 
 type Props<T extends RowData> = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- cada columna conserva su propio tipo de valor
@@ -126,6 +130,8 @@ type Props<T extends RowData> = {
   emptyTitle?: string;
   emptyDescription?: string;
   initialPageSize?: (typeof PAGE_SIZES)[number];
+  // Orden inicial, p. ej. [{ id: "fecha", desc: true }].
+  initialSorting?: SortingState;
 };
 
 export function DataGrid<T extends RowData>({
@@ -142,6 +148,7 @@ export function DataGrid<T extends RowData>({
   emptyTitle = "Sin resultados",
   emptyDescription = "No hay registros que coincidan con la búsqueda o los filtros.",
   initialPageSize = 10,
+  initialSorting = EMPTY_SORTING,
 }: Props<T>) {
   const allColumns = useMemo(
     () => (selectable ? [selectColumn<T>(), ...columns] : columns),
@@ -157,7 +164,7 @@ export function DataGrid<T extends RowData>({
     getRowId: getRowId ? (row: T) => getRowId(row) : undefined,
     globalFilterFn: "includesString",
     getColumnCanGlobalFilter: (column) => column.id !== SELECT_ID && Boolean(column.accessorFn),
-    initialState: { pagination: { pageIndex: 0, pageSize: initialPageSize } },
+    initialState: { pagination: { pageIndex: 0, pageSize: initialPageSize }, sorting: initialSorting },
     state: { rowSelection },
     onRowSelectionChange: setRowSelection,
     enableRowSelection: selectable,
@@ -176,7 +183,10 @@ export function DataGrid<T extends RowData>({
   }, [selected]);
 
   const tableRef = useRef<HTMLTableElement>(null);
-  const hasFilters = table.getAllLeafColumns().some((c) => c.columnDef.meta?.filter);
+  const filterColumns = table.getAllLeafColumns().filter((c) => c.columnDef.meta?.filter);
+  const hasFilters = filterColumns.length > 0;
+  // Si todos los filtros son de columnas ocultas en móvil, la fila de filtros tampoco se muestra ahí.
+  const filtersOnlyDesktop = filterColumns.every((c) => c.columnDef.meta?.hideOnMobile || c.columnDef.meta?.hideBelow);
   const rows = table.getRowModel().rows;
   const filteredCount = table.getFilteredRowModel().rows.length;
   const { pageIndex, pageSize } = table.state.pagination;
@@ -263,7 +273,7 @@ export function DataGrid<T extends RowData>({
               </TableRow>
             ))}
             {hasFilters && (
-              <TableRow data-print-hide className="hover:bg-transparent">
+              <TableRow data-print-hide className={cn("hover:bg-transparent", filtersOnlyDesktop && "hidden md:table-row")}>
                 {table.getLeafHeaders().map((header) => (
                   <TableHead
                     key={header.id}
@@ -484,6 +494,8 @@ function cellClass(meta: DataGridColumnMeta | undefined, id: string) {
     id === SELECT_ID && "w-10",
     meta?.align === "end" && "text-right tabular-nums",
     meta?.hideOnMobile && "hidden md:table-cell",
+    meta?.hideBelow === "lg" && "hidden lg:table-cell",
+    meta?.hideBelow === "xl" && "hidden xl:table-cell",
   );
 }
 

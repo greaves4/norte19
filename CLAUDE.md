@@ -12,7 +12,7 @@ Prototipos navegables y semi-funcionales para tres propuestas de Geek Vibes a No
 - Todo dato simulado debe parecer real: nombres de hoteles City Express, RFCs con formato válido, montos en MXN con formato es-MX, fechas relativas a "hoy".
 - Cada acción del usuario debe tener respuesta visible: toast, cambio de estado, navegación. Nada queda "muerto".
 - Responsivo: las vistas de Hotel (Fund) y de Proyectista (Desarrollo) deben funcionar en tablet (1024×768) y móvil (390 de ancho).
-- No instalar dependencias fuera de la lista sin justificarlo en el commit. Lista: next, react, typescript, tailwind, shadcn/ui, zustand, @tanstack/react-table, recharts, date-fns, fast-xml-parser, xlsx, react-pdf, lucide-react, @dnd-kit/core, @dnd-kit/sortable, minisearch; en desarrollo: pdf-lib, vitest.
+- No instalar dependencias fuera de la lista sin justificarlo en el commit. Lista: next, react, typescript, tailwind, shadcn/ui, zustand, @tanstack/react-table, recharts, date-fns, fast-xml-parser, xlsx, react-pdf, lucide-react, @dnd-kit/core, @dnd-kit/sortable, minisearch; en desarrollo: pdf-lib, vitest. Agregada: sonner (toasts de shadcn).
 - Componentes compartidos en `components/shared`; si algo se usa en dos prototipos, vive ahí.
 
 ## Convenciones
@@ -85,3 +85,7 @@ Plataforma de gestión de caja chica hotelera. Tres perfiles (`PerfilFund`): hot
 - `cfdiXml.ts`, `cfdiEjemplos.ts` y `proveedores.ts` no pueden usar el alias `@/` ni imports de valores con alias: los importa el script de Node.
 - El parser de CFDI debe leer XML reales de CFDI 4.0 (namespace cfdi y tfd).
 - Las vistas bajo /fund/hotel deben funcionar en tablet 1024×768 y móvil 390.
+- `components/fund/FundShell.tsx`: navegación por perfil (`INICIO_PERFIL`), redirige a /fund sin perfil y a la sección del perfil si la ruta no coincide (cambiar de perfil en la DemoBar lleva a su inicio). /fund (selector) se muestra sin barra lateral.
+- `MovimientosGrid` + `MovimientoDetalle` (sheet con timeline) se reutilizan en las vistas de movimientos. Tablet: columnas con `hideBelow: "xl"`; móvil: la celda de proveedor muestra fecha y estatus.
+- Toasts con `toast` de sonner (Toaster en app/layout.tsx, arriba a la derecha por la DemoBar).
+- Vistas de Supervisor y Tesorería aún son `EnConstruccion` (F4–F6).

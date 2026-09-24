@@ -28,6 +28,8 @@ export type NavItem = {
   href: string;
   icon: LucideIcon;
   badge?: string | number;
+  // Visible pero no navegable (p. ej. módulos "Próximamente").
+  disabled?: boolean;
 };
 
 type Props = {
@@ -112,6 +114,12 @@ function NavMenu({ items }: { items: NavItem[] }) {
     <SidebarMenu>
       {items.map((item) => (
         <SidebarMenuItem key={item.href}>
+          {item.disabled ? (
+            <SidebarMenuButton aria-disabled tooltip={`${item.label} · Próximamente`} className="cursor-default opacity-50 hover:bg-transparent">
+              <item.icon />
+              <span>{item.label}</span>
+            </SidebarMenuButton>
+          ) : (
           <SidebarMenuButton
             isActive={item.href === active}
             tooltip={item.label}
@@ -126,6 +134,7 @@ function NavMenu({ items }: { items: NavItem[] }) {
             <item.icon />
             <span>{item.label}</span>
           </SidebarMenuButton>
+          )}
           {item.badge !== undefined && <SidebarMenuBadge>{item.badge}</SidebarMenuBadge>}
         </SidebarMenuItem>
       ))}
