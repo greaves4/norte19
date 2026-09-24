@@ -33,6 +33,10 @@ type Props = {
   hint?: string;
   disabled?: boolean;
   className?: string;
+  // Controlado: si se pasa, muestra este archivo (p. ej. uno ya cargado al editar). null = vacío.
+  archivo?: { nombre: string; tamano?: number } | null;
+  // Versión de una línea para listas de documentos.
+  compacto?: boolean;
 };
 
 export function UploadZone({
@@ -43,6 +47,8 @@ export function UploadZone({
   hint,
   disabled = false,
   className,
+  archivo,
+  compacto = false,
 }: Props) {
   const inputId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -77,14 +83,16 @@ export function UploadZone({
     onFile(null);
   }
 
-  if (current) {
+  const mostrado = archivo !== undefined ? (archivo ? { name: archivo.nombre, size: archivo.tamano } : null) : current;
+
+  if (mostrado) {
     return (
-      <div className={cn("flex items-center gap-3 border p-3", className)}>
+      <div className={cn("flex items-center gap-3 border", compacto ? "px-3 py-2" : "p-3", className)}>
         <FileText className="size-5 shrink-0 text-muted-foreground" aria-hidden />
         <div className="flex min-w-0 flex-1 flex-col">
-          <span className="truncate text-sm font-medium">{current.name}</span>
-          {current.size !== undefined && (
-            <span className="text-xs text-muted-foreground">{formatBytes(current.size)}</span>
+          <span className="truncate text-sm font-medium">{mostrado.name}</span>
+          {mostrado.size !== undefined && (
+            <span className="text-xs text-muted-foreground">{formatBytes(mostrado.size)}</span>
           )}
         </div>
         <Button variant="ghost" size="icon-sm" onClick={clear} disabled={disabled} aria-label="Quitar archivo">
@@ -95,7 +103,7 @@ export function UploadZone({
   }
 
   return (
-    <div className={cn("flex flex-col gap-2", className)}>
+    <div className={cn("flex gap-2", compacto ? "flex-wrap items-center" : "flex-col", className)}>
       <label
         htmlFor={inputId}
         onDragOver={(e) => {
@@ -110,13 +118,14 @@ export function UploadZone({
         }}
         data-dragging={dragging || undefined}
         className={cn(
-          "flex cursor-pointer flex-col items-center justify-center gap-2 border border-dashed px-4 py-8 text-center transition-colors hover:bg-muted/50 data-dragging:bg-muted focus-within:ring-3 focus-within:ring-ring/50",
+          "flex cursor-pointer items-center justify-center gap-2 border border-dashed text-center transition-colors hover:bg-muted/50 data-dragging:bg-muted focus-within:ring-3 focus-within:ring-ring/50",
+          compacto ? "min-w-48 flex-1 flex-row px-3 py-2" : "flex-col px-4 py-8",
           disabled && "pointer-events-none opacity-50",
         )}
       >
         <Upload className="size-5 text-muted-foreground" aria-hidden />
         <span className="text-sm font-medium">{label}</span>
-        {(hint || accept) && (
+        {!compacto && (hint || accept) && (
           <span className="text-xs text-muted-foreground">{hint ?? `Formatos: ${describeAccept(accept)}`}</span>
         )}
         <input
@@ -131,7 +140,7 @@ export function UploadZone({
       </label>
 
       {error && (
-        <p role="alert" className="text-sm text-destructive">
+        <p role="alert" className={cn("text-sm text-destructive", compacto && "order-last basis-full")}>
           {error}
         </p>
       )}
@@ -144,7 +153,7 @@ export function UploadZone({
           disabled={disabled}
           onClick={() => select({ kind: "fixture", fixture: fixtures[0] })}
         >
-          Usar archivo de ejemplo
+          {compacto ? "Usar ejemplo" : "Usar archivo de ejemplo"}
         </Button>
       )}
       {fixtures.length > 1 && (
