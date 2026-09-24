@@ -8,7 +8,8 @@ import { createJSONStorage, persist } from "zustand/middleware";
 import { demoNow } from "@/lib/demo";
 import { abogadoPorId, crearDatosContratos, solicitantePorId, USUARIOS_CONTRATOS, type DatosContratos } from "@/lib/fixtures/contratos";
 import { ARCHIVO_CENTRAL } from "@/lib/fixtures/contratos/contratos";
-import { contraparteDe } from "@/lib/fixtures/contratos/solicitudes";
+import { CONTRATOS_CATALOGO } from "@/lib/fixtures/contratos/catalogo";
+import { camposDeContrato, contraparteDe } from "@/lib/fixtures/contratos/solicitudes";
 import { analisisVacio } from "@/lib/sim/contratos/analisis";
 import { asignarAbogado } from "@/lib/sim/contratos/asignacion";
 import { slaPorTipo } from "@/lib/sim/contratos/sla";
@@ -318,14 +319,19 @@ export const useContratos = create<ContratosStore>()(
         iniciarRenovacion: (contratoId, actor) => {
           const c = get().contratos.find((x) => x.id === contratoId);
           if (!c) return null;
-          const campos: Record<string, string | number> = {
-            razonSocial: c.contraparte,
-            ...(c.tipo === "arrendamiento"
-              ? { inmueble: c.objeto, rentaMensual: c.monto, vigenciaMeses: 60, fechaInicio: addDays(new Date(`${c.vigenciaFin}T12:00:00`), 1).toISOString().slice(0, 10) }
-              : c.tipo === "servicios"
-                ? { servicio: c.objeto, contraprestacionMensual: c.monto, vigenciaMeses: 36 }
-                : { proyecto: c.objeto }),
-          };
+          const inicio = addDays(new Date(`${c.vigenciaFin}T12:00:00`), 1).toISOString().slice(0, 10);
+          // Contratos del catálogo: se precargan todos los datos de la contraparte; los creados en la demo, lo básico.
+          const catalogo = CONTRATOS_CATALOGO.some((x) => x.id === c.id);
+          const campos: Record<string, string | number> = catalogo
+            ? { ...camposDeContrato(c.id), fechaInicio: inicio, ...(c.tipo === "arrendamiento" ? { vigenciaMeses: 60 } : {}) }
+            : {
+                razonSocial: c.contraparte,
+                ...(c.tipo === "arrendamiento"
+                  ? { inmueble: c.objeto, rentaMensual: c.monto, vigenciaMeses: 60, fechaInicio: inicio }
+                  : c.tipo === "servicios"
+                    ? { servicio: c.objeto, contraprestacionMensual: c.monto, vigenciaMeses: 36 }
+                    : { proyecto: c.objeto }),
+              };
           const { id } = get().crearSolicitud(
             { tipoPersona: "moral", tipoContrato: c.tipo, campos, expediente: [], solicitanteId: solicitantePorId(c.area)?.id ?? "desarrollo", renovacionDe: c.id },
             actor,

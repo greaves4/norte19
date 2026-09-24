@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { EnConstruccion } from "@/components/contratos/EnConstruccion";
+import { DetalleContrato } from "@/components/contratos/DetalleContrato";
 
 export const metadata: Metadata = { title: "Contrato · Contratos" };
 
-export default function Page() {
-  return <EnConstruccion titulo="Contrato" descripcion="Documento con los datos extraídos por la IA." />;
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  return <DetalleContrato id={id} />;
 }

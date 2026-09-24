@@ -70,13 +70,14 @@ function Detalle({ s }: { s: Solicitud }) {
   const [dialogo, setDialogo] = useState<"regresar" | "rechazar" | "reasignar" | null>(null);
   const def = definicionPara(s.tipoPersona, s.tipoContrato);
   const faltantes = documentosFaltantes(def, s.expediente);
-  const regreso = REGRESO[perfil];
+  const regreso = perfil === "admin" && !["aprobada", "en_firma", "formalizada"].includes(s.estatus) ? { href: "/contratos/repositorio", label: "Repositorio" } : REGRESO[perfil];
 
   const esAbogado = perfil === "abogado";
   const editable = esAbogado && EDITABLE.has(s.estatus);
   const borrador = borradorLocal ?? (s.analisis || PLANTILLA_ANALISIS);
   const sucio = borrador !== (s.analisis || PLANTILLA_ANALISIS);
   const abogado = abogadoPorId(s.abogadoId);
+  const origen = useContratos((st) => (s.renovacionDe ? st.contratos.find((c) => c.id === s.renovacionDe) : undefined));
   const rechazoDirectivo = s.estatus === "en_analisis" && s.motivoRechazo ? [...s.timeline].reverse().find((e) => e.tipo === "rechazada_ajustes") : undefined;
 
   function guardar() {
@@ -248,7 +249,20 @@ function Detalle({ s }: { s: Solicitud }) {
               <Dato etiqueta="Solicitante" valor={`${solicitantePorId(s.solicitanteId)?.nombre} · ${solicitantePorId(s.solicitanteId)?.puesto}`} />
               <Dato etiqueta="Creada" valor={fechaHora(s.creadaEn)} />
               <Dato etiqueta="SLA de análisis" valor={`${s.slaDiasHabiles} días hábiles · vence ${fecha(venceSla(s), "d MMM yyyy, HH:mm")}`} />
-              {s.renovacionDe && <Dato etiqueta="Renovación de" valor={s.renovacionDe} />}
+              {origen && (
+                <Dato
+                  etiqueta="Renovación de"
+                  valor={
+                    perfil === "directivo" ? (
+                      origen.folio
+                    ) : (
+                      <Link href={`/contratos/repositorio/${origen.id}`} className="underline underline-offset-4">
+                        {origen.folio} · vence el {fecha(`${origen.vigenciaFin}T12:00:00`)}
+                      </Link>
+                    )
+                  }
+                />
+              )}
             </dl>
           </div>
         </TabsContent>

@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ViewerDocument } from "@/components/shared/DocumentViewer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -28,22 +28,30 @@ type Props = {
   className?: string;
   // Se llama cuando el documento termina de mostrarse (primera página del PDF o imagen).
   onDocumentLoad?: () => void;
+  // Página controlada del PDF. En móvil, cada cambio de `pageRequest` muestra la pestaña del documento.
+  page?: number;
+  onPageChange?: (page: number) => void;
+  pageRequest?: number;
 };
 
-export function SplitViewer({ document: doc, children, defaultSplit = 50, className, onDocumentLoad }: Props) {
+export function SplitViewer({ document: doc, children, defaultSplit = 50, className, onDocumentLoad, page, onPageChange, pageRequest }: Props) {
   const isMobile = useIsMobile();
   const [split, setSplit] = useState(clamp(defaultSplit));
   const containerRef = useRef<HTMLDivElement>(null);
+  const [tab, setTab] = useState("documento");
+  useEffect(() => {
+    if (pageRequest) setTab("documento");
+  }, [pageRequest]);
 
   if (isMobile) {
     return (
-      <Tabs defaultValue="documento" className={cn("flex h-full min-h-[480px] flex-col", className)}>
+      <Tabs value={tab} onValueChange={(v) => setTab(String(v))} className={cn("flex h-full min-h-[480px] flex-col", className)}>
         <TabsList className="w-full shrink-0">
           <TabsTrigger value="documento">Documento</TabsTrigger>
           <TabsTrigger value="datos">Datos</TabsTrigger>
         </TabsList>
         <TabsContent value="documento" className="min-h-0 flex-1 border">
-          <DocumentViewer document={doc} onLoad={onDocumentLoad} />
+          <DocumentViewer document={doc} onLoad={onDocumentLoad} page={page} onPageChange={onPageChange} />
         </TabsContent>
         <TabsContent value="datos" className="min-h-0 flex-1 overflow-auto">
           {children}
@@ -84,7 +92,7 @@ export function SplitViewer({ document: doc, children, defaultSplit = 50, classN
   return (
     <div ref={containerRef} className={cn("flex h-full min-h-[480px] border", className)}>
       <div className="min-w-0 overflow-hidden" style={{ width: `${split}%` }}>
-        <DocumentViewer document={doc} onLoad={onDocumentLoad} />
+        <DocumentViewer document={doc} onLoad={onDocumentLoad} page={page} onPageChange={onPageChange} />
       </div>
       <div
         role="separator"

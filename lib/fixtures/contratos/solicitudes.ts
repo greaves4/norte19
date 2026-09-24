@@ -182,9 +182,23 @@ function analisisDe(tipo: TipoContrato, c: Record<string, string | number>, i: n
   return `Objeto: ${objeto}\nRiesgos identificados: ${riesgos}\nCláusulas a negociar: ${clausulas}\nRecomendación: ${recomendacion}`;
 }
 
-function camposDeContrato(contratoId: string): Record<string, string | number> {
+// Datos de solicitud equivalentes a un contrato del catálogo (solicitudes formalizadas y renovaciones).
+export function camposDeContrato(contratoId: string): Record<string, string | number> {
   const c = CONTRATOS_CATALOGO.find((x) => x.id === contratoId)!;
   const base = { razonSocial: c.contraparte, rfc: c.contraparteRfc, representanteLegal: c.contraparteRepresentante, poderNotarial: "Escritura vigente acreditada", domicilioFiscal: c.contraparteDomicilio };
+  if (c.tipo === "arrendamiento") {
+    const superficie = Number(c.inmueble?.match(/superficie de ([\d,]+) m²/)?.[1]?.replace(/,/g, "") ?? 0);
+    return {
+      ...base,
+      inmueble: (c.inmueble ?? c.objeto).replace(/, con superficie de [\d,]+ m²$/, ""),
+      ...(superficie ? { superficie } : {}),
+      rentaMensual: c.monto,
+      vigenciaMeses: 120,
+      fechaInicio: c.vigenciaInicio,
+      deposito: `${c.depositoMeses ?? 2} meses`,
+      incrementoAnual: c.incremento?.tipo === "fijo" ? `Fijo ${c.incremento.porcentaje}%` : "INPC",
+    };
+  }
   if (c.tipo === "desarrollo") return { ...base, proyecto: c.objeto, ubicacion: c.inmueble ?? c.ciudad, montoTotal: c.monto, plazoMeses: 24, fechaInicio: c.vigenciaInicio, anticipo: "30%", garantias: "Fianzas de anticipo y cumplimiento" };
   if (c.tipo === "servicios") return { ...base, servicio: c.objeto, hoteles: 12, contraprestacionMensual: c.monto, vigenciaMeses: 36, fechaInicio: c.vigenciaInicio, nivelServicio: "Crítico (respuesta 4 h)" };
   return { ...base, proposito: c.objeto, vigenciaAnios: "3 años", penaConvencional: 2500000 };

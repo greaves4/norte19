@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { EnConstruccion } from "@/components/contratos/EnConstruccion";
+import { Repositorio } from "@/components/contratos/Repositorio";
 
 export const metadata: Metadata = { title: "Repositorio · Contratos" };
 
 export default function Page() {
-  return <EnConstruccion titulo="Repositorio" descripcion="Contratos formalizados con extracción de IA." />;
+  return <Repositorio />;
 }

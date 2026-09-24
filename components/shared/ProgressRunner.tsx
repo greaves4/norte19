@@ -183,7 +183,7 @@ export function ProgressRunner({ steps, onDone, onStatusChange, onStepDone, auto
         >
           {log.map((line, i) => (
             <li key={i} className="flex gap-2">
-              <span className="text-muted-foreground tabular-nums">{formatSeconds(line.t).padStart(6)}</span>
+              <span className="shrink-0 whitespace-pre text-muted-foreground tabular-nums">{formatSeconds(line.t).padStart(6)}</span>
               <span className="min-w-0 break-all">{line.text}</span>
             </li>
           ))}

@@ -193,3 +193,9 @@ export const PASOS_FIRMA: { id: PasoFirma; etiqueta: string }[] = [
   { id: "constancia", etiqueta: "Constancia de conservación generada" },
   { id: "formalizado", etiqueta: "Formalizado" },
 ];
+
+export const CONFIANZA: StatusMap<Confianza> = {
+  alta: { label: "Confianza alta", tone: "success" },
+  media: { label: "Confianza media", tone: "warning" },
+  baja: { label: "Confianza baja", tone: "danger" },
+};

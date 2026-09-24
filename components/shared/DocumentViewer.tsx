@@ -16,12 +16,26 @@ const ZOOM_MIN = 0.5;
 const ZOOM_MAX = 3;
 const ZOOM_STEP = 0.25;
 
-export default function DocumentViewer({ document: doc, onLoad }: { document: ViewerDocument; onLoad?: () => void }) {
+type Props = {
+  document: ViewerDocument;
+  onLoad?: () => void;
+  // Página controlada (p. ej. "Ir a la cláusula"); sin ella el visor maneja su propia página.
+  page?: number;
+  onPageChange?: (page: number) => void;
+};
+
+export default function DocumentViewer({ document: doc, onLoad, page: pageProp, onPageChange }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   const [zoom, setZoom] = useState(1);
   const [numPages, setNumPages] = useState(0);
-  const [page, setPage] = useState(1);
+  const [pageInterna, setPageInterna] = useState(1);
+  const page = Math.max(1, numPages ? Math.min(pageProp ?? pageInterna, numPages) : (pageProp ?? pageInterna));
+  function setPage(update: (p: number) => number) {
+    const next = update(page);
+    setPageInterna(next);
+    onPageChange?.(next);
+  }
   const [error, setError] = useState(false);
 
   // El ancho "ajustado" es el del panel; el zoom multiplica sobre él.
@@ -35,7 +49,7 @@ export default function DocumentViewer({ document: doc, onLoad }: { document: Vi
   }, []);
 
   useEffect(() => {
-    setPage(1);
+    setPageInterna(1);
     setNumPages(0);
     setZoom(1);
     setError(false);

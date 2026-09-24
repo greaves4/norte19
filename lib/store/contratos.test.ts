@@ -82,6 +82,11 @@ describe("store de Contratos", () => {
     const id = store().iniciarRenovacion("arr-ens", "Lic. Sofía Arriaga")!;
     expect(sol(id).renovacionDe).toBe("arr-ens");
     expect(sol(id).campos.razonSocial).toBe("Desarrollos Costa Pacífico, S.A. de C.V.");
+    // Se precargan RFC, representante y renta; la nueva vigencia empieza al día siguiente del fin.
+    expect(sol(id).campos.rfc).toBeTruthy();
+    expect(sol(id).campos.representanteLegal).toBeTruthy();
+    expect(sol(id).campos.rentaMensual).toBe(142500);
+    expect(sol(id).campos.fechaInicio).toBe("2026-12-01");
   });
 
   it("reset restaura 24 solicitudes, 8 contratos y las extracciones pendientes", () => {

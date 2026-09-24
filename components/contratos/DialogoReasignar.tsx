@@ -18,7 +18,11 @@ type Props = {
 };
 
 // Reasignación manual con la carga activa de cada abogado a la vista.
-export function DialogoReasignar({ solicitud, actor, onOpenChange }: Props) {
+export function DialogoReasignar({ solicitud: abierta, actor, onOpenChange }: Props) {
+  // Conserva la última solicitud mientras corre la animación de cierre.
+  const [ultima, setUltima] = useState<Props["solicitud"]>(abierta);
+  if (abierta && abierta !== ultima) setUltima(abierta);
+  const solicitud = abierta ?? ultima;
   const solicitudes = useContratos((s) => s.solicitudes);
   const reasignar = useContratos((s) => s.reasignar);
   const [destino, setDestino] = useState<string | null>(null);
@@ -34,7 +38,7 @@ export function DialogoReasignar({ solicitud, actor, onOpenChange }: Props) {
   }
 
   return (
-    <Dialog open={solicitud !== null} onOpenChange={cambiar}>
+    <Dialog open={abierta !== null} onOpenChange={cambiar}>
       <DialogContent>
         <form
           className="flex flex-col gap-4"

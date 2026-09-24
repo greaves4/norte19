@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { EnConstruccion } from "@/components/contratos/EnConstruccion";
+import { CustodiaOriginales } from "@/components/contratos/CustodiaOriginales";
 
-export const metadata: Metadata = { title: "Custodia de originales · Contratos" };
+export const metadata: Metadata = { title: "Custodia · Contratos" };
 
 export default function Page() {
-  return <EnConstruccion titulo="Custodia de originales" descripcion="Ubicación y préstamos de los tres tantos." />;
+  return <CustodiaOriginales />;
 }
