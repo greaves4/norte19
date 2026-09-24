@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="A" Folio="6160" Fecha="2026-09-01T12:00:00" Sello="D61C7C52+61C7C52C+1C7C52CB+C7C52CB2+7C52CB2C+C52CB2C4+52CB2C44+2CB2C446+CB2C4466+B2C44669+2C44669B==" FormaPago="04" NoCertificado="30001000000500003416" Certificado="D61C7C52+61C7C52C+1C7C52CB+C7C52CB2+7C52CB2C+C52CB2C4+52CB2C44+2CB2C446+CB2C4466+B2C44669+2C44669B==" SubTotal="1235.00" Moneda="MXN" Total="1432.60" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="77500">
+  <cfdi:Emisor Rfc="PTU160923B87" Nombre="PAPELERIA TULUM" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="HCA110315KT4" Nombre="HOTELERA CANCUN AEROPUERTO" DomicilioFiscalReceptor="77565" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="14111500" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Papel bond carta, caja con 10 paquetes" ValorUnitario="875.00" Importe="875.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="875.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="140.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="44121600" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Artículos de escritorio surtidos" ValorUnitario="360.00" Importe="360.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="360.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="57.60"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="197.60">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="1235.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="197.60"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="616041EE-2BDC-43F6-9574-E4FC984C1EE8" FechaTimbrado="2026-09-01T12:02:00" RfcProvCertif="SAT970701NN3" SelloCFD="D61C7C52+61C7C52C+1C7C52CB+C7C52CB2+7C52CB2C+C52CB2C4+52CB2C44+2CB2C446+CB2C4466+B2C44669+2C44669B==" NoCertificadoSAT="30001000000500003456" SelloSAT="D61C7C52+61C7C52C+1C7C52CB+C7C52CB2+7C52CB2C+C52CB2C4+52CB2C44+2CB2C446+CB2C4466+B2C44669+2C44669B=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

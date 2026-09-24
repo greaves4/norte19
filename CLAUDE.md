@@ -79,6 +79,9 @@ Plataforma de gestión de caja chica hotelera. Tres perfiles (`PerfilFund`): hot
 - Hotel de la demo: City Express Cancún Aeropuerto (hotelId 'ce-cun-apt', tarjeta 'tj-ce-cun-apt'). Usuarios por perfil en `USUARIOS_DEMO`.
 - Fixtures en `lib/fixtures/fund/`: generadas con semilla fija (`crearDatosFund(hoy)`), relativas al reloj de demo. Cambiar una fixture puede mover las invariantes de `fixtures.test.ts` (120 movimientos, 6 pendientes en Cancún, 40 movimientos bancarios con 2 discrepancias).
 - Store `lib/store/fund.ts` (zustand + persist, clave 'fund'). Toda transición pasa por sus acciones y agrega evento a la timeline con `demoNow()`. Usar `useFundHydrated()` antes de pintar datos del store.
-- Comprobantes de movimientos: `public/fixtures/fund/comprobantes/<slug>.{xml,pdf,jpg}` por proveedor de `proveedores.ts` (se generan en F2).
+- Comprobantes estáticos en `public/fixtures/fund/`: `comprobantes/<slug>.{xml,pdf,jpg}` por proveedor y `ejemplos/<id>.{pdf,jpg}` por CFDI de ejemplo. Se regeneran con `pnpm gen:fund` (Node + pdf-lib + `sips` de macOS) y se versionan.
+- Los 5 CFDI de ejemplo (`lib/fixtures/fund/cfdiEjemplos.ts`) NO son archivos: el XML se construye en el navegador con el reloj de demo (`crearXmlEjemplo`, `leerXmlDeUpload` en `lib/sim/fund/ejemplos.ts`) para que "hoy", "hace 2 días" y "hace 6 días" sigan siendo ciertos. En UploadZone usar `FIXTURES_XML` y `FIXTURES_COMPROBANTE`.
+- `lib/sim/fund/cfdi.ts` (`parseCfdi`, `fechaEmision`) y `lib/sim/fund/validaciones.ts` (ventana de 3 días, categoría, RFC receptor, documental; cada una devuelve `{nivel, titulo, detalle}` para el semáforo).
+- `cfdiXml.ts`, `cfdiEjemplos.ts` y `proveedores.ts` no pueden usar el alias `@/` ni imports de valores con alias: los importa el script de Node.
 - El parser de CFDI debe leer XML reales de CFDI 4.0 (namespace cfdi y tfd).
 - Las vistas bajo /fund/hotel deben funcionar en tablet 1024×768 y móvil 390.

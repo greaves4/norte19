@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="A" Folio="3F5C" Fecha="2026-09-01T12:00:00" Sello="FFC848DA+FC848DAA+C848DAA7+848DAA71+48DAA71A+8DAA71A4+DAA71A41+AA71A413+A71A4134+71A41348+1A41348F==" FormaPago="04" NoCertificado="30001000000500003416" Certificado="FFC848DA+FC848DAA+C848DAA7+848DAA71+48DAA71A+8DAA71A4+DAA71A41+AA71A413+A71A4134+71A41348+1A41348F==" SubTotal="3600.00" Moneda="MXN" Total="4176.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="77500">
+  <cfdi:Emisor Rfc="GSP050711HB2" Nombre="GAS DEL SURESTE PENINSULAR" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="HCA110315KT4" Nombre="HOTELERA CANCUN AEROPUERTO" DomicilioFiscalReceptor="77565" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="15111510" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Gas LP para calentadores, 300 L" ValorUnitario="3600.00" Importe="3600.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="3600.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="576.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="576.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="3600.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="576.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="3F5CCA00-40E2-41DA-A79B-0266C71CF334" FechaTimbrado="2026-09-01T12:02:00" RfcProvCertif="SAT970701NN3" SelloCFD="FFC848DA+FC848DAA+C848DAA7+848DAA71+48DAA71A+8DAA71A4+DAA71A41+AA71A413+A71A4134+71A41348+1A41348F==" NoCertificadoSAT="30001000000500003456" SelloSAT="FFC848DA+FC848DAA+C848DAA7+848DAA71+48DAA71A+8DAA71A4+DAA71A41+AA71A413+A71A4134+71A41348+1A41348F=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

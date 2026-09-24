@@ -11,7 +11,8 @@
     "postinstall": "node scripts/copy-pdf-worker.mjs",
     "prebuild": "node scripts/copy-pdf-worker.mjs",
     "predev": "node scripts/copy-pdf-worker.mjs",
-    "check": "pnpm lint && pnpm build"
+    "check": "pnpm lint && pnpm build",
+    "gen:fund": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generar-comprobantes-fund.mts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

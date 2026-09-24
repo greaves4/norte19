@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="A" Folio="5F72" Fecha="2026-09-01T12:00:00" Sello="70C74A76+0C74A762+C74A7628+74A76281+4A762812+A7628124+76281248+62812484+28124848+8124848A+124848AA==" FormaPago="04" NoCertificado="30001000000500003416" Certificado="70C74A76+0C74A762+C74A7628+74A76281+4A762812+A7628124+76281248+62812484+28124848+8124848A+124848AA==" SubTotal="3165.00" Moneda="MXN" Total="3671.40" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="77500">
+  <cfdi:Emisor Rfc="LPE150612J41" Nombre="LIMPIEZA PENINSULAR" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="HCA110315KT4" Nombre="HOTELERA CANCUN AEROPUERTO" DomicilioFiscalReceptor="77565" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="76111501" Cantidad="1.00" ClaveUnidad="E48" Unidad="Servicio" Descripcion="Servicio de limpieza profunda de áreas comunes" ValorUnitario="2500.00" Importe="2500.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="2500.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="400.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="47131800" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Desengrasante industrial 20 L" ValorUnitario="665.00" Importe="665.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="665.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="106.40"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="506.40">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="3165.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="506.40"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="5F723CCA-8916-4CCE-910D-1EC0D4A31480" FechaTimbrado="2026-09-01T12:02:00" RfcProvCertif="SAT970701NN3" SelloCFD="70C74A76+0C74A762+C74A7628+74A76281+4A762812+A7628124+76281248+62812484+28124848+8124848A+124848AA==" NoCertificadoSAT="30001000000500003456" SelloSAT="70C74A76+0C74A762+C74A7628+74A76281+4A762812+A7628124+76281248+62812484+28124848+8124848A+124848AA=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

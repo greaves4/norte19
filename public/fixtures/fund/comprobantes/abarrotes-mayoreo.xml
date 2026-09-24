@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="A" Folio="EE90" Fecha="2026-09-01T12:00:00" Sello="337A864E+37A864EA+7A864EA1+A864EA1D+864EA1DF+64EA1DF4+4EA1DF41+EA1DF418+A1DF4180+1DF4180B+DF4180B4==" FormaPago="04" NoCertificado="30001000000500003416" Certificado="337A864E+37A864EA+7A864EA1+A864EA1D+864EA1DF+64EA1DF4+4EA1DF41+EA1DF418+A1DF4180+1DF4180B+DF4180B4==" SubTotal="2100.00" Moneda="MXN" Total="2436.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="77500">
+  <cfdi:Emisor Rfc="AMC080402RT7" Nombre="ABARROTES Y MAYOREO LA CENTRAL" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="HCA110315KT4" Nombre="HOTELERA CANCUN AEROPUERTO" DomicilioFiscalReceptor="77565" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="50192100" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Café, azúcar y crema para desayuno continental" ValorUnitario="1500.00" Importe="1500.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="1500.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="240.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="50221200" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Fruta de temporada" ValorUnitario="600.00" Importe="600.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="600.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="96.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="336.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="2100.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="336.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="EE90AC34-67BB-47BE-BE28-5BD4CBCA0C46" FechaTimbrado="2026-09-01T12:02:00" RfcProvCertif="SAT970701NN3" SelloCFD="337A864E+37A864EA+7A864EA1+A864EA1D+864EA1DF+64EA1DF4+4EA1DF41+EA1DF418+A1DF4180+1DF4180B+DF4180B4==" NoCertificadoSAT="30001000000500003456" SelloSAT="337A864E+37A864EA+7A864EA1+A864EA1D+864EA1DF+64EA1DF4+4EA1DF41+EA1DF418+A1DF4180+1DF4180B+DF4180B4=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

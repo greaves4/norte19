@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="A" Folio="82C1" Fecha="2026-09-01T12:00:00" Sello="367C09F4+67C09F4D+7C09F4D9+C09F4D98+09F4D981+9F4D9814+F4D9814F+4D9814F4+D9814F44+9814F44A+814F44AB==" FormaPago="04" NoCertificado="30001000000500003416" Certificado="367C09F4+67C09F4D+7C09F4D9+C09F4D98+09F4D981+9F4D9814+F4D9814F+4D9814F4+D9814F44+9814F44A+814F44AB==" SubTotal="1750.00" Moneda="MXN" Total="2030.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="77500">
+  <cfdi:Emisor Rfc="FPC090827WE1" Nombre="FUMIGACIONES PROFESIONALES DEL CENTRO" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="HCA110315KT4" Nombre="HOTELERA CANCUN AEROPUERTO" DomicilioFiscalReceptor="77565" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="72102100" Cantidad="1.00" ClaveUnidad="E48" Unidad="Servicio" Descripcion="Servicio mensual de control de plagas" ValorUnitario="1750.00" Importe="1750.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="1750.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="280.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="280.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="1750.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="280.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="82C1A4AC-C980-422E-A0B6-9DF6DD5C7952" FechaTimbrado="2026-09-01T12:02:00" RfcProvCertif="SAT970701NN3" SelloCFD="367C09F4+67C09F4D+7C09F4D9+C09F4D98+09F4D981+9F4D9814+F4D9814F+4D9814F4+D9814F44+9814F44A+814F44AB==" NoCertificadoSAT="30001000000500003456" SelloSAT="367C09F4+67C09F4D+7C09F4D9+C09F4D98+09F4D981+9F4D9814+F4D9814F+4D9814F4+D9814F44+9814F44A+814F44AB=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="A" Folio="6542" Fecha="2026-09-01T12:00:00" Sello="D92CCE90+92CCE90F+2CCE90FE+CCE90FEE+CE90FEED+E90FEED4+90FEED4E+0FEED4E7+FEED4E74+EED4E748+ED4E7482==" FormaPago="04" NoCertificado="30001000000500003416" Certificado="D92CCE90+92CCE90F+2CCE90FE+CCE90FEE+CE90FEED+E90FEED4+90FEED4E+0FEED4E7+FEED4E74+EED4E748+ED4E7482==" SubTotal="1150.00" Moneda="MXN" Total="1334.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="77500">
+  <cfdi:Emisor Rfc="MAP130916DS4" Nombre="MATERIALES Y ACABADOS DEL PACIFICO" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="HCA110315KT4" Nombre="HOTELERA CANCUN AEROPUERTO" DomicilioFiscalReceptor="77565" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="30111600" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Cemento y adhesivo para loseta" ValorUnitario="1150.00" Importe="1150.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="1150.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="184.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="184.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="1150.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="184.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="65420684-B2E8-4046-99C7-8438A7832F4E" FechaTimbrado="2026-09-01T12:02:00" RfcProvCertif="SAT970701NN3" SelloCFD="D92CCE90+92CCE90F+2CCE90FE+CCE90FEE+CE90FEED+E90FEED4+90FEED4E+0FEED4E7+FEED4E74+EED4E748+ED4E7482==" NoCertificadoSAT="30001000000500003456" SelloSAT="D92CCE90+92CCE90F+2CCE90FE+CCE90FEE+CE90FEED+E90FEED4+90FEED4E+0FEED4E7+FEED4E74+EED4E748+ED4E7482=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

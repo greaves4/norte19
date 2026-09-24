@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="A" Folio="5C26" Fecha="2026-09-01T12:00:00" Sello="1CCDBF06+CCDBF061+CDBF0619+DBF06198+BF061989+F0619894+0619894B+619894BE+19894BEA+9894BEAA+894BEAA7==" FormaPago="04" NoCertificado="30001000000500003416" Certificado="1CCDBF06+CCDBF061+CDBF0619+DBF06198+BF061989+F0619894+0619894B+619894BE+19894BEA+9894BEAA+894BEAA7==" SubTotal="4000.00" Moneda="MXN" Total="4640.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="77500">
+  <cfdi:Emisor Rfc="ARN100617BX2" Nombre="AEROVIAS REGIONALES DEL NORTE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="HCA110315KT4" Nombre="HOTELERA CANCUN AEROPUERTO" DomicilioFiscalReceptor="77565" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="78111502" Cantidad="1.00" ClaveUnidad="E48" Unidad="Servicio" Descripcion="Boleto de avión para gerente (capacitación en corporativo)" ValorUnitario="4000.00" Importe="4000.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="4000.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="640.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="640.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="4000.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="640.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="5C261166-2DB0-4244-9709-5CECAAB9A5EC" FechaTimbrado="2026-09-01T12:02:00" RfcProvCertif="SAT970701NN3" SelloCFD="1CCDBF06+CCDBF061+CDBF0619+DBF06198+BF061989+F0619894+0619894B+619894BE+19894BEA+9894BEAA+894BEAA7==" NoCertificadoSAT="30001000000500003456" SelloSAT="1CCDBF06+CCDBF061+CDBF0619+DBF06198+BF061989+F0619894+0619894B+619894BE+19894BEA+9894BEAA+894BEAA7=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="A" Folio="2181" Fecha="2026-09-01T12:00:00" Sello="674AF906+74AF9066+4AF9066A+AF9066A3+F9066A38+9066A384+066A3841+66A3841F+6A3841F6+A3841F6B+3841F6BB==" FormaPago="04" NoCertificado="30001000000500003416" Certificado="674AF906+74AF9066+4AF9066A+AF9066A3+F9066A38+9066A384+066A3841+66A3841F+6A3841F6+A3841F6B+3841F6BB==" SubTotal="975.00" Moneda="MXN" Total="1131.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="77500">
+  <cfdi:Emisor Rfc="RMC180207T63" Nombre="RESTAURANTE MARISOL DEL CARIBE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="HCA110315KT4" Nombre="HOTELERA CANCUN AEROPUERTO" DomicilioFiscalReceptor="77565" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="90101501" Cantidad="1.00" ClaveUnidad="E48" Unidad="Servicio" Descripcion="Consumo de alimentos para personal de turno" ValorUnitario="975.00" Importe="975.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="975.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="156.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="156.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="975.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="156.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="21815FBA-C5B8-4106-A348-113A534BD95A" FechaTimbrado="2026-09-01T12:02:00" RfcProvCertif="SAT970701NN3" SelloCFD="674AF906+74AF9066+4AF9066A+AF9066A3+F9066A38+9066A384+066A3841+66A3841F+6A3841F6+A3841F6B+3841F6BB==" NoCertificadoSAT="30001000000500003456" SelloSAT="674AF906+74AF9066+4AF9066A+AF9066A3+F9066A38+9066A384+066A3841+66A3841F+6A3841F6+A3841F6B+3841F6BB=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="A" Folio="6D62" Fecha="2026-09-01T12:00:00" Sello="2D05C50E+D05C50ED+05C50EDA+5C50EDAD+C50EDAD2+50EDAD24+0EDAD242+EDAD2425+DAD24256+AD242569+D2425691==" FormaPago="04" NoCertificado="30001000000500003416" Certificado="2D05C50E+D05C50ED+05C50EDA+5C50EDAD+C50EDAD2+50EDAD24+0EDAD242+EDAD2425+DAD24256+AD242569+D2425691==" SubTotal="1950.00" Moneda="MXN" Total="2262.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="77500">
+  <cfdi:Emisor Rfc="BHB120911PL4" Nombre="BLANCOS HOTELEROS DEL BAJIO" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="HCA110315KT4" Nombre="HOTELERA CANCUN AEROPUERTO" DomicilioFiscalReceptor="77565" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="52121500" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Toallas de baño 100% algodón" ValorUnitario="1950.00" Importe="1950.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="1950.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="312.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="312.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="1950.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="312.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="6D6296AC-BEBC-4C92-9A3E-E39C6332916A" FechaTimbrado="2026-09-01T12:02:00" RfcProvCertif="SAT970701NN3" SelloCFD="2D05C50E+D05C50ED+05C50EDA+5C50EDAD+C50EDAD2+50EDAD24+0EDAD242+EDAD2425+DAD24256+AD242569+D2425691==" NoCertificadoSAT="30001000000500003456" SelloSAT="2D05C50E+D05C50ED+05C50EDA+5C50EDAD+C50EDAD2+50EDAD24+0EDAD242+EDAD2425+DAD24256+AD242569+D2425691=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

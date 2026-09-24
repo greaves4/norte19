@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="A" Folio="70B5" Fecha="2026-09-01T12:00:00" Sello="C30073C8+30073C83+0073C83D+073C83D2+73C83D2B+3C83D2B4+C83D2B42+83D2B42B+3D2B42B6+D2B42B6B+2B42B6B0==" FormaPago="04" NoCertificado="30001000000500003416" Certificado="C30073C8+30073C83+0073C83D+073C83D2+73C83D2B+3C83D2B4+C83D2B42+83D2B42B+3D2B42B6+D2B42B6B+2B42B6B0==" SubTotal="780.00" Moneda="MXN" Total="904.80" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="77500">
+  <cfdi:Emisor Rfc="FSA140120MN8" Nombre="FARMACIA" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="HCA110315KT4" Nombre="HOTELERA CANCUN AEROPUERTO" DomicilioFiscalReceptor="77565" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="42311500" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Reposición de botiquín de primeros auxilios" ValorUnitario="575.00" Importe="575.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="575.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="92.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="51101500" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Analgésicos para botiquín" ValorUnitario="205.00" Importe="205.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="205.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="32.80"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="124.80">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="780.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="124.80"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="70B55F88-EC7C-4C28-A4FC-E1FAFE669234" FechaTimbrado="2026-09-01T12:02:00" RfcProvCertif="SAT970701NN3" SelloCFD="C30073C8+30073C83+0073C83D+073C83D2+73C83D2B+3C83D2B4+C83D2B42+83D2B42B+3D2B42B6+D2B42B6B+2B42B6B0==" NoCertificadoSAT="30001000000500003456" SelloSAT="C30073C8+30073C83+0073C83D+073C83D2+73C83D2B+3C83D2B4+C83D2B42+83D2B42B+3D2B42B6+D2B42B6B+2B42B6B0=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

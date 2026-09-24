@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="A" Folio="029A" Fecha="2026-09-01T12:00:00" Sello="2C93B918+C93B918F+93B918FC+3B918FCB+B918FCB3+918FCB34+18FCB34B+8FCB34BD+FCB34BD8+CB34BD8B+B34BD8B8==" FormaPago="04" NoCertificado="30001000000500003416" Certificado="2C93B918+C93B918F+93B918FC+3B918FCB+B918FCB3+918FCB34+18FCB34B+8FCB34BD+FCB34BD8+CB34BD8B+B34BD8B8==" SubTotal="3025.00" Moneda="MXN" Total="3509.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="77500">
+  <cfdi:Emisor Rfc="FCA090318QW5" Nombre="FERRETERIA DEL CARIBE" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="HCA110315KT4" Nombre="HOTELERA CANCUN AEROPUERTO" DomicilioFiscalReceptor="77565" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="27111700" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Juego de herramientas para mantenimiento" ValorUnitario="1325.00" Importe="1325.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="1325.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="212.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="31161500" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Tornillería y taquetes surtidos" ValorUnitario="300.00" Importe="300.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="300.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="48.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+    <cfdi:Concepto ClaveProdServ="31211500" Cantidad="1.00" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Pintura vinílica blanca 19 L" ValorUnitario="1400.00" Importe="1400.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="1400.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="224.00"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="484.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="3025.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="484.00"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="029AD19E-F88E-423E-9A06-3E26858BFBB2" FechaTimbrado="2026-09-01T12:02:00" RfcProvCertif="SAT970701NN3" SelloCFD="2C93B918+C93B918F+93B918FC+3B918FCB+B918FCB3+918FCB34+18FCB34B+8FCB34BD+FCB34BD8+CB34BD8B+B34BD8B8==" NoCertificadoSAT="30001000000500003456" SelloSAT="2C93B918+C93B918F+93B918FC+3B918FCB+B918FCB3+918FCB34+18FCB34B+8FCB34BD+FCB34BD8+CB34BD8B+B34BD8B8=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>

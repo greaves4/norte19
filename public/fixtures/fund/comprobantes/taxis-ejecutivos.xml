@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Serie="A" Folio="F059" Fecha="2026-09-01T12:00:00" Sello="0AF6F1D6+AF6F1D63+F6F1D636+6F1D636F+F1D636F8+1D636F84+D636F840+636F840A+36F840AA+6F840AA8+F840AA8E==" FormaPago="04" NoCertificado="30001000000500003416" Certificado="0AF6F1D6+AF6F1D63+F6F1D636+6F1D636F+F1D636F8+1D636F84+D636F840+636F840A+36F840AA+6F840AA8+F840AA8E==" SubTotal="565.00" Moneda="MXN" Total="655.40" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="77500">
+  <cfdi:Emisor Rfc="TEA170605GC9" Nombre="TAXIS EJECUTIVOS DEL AEROPUERTO" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="HCA110315KT4" Nombre="HOTELERA CANCUN AEROPUERTO" DomicilioFiscalReceptor="77565" RegimenFiscalReceptor="601" UsoCFDI="G03"/>
+  <cfdi:Conceptos>
+    <cfdi:Concepto ClaveProdServ="78111804" Cantidad="1.00" ClaveUnidad="E48" Unidad="Servicio" Descripcion="Traslado de huésped por incidencia" ValorUnitario="565.00" Importe="565.00" ObjetoImp="02">
+      <cfdi:Impuestos>
+        <cfdi:Traslados>
+          <cfdi:Traslado Base="565.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="90.40"/>
+        </cfdi:Traslados>
+      </cfdi:Impuestos>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="90.40">
+    <cfdi:Traslados>
+      <cfdi:Traslado Base="565.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="90.40"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="F0593DC4-1FDB-457E-BC21-AFA64CA77F5E" FechaTimbrado="2026-09-01T12:02:00" RfcProvCertif="SAT970701NN3" SelloCFD="0AF6F1D6+AF6F1D63+F6F1D636+6F1D636F+F1D636F8+1D636F84+D636F840+636F840A+36F840AA+6F840AA8+F840AA8E==" NoCertificadoSAT="30001000000500003456" SelloSAT="0AF6F1D6+AF6F1D63+F6F1D636+6F1D636F+F1D636F8+1D636F84+D636F840+636F840A+36F840AA+6F840AA8+F840AA8E=="/>
+  </cfdi:Complemento>
+</cfdi:Comprobante>
