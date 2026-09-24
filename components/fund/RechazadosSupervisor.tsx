@@ -3,7 +3,7 @@
 import { ShieldCheck } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
-import { DialogoJustificacion } from "@/components/fund/DialogoJustificacion";
+import { DialogoJustificacion } from "@/components/shared/DialogoJustificacion";
 import { MovimientoDetalle } from "@/components/fund/MovimientoDetalle";
 import { DataGrid, dataGridColumns } from "@/components/shared/DataGrid";
 import { PageHeader } from "@/components/shared/PageHeader";

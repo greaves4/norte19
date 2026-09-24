@@ -63,3 +63,12 @@ describe("formulario dinámico", () => {
     expect(formatearValor(renta, 18500)).toBe("$18,500.00");
   });
 });
+
+describe("monto principal", () => {
+  it("mensual para renta o servicios, total para obra y nada para NDA", async () => {
+    const { montoPrincipal } = await import("@/lib/sim/contratos/formulario");
+    expect(montoPrincipal({ rentaMensual: 99500 })).toEqual({ valor: 99500, periodicidad: "mensual" });
+    expect(montoPrincipal({ montoTotal: 18750000 })).toEqual({ valor: 18750000, periodicidad: "total" });
+    expect(montoPrincipal({ proposito: "NDA", penaConvencional: 1000000 })).toBeNull();
+  });
+});

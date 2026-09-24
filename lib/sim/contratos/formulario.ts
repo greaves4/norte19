@@ -118,3 +118,13 @@ export function valoresDeEjemplo(def: DefinicionFormulario, hoy: Date): Valores 
   const base: Valores = { ...EJEMPLO, fechaInicio, rfc: def.tipoPersona === "moral" ? "IPB150312K84" : "META850214QR5" };
   return conservarCompatibles(base, def);
 }
+
+// Monto principal de la solicitud para listas (renta o contraprestación mensual, o monto total).
+// La pena convencional de un NDA no es el monto del contrato: sin monto.
+export function montoPrincipal(campos: Valores): { valor: number; periodicidad: "mensual" | "total" } | null {
+  const mensual = campos.rentaMensual ?? campos.contraprestacionMensual;
+  if (mensual !== undefined && Number(mensual) > 0) return { valor: Number(mensual), periodicidad: "mensual" };
+  const total = campos.montoTotal;
+  if (total !== undefined && Number(total) > 0) return { valor: Number(total), periodicidad: "total" };
+  return null;
+}

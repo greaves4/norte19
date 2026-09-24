@@ -9,6 +9,7 @@ import { demoNow } from "@/lib/demo";
 import { abogadoPorId, crearDatosContratos, solicitantePorId, USUARIOS_CONTRATOS, type DatosContratos } from "@/lib/fixtures/contratos";
 import { ARCHIVO_CENTRAL } from "@/lib/fixtures/contratos/contratos";
 import { contraparteDe } from "@/lib/fixtures/contratos/solicitudes";
+import { analisisVacio } from "@/lib/sim/contratos/analisis";
 import { asignarAbogado } from "@/lib/sim/contratos/asignacion";
 import { slaPorTipo } from "@/lib/sim/contratos/sla";
 import type {
@@ -25,7 +26,7 @@ import type {
 } from "@/lib/types/contratos";
 
 // Subir cuando cambien las fixtures: el estado guardado se descarta y se regenera.
-export const VERSION_DATOS_CONTRATOS = 1;
+export const VERSION_DATOS_CONTRATOS = 2;
 
 type EstadoContratos = DatosContratos & { secuenciaSolicitud: number; secuenciaContrato: number };
 
@@ -168,7 +169,7 @@ export const useContratos = create<ContratosStore>()(
 
         enviarAAprobacion: (id, actor) => {
           const s = get().solicitudes.find((x) => x.id === id);
-          if (!s?.analisis?.trim()) return false;
+          if (!s || analisisVacio(s.analisis)) return false;
           return transicion(id, ["en_analisis"], "en_aprobacion", () => ({ motivoRechazo: undefined }), evento("enviada_aprobacion", "Enviada a aprobación", actor));
         },
 

@@ -145,10 +145,42 @@ const PLANES: Plan[] = [
   { persona: "moral", tipo: "servicios", solicitante: "mantenimiento", abogado: "ab-nieto", estatus: "formalizada", transcurridos: 0, campos: {}, contratoId: "srv-ele", analisis: true },
 ];
 
-const ANALISIS_EJEMPLO = `Objeto: Revisión del contrato propuesto y de la documentación de la contraparte.
-Riesgos identificados: Vigencia del poder del representante por confirmar con la notaría; cláusula de terminación anticipada favorable a la contraparte.
-Cláusulas a negociar: Plazo forzoso, penalización por terminación anticipada y actualización de la contraprestación.
-Recomendación: Procede, sujeto a los ajustes señalados.`;
+const moneda = (n: unknown) => new Intl.NumberFormat("es-MX", { style: "currency", currency: "MXN", maximumFractionDigits: 0 }).format(Number(n) || 0);
+
+// Análisis del abogado con la plantilla de secciones; varía por tipo y por solicitud para que el directivo lea casos distintos.
+function analisisDe(tipo: TipoContrato, c: Record<string, string | number>, i: number): string {
+  const par = i % 2 === 0;
+  const secciones: Record<TipoContrato, [string, string, string, string]> = {
+    arrendamiento: [
+      `Arrendamiento de ${c.inmueble ?? "inmueble para hotel"}${c.superficie ? ` (${Number(c.superficie).toLocaleString("es-MX")} m²)` : ""} por ${c.vigenciaMeses ?? 120} meses; renta mensual de ${moneda(c.rentaMensual)} más IVA.`,
+      par
+        ? `Incremento anual ${c.incrementoAnual ?? "INPC"} sin tope. El certificado de libertad de gravamen tiene más de 90 días.`
+        : `Depósito de ${c.deposito ?? "2 meses"}, arriba de la práctica del grupo. El uso de suelo no menciona expresamente hotel.`,
+      par ? "Tope al incremento (INPC con máximo 5%); periodo de gracia de 6 meses para adecuaciones; derecho de preferencia en venta." : "Depósito de 1 mes; constancia de uso de suelo compatible como condición suspensiva; terminación anticipada sin penalidad en los primeros 24 meses.",
+      par ? "Procede, negociando el tope del incremento antes de firmar." : "Procede sujeto a la constancia de uso de suelo.",
+    ],
+    desarrollo: [
+      `${c.proyecto ?? "Obra"} a precio alzado por ${moneda(c.montoTotal)} más IVA; plazo de ${c.plazoMeses ?? 12} meses.`,
+      `Anticipo de ${c.anticipo ?? "30%"}; la fianza propuesta no cubre el 100% del anticipo. El programa de obra no fija penas por atraso.`,
+      "Fianza de anticipo por el 100%; penas por atraso de 0.5% semanal con tope de 10%; retención de 5% como fondo de garantía.",
+      "Procede con las garantías completas y el programa de obra como anexo.",
+    ],
+    servicios: [
+      `${c.servicio ?? "Servicio"} para ${c.hoteles ?? "los"} hoteles; contraprestación mensual de ${moneda(c.contraprestacionMensual)} más IVA.`,
+      "Registro REPSE por verificar en el portal de la STPS; responsabilidad solidaria laboral.",
+      "Penalizaciones por incumplir el nivel de servicio; terminación anticipada con 30 días de aviso; seguro de responsabilidad civil.",
+      par ? "Procede." : "Procede una vez validado el REPSE.",
+    ],
+    confidencialidad: [
+      `Acuerdo de confidencialidad para ${String(c.proposito ?? "intercambio de información").toLowerCase()}; vigencia de ${c.vigenciaAnios ?? "2 años"}.`,
+      "La definición de información confidencial es muy amplia y no excluye requerimientos de autoridad.",
+      "Excepciones estándar (información pública, requerimiento de autoridad); devolución o destrucción al terminar.",
+      "Procede con el formato del grupo.",
+    ],
+  };
+  const [objeto, riesgos, clausulas, recomendacion] = secciones[tipo];
+  return `Objeto: ${objeto}\nRiesgos identificados: ${riesgos}\nCláusulas a negociar: ${clausulas}\nRecomendación: ${recomendacion}`;
+}
 
 function camposDeContrato(contratoId: string): Record<string, string | number> {
   const c = CONTRATOS_CATALOGO.find((x) => x.id === contratoId)!;
@@ -240,8 +272,8 @@ export function crearSolicitudes(hoy: Date): Solicitud[] {
       slaDiasHabiles: sla,
       creadaEn: creada.toISOString(),
       timeline: timeline.sort((a, b) => a.fecha.localeCompare(b.fecha)),
-      analisis: plan.analisis ? ANALISIS_EJEMPLO : undefined,
-      versionesAnalisis: plan.analisis ? [{ fecha: etapas.en_analisis ?? creada.toISOString(), autor: abogado.nombre, texto: ANALISIS_EJEMPLO }] : [],
+      analisis: plan.analisis ? analisisDe(plan.tipo, campos, i) : undefined,
+      versionesAnalisis: plan.analisis ? [{ fecha: etapas.en_analisis ?? creada.toISOString(), autor: abogado.nombre, texto: analisisDe(plan.tipo, campos, i) }] : [],
       motivoRechazo: plan.motivo,
       etapas,
       firma,

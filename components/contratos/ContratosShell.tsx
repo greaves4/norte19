@@ -1,6 +1,6 @@
 "use client";
 
-import { ChartColumn, FilePlus2, FileSearch, Inbox, Library, ListChecks, Settings, ShieldCheck, Stamp, Vault } from "lucide-react";
+import { ChartColumn, FilePlus2, FileSearch, Inbox, Library, ListChecks, Settings, ShieldCheck, Signature, Stamp, Vault } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useShallow } from "zustand/react/shallow";
@@ -48,7 +48,7 @@ export function puedeVer(perfil: PerfilContratos, ruta: string) {
   return regla ? regla[1].includes(perfil) : false;
 }
 
-function navegacion(perfil: PerfilContratos, pendientes: { bandeja: number; aprobaciones: number; ajustes: number }): NavItem[] {
+function navegacion(perfil: PerfilContratos, pendientes: { bandeja: number; aprobaciones: number; ajustes: number; firma: number }): NavItem[] {
   switch (perfil) {
     case "solicitante":
       return [
@@ -68,6 +68,7 @@ function navegacion(perfil: PerfilContratos, pendientes: { bandeja: number; apro
       ];
     case "admin":
       return [
+        { label: "Firma", href: "/contratos/firma", icon: Signature, badge: pendientes.firma || undefined },
         { label: "Repositorio", href: "/contratos/repositorio", icon: Library },
         { label: "Búsqueda", href: "/contratos/busqueda", icon: FileSearch },
         { label: "Custodia", href: "/contratos/custodia", icon: Vault },
@@ -90,8 +91,9 @@ export function ContratosShell({ children }: { children: React.ReactNode }) {
 
   const pendientes = useContratos(
     useShallow((s) => ({
-    bandeja: s.solicitudes.filter((x) => x.abogadoId === USUARIOS_CONTRATOS.abogado.id && (x.estatus === "nueva" || x.estatus === "en_analisis")).length,
-    aprobaciones: s.solicitudes.filter((x) => x.estatus === "en_aprobacion").length,
+      bandeja: s.solicitudes.filter((x) => x.abogadoId === USUARIOS_CONTRATOS.abogado.id && (x.estatus === "nueva" || x.estatus === "en_analisis")).length,
+      aprobaciones: s.solicitudes.filter((x) => x.estatus === "en_aprobacion").length,
+      firma: s.solicitudes.filter((x) => x.estatus === "aprobada").length,
       ajustes: s.solicitudes.filter((x) => x.solicitanteId === USUARIOS_CONTRATOS.solicitante.id && x.estatus === "en_ajustes").length,
     })),
   );

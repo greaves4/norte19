@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
-import { DialogoJustificacion } from "@/components/fund/DialogoJustificacion";
+import { DialogoJustificacion } from "@/components/shared/DialogoJustificacion";
 import { TONO_EVENTO } from "@/components/fund/MovimientoDetalle";
 import { ListaValidaciones } from "@/components/fund/Validaciones";
 import { EmptyState } from "@/components/shared/EmptyState";

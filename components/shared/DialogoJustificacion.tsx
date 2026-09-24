@@ -23,11 +23,13 @@ type Props = {
   etiqueta: string;
   accion: string;
   destructiva?: boolean;
+  // Texto de ayuda bajo el campo.
+  ayuda?: string;
   onConfirmar: (justificacion: string) => void;
 };
 
-// Diálogo con justificación obligatoria (rechazo y autorización de rechazados).
-export function DialogoJustificacion({ open, onOpenChange, titulo, descripcion, etiqueta, accion, destructiva, onConfirmar }: Props) {
+// Diálogo con justificación obligatoria (Fund: rechazo y autorización; Contratos: regresar y rechazar a ajustes).
+export function DialogoJustificacion({ open, onOpenChange, titulo, descripcion, etiqueta, accion, destructiva, ayuda = "Obligatoria. Queda en el historial del movimiento.", onConfirmar }: Props) {
   const [texto, setTexto] = useState("");
   const [intento, setIntento] = useState(false);
   const valido = texto.trim().length >= MINIMO;
@@ -69,7 +71,7 @@ export function DialogoJustificacion({ open, onOpenChange, titulo, descripcion, 
               aria-describedby="justificacion-ayuda"
             />
             <p id="justificacion-ayuda" className={intento && !valido ? "text-sm text-destructive" : "text-xs text-muted-foreground"}>
-              {intento && !valido ? `Escribe al menos ${MINIMO} caracteres.` : "Obligatoria. Queda en el historial del movimiento."}
+              {intento && !valido ? `Escribe al menos ${MINIMO} caracteres.` : ayuda}
             </p>
           </div>
           <DialogFooter>
