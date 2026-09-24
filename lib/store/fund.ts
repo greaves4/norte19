@@ -22,6 +22,10 @@ import type {
 
 const TESORERIA = USUARIOS_DEMO.tesoreria.nombre;
 
+// v2: fixtures de F4–F6 (comprobantes iguales al movimiento, fondeos sin periodos vacíos).
+// v3: presupuesto de Cancún de 40,000 (F7).
+export const VERSION_DATOS = 3;
+
 type EstadoFund = DatosFund & { secuencia: number };
 
 type AccionesFund = {
@@ -291,7 +295,9 @@ export const useFund = create<FundStore>()(
     },
     {
       name: "fund",
-      version: 1,
+      // Subir VERSION_DATOS cuando cambien las fixtures: el estado guardado se descarta y se regenera.
+      version: VERSION_DATOS,
+      migrate: () => estadoInicial(),
       storage: createJSONStorage(() => localStorage),
       partialize: ({ tarjetas, movimientos, fondeos, estadoCuenta, conciliacion, discrepancias, secuencia }) => ({
         tarjetas,

@@ -37,7 +37,8 @@ export function crearTarjetas(rng: Rng): Tarjeta[] {
       token: `tok_${rng.hex(24)}`,
       ultimosCuatro,
       cuentaFondeadoraId: CUENTA_POR_ESTADO[hotel.estado] ?? CUENTAS_FONDEADORAS[0].id,
-      presupuesto: hotel.id === HOTEL_DEMO_ID ? 25_000 : rng.int(30, 120) * 500, // 15,000–60,000
+      // Cancún: holgura para que los pendientes sembrados y lo que registre Recepción en la sesión no agoten el saldo.
+      presupuesto: hotel.id === HOTEL_DEMO_ID ? 40_000 : rng.int(30, 120) * 500, // 15,000–60,000
       saldo: 0,
       corte,
       estatus: BLOQUEADAS.has(hotel.id) ? "bloqueada" : "activa",

@@ -15,6 +15,24 @@ import { ESTATUS_MOVIMIENTO, type EstatusMovimiento, type Movimiento } from "@/l
 
 const col = dataGridColumns<Movimiento>();
 
+// Un "Registrado" puede estar esperando a Tesorería o al Supervisor: se dice a quién.
+function subEstatus(m: Movimiento) {
+  if (m.estatus !== "registrado") return null;
+  if (m.excepcionSolicitada?.estatus === "pendiente") return "Excepción solicitada a Tesorería";
+  if (m.extemporaneo) return "Autorización solicitada al supervisor";
+  return null;
+}
+
+function EstatusConDetalle({ movimiento }: { movimiento: Movimiento }) {
+  const detalle = subEstatus(movimiento);
+  return (
+    <span className="flex flex-col items-start gap-0.5">
+      <StatusBadge status={movimiento.estatus} map={ESTATUS_MOVIMIENTO} />
+      {detalle && <span className="text-xs whitespace-normal text-muted-foreground">{detalle}</span>}
+    </span>
+  );
+}
+
 const columnas = col.columns([
   col.accessor((m) => new Date(m.fecha), {
     id: "fecha",
@@ -32,7 +50,7 @@ const columnas = col.columns([
         <span className="line-clamp-2 whitespace-normal">{c.getValue()}</span>
         <span className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground md:hidden">
           {fecha(c.row.original.fecha)}
-          <StatusBadge status={c.row.original.estatus} map={ESTATUS_MOVIMIENTO} />
+          <EstatusConDetalle movimiento={c.row.original} />
         </span>
       </span>
     ),
@@ -69,7 +87,7 @@ const columnas = col.columns([
   col.accessor("estatus", {
     header: "Estatus",
     filterFn: "equalsString",
-    cell: (c) => <StatusBadge status={c.getValue()} map={ESTATUS_MOVIMIENTO} />,
+    cell: (c) => <EstatusConDetalle movimiento={c.row.original} />,
     meta: {
       hideOnMobile: true,
       filter: {
