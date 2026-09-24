@@ -1,0 +1,97 @@
+{
+  "contratoId": "des-qro",
+  "pipeline": "Extracción documental v0.3 · revisada por el equipo legal",
+  "paginas": 6,
+  "campos": [
+    {
+      "clave": "partes",
+      "etiqueta": "Partes",
+      "valor": "Desarrolladora: Norte 19 Operadora Hotelera, S.A. de C.V. Constructora: Constructora Bajío Integral, S.A. de C.V. (CBI120418SE9).",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 1,
+      "clausula": "DECLARACIONES"
+    },
+    {
+      "clave": "objeto",
+      "etiqueta": "Objeto",
+      "valor": "Proyecto ejecutivo, construcción, equipamiento básico y supervisión del hotel City Express Querétaro Norte (128 habitaciones), a precio alzado.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 1,
+      "clausula": "PRIMERA"
+    },
+    {
+      "clave": "vigencia",
+      "etiqueta": "Vigencia / plazo",
+      "valor": "Inicio 1 de mayo de 2025; entrega a más tardar el 30 de abril de 2027.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 2,
+      "clausula": "CUARTA"
+    },
+    {
+      "clave": "renta",
+      "etiqueta": "Precio",
+      "valor": "$186,400,000.00 más IVA, precio alzado sin ajuste de costos.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 2,
+      "clausula": "SEGUNDA"
+    },
+    {
+      "clave": "incremento",
+      "etiqueta": "Incremento",
+      "valor": "No aplica: precio alzado sin ajuste por variación de costos.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 2,
+      "clausula": "SEGUNDA"
+    },
+    {
+      "clave": "deposito",
+      "etiqueta": "Anticipo y retenciones",
+      "valor": "Anticipo del 30% contra fianza; retención del 5% como fondo de garantía.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": null,
+      "clausula": null
+    },
+    {
+      "clave": "penalizacion",
+      "etiqueta": "Penalización",
+      "valor": "Penas por atraso: 0.1% del precio por día, tope 10%. La terminación anticipada por la desarrolladora no genera indemnización adicional.",
+      "confianza": "media",
+      "confirmado": false,
+      "pagina": 3,
+      "clausula": "DÉCIMA PRIMERA"
+    },
+    {
+      "clave": "garantia",
+      "etiqueta": "Garantías",
+      "valor": "Fianzas de anticipo (100%), cumplimiento (10%) y vicios ocultos (10%, 12 meses).",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 2,
+      "clausula": "QUINTA"
+    },
+    {
+      "clave": "causales",
+      "etiqueta": "Causales de rescisión",
+      "valor": "No iniciar a tiempo, suspender más de 10 días, atraso mayor al 15%, no reparar trabajos rechazados, subcontratar sin autorización.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 4,
+      "clausula": "DÉCIMA SÉPTIMA"
+    },
+    {
+      "clave": "jurisdiccion",
+      "etiqueta": "Jurisdicción",
+      "valor": "Tribunales de la Ciudad de México.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 5,
+      "clausula": "VIGÉSIMA PRIMERA"
+    }
+  ]
+}

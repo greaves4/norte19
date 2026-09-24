@@ -1,0 +1,97 @@
+{
+  "contratoId": "arr-alt",
+  "pipeline": "Extracción documental v0.3 · revisada por el equipo legal",
+  "paginas": 6,
+  "campos": [
+    {
+      "clave": "partes",
+      "etiqueta": "Partes",
+      "valor": "Arrendador: Promotora Industrial del Golfo, S.A. de C.V. (PIG010402HN7). Arrendataria: Norte 19 Operadora Hotelera, S.A. de C.V.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 1,
+      "clausula": "DECLARACIONES"
+    },
+    {
+      "clave": "objeto",
+      "etiqueta": "Objeto",
+      "valor": "Arrendamiento de Carretera Tampico–Mante kilómetro 14.5, Corredor Industrial, C.P. 89603, Altamira, Tamaulipas, con superficie de 4,100 m² para la operación de un hotel City Express.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 2,
+      "clausula": "PRIMERA"
+    },
+    {
+      "clave": "vigencia",
+      "etiqueta": "Vigencia",
+      "valor": "10 años: del 1 de septiembre de 2016 al 31 de agosto de 2026, con prórroga de 5 años a solicitud de la arrendataria.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 2,
+      "clausula": "TERCERA"
+    },
+    {
+      "clave": "renta",
+      "etiqueta": "Renta mensual",
+      "valor": "$118,000.00 más IVA, pagadera en los primeros 5 días hábiles de cada mes.",
+      "confianza": "baja",
+      "confirmado": false,
+      "pagina": 2,
+      "clausula": "CUARTA"
+    },
+    {
+      "clave": "incremento",
+      "etiqueta": "Incremento anual",
+      "valor": "Actualización anual conforme al INPC de los 12 meses anteriores; nunca negativa.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 3,
+      "clausula": "QUINTA"
+    },
+    {
+      "clave": "deposito",
+      "etiqueta": "Depósito en garantía",
+      "valor": "1 mes de renta; se devuelve 30 días después de la entrega del inmueble.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 3,
+      "clausula": "SEXTA"
+    },
+    {
+      "clave": "penalizacion",
+      "etiqueta": "Penalización por terminación anticipada",
+      "valor": "4 meses de renta; aviso de 90 días.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 4,
+      "clausula": "DÉCIMA SEGUNDA"
+    },
+    {
+      "clave": "garantia",
+      "etiqueta": "Garantía / fiador",
+      "valor": "Depósito en garantía de 1 mes; sin fiador.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 3,
+      "clausula": "SEXTA"
+    },
+    {
+      "clave": "causales",
+      "etiqueta": "Causales de rescisión",
+      "valor": "Falta de pago de 3 rentas, uso distinto al pactado, incumplimiento no subsanado en 30 días, pérdida de la posesión.",
+      "confianza": "media",
+      "confirmado": false,
+      "pagina": 4,
+      "clausula": "DÉCIMA TERCERA"
+    },
+    {
+      "clave": "jurisdiccion",
+      "etiqueta": "Jurisdicción",
+      "valor": "Tribunales de Tampico, Tamaulipas; leyes del Estado de Tamaulipas.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 6,
+      "clausula": "DÉCIMA NOVENA"
+    }
+  ]
+}

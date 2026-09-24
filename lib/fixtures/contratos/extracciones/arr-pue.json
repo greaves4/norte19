@@ -1,0 +1,97 @@
+{
+  "contratoId": "arr-pue",
+  "pipeline": "Extracción documental v0.3 · revisada por el equipo legal",
+  "paginas": 6,
+  "campos": [
+    {
+      "clave": "partes",
+      "etiqueta": "Partes",
+      "valor": "Arrendador: Inversiones Angelópolis del Centro, S.A. de C.V. (IAC110707PR1). Arrendataria: Norte 19 Operadora Hotelera, S.A. de C.V.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 1,
+      "clausula": "DECLARACIONES"
+    },
+    {
+      "clave": "objeto",
+      "etiqueta": "Objeto",
+      "valor": "Arrendamiento de Boulevard del Niño Poblano 2510, Reserva Territorial Atlixcáyotl, C.P. 72197, Puebla, Puebla, con superficie de 2,840 m² para la operación de un hotel City Express.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 2,
+      "clausula": "PRIMERA"
+    },
+    {
+      "clave": "vigencia",
+      "etiqueta": "Vigencia",
+      "valor": "10 años: del 1 de febrero de 2023 al 31 de enero de 2033, con prórroga de 5 años a solicitud de la arrendataria.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 2,
+      "clausula": "TERCERA"
+    },
+    {
+      "clave": "renta",
+      "etiqueta": "Renta mensual",
+      "valor": "$164,300.00 más IVA, pagadera en los primeros 5 días hábiles de cada mes.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 2,
+      "clausula": "CUARTA"
+    },
+    {
+      "clave": "incremento",
+      "etiqueta": "Incremento anual",
+      "valor": "5% fijo en cada aniversario.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 3,
+      "clausula": "QUINTA"
+    },
+    {
+      "clave": "deposito",
+      "etiqueta": "Depósito en garantía",
+      "valor": "2 meses de renta; se devuelve 30 días después de la entrega del inmueble.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 3,
+      "clausula": "SEXTA"
+    },
+    {
+      "clave": "penalizacion",
+      "etiqueta": "Penalización por terminación anticipada",
+      "valor": "Indemnización de 3 meses de renta; aviso de 120 días.",
+      "confianza": "baja",
+      "confirmado": false,
+      "pagina": 4,
+      "clausula": "DÉCIMA SEGUNDA"
+    },
+    {
+      "clave": "garantia",
+      "etiqueta": "Garantía / fiador",
+      "valor": "Depósito en garantía de 2 meses; sin fiador.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 3,
+      "clausula": "SEXTA"
+    },
+    {
+      "clave": "causales",
+      "etiqueta": "Causales de rescisión",
+      "valor": "Falta de pago de 3 rentas, uso distinto al pactado, incumplimiento no subsanado en 30 días, pérdida de la posesión.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 4,
+      "clausula": "DÉCIMA TERCERA"
+    },
+    {
+      "clave": "jurisdiccion",
+      "etiqueta": "Jurisdicción",
+      "valor": "Tribunales de Puebla, Puebla; leyes del Estado de Puebla.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 6,
+      "clausula": "DÉCIMA NOVENA"
+    }
+  ]
+}

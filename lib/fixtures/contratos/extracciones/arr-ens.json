@@ -1,0 +1,97 @@
+{
+  "contratoId": "arr-ens",
+  "pipeline": "Extracción documental v0.3 · revisada por el equipo legal",
+  "paginas": 6,
+  "campos": [
+    {
+      "clave": "partes",
+      "etiqueta": "Partes",
+      "valor": "Arrendador: Desarrollos Costa Pacífico, S.A. de C.V. (DCP090611T45). Arrendataria: Norte 19 Operadora Hotelera, S.A. de C.V.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 1,
+      "clausula": "DECLARACIONES"
+    },
+    {
+      "clave": "objeto",
+      "etiqueta": "Objeto",
+      "valor": "Arrendamiento de Avenida Reforma 1780, fraccionamiento Bahía, C.P. 22880, Ensenada, Baja California, con superficie de 2,650 m² para la operación de un hotel City Express.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 2,
+      "clausula": "PRIMERA"
+    },
+    {
+      "clave": "vigencia",
+      "etiqueta": "Vigencia",
+      "valor": "5 años: del 1 de diciembre de 2021 al 30 de noviembre de 2026, con prórroga de 5 años a solicitud de la arrendataria.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 2,
+      "clausula": "TERCERA"
+    },
+    {
+      "clave": "renta",
+      "etiqueta": "Renta mensual",
+      "valor": "$142,500.00 más IVA, pagadera en los primeros 5 días hábiles de cada mes.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 2,
+      "clausula": "CUARTA"
+    },
+    {
+      "clave": "incremento",
+      "etiqueta": "Incremento anual",
+      "valor": "4% fijo en cada aniversario.",
+      "confianza": "media",
+      "confirmado": false,
+      "pagina": 3,
+      "clausula": "QUINTA"
+    },
+    {
+      "clave": "deposito",
+      "etiqueta": "Depósito en garantía",
+      "valor": "2 meses de renta; se devuelve 30 días después de la entrega del inmueble.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 3,
+      "clausula": "SEXTA"
+    },
+    {
+      "clave": "penalizacion",
+      "etiqueta": "Penalización por terminación anticipada",
+      "valor": "Sin penalización; aviso de 90 días.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 4,
+      "clausula": "DÉCIMA SEGUNDA"
+    },
+    {
+      "clave": "garantia",
+      "etiqueta": "Garantía / fiador",
+      "valor": "Fiador y obligado solidario: C. Laura Beltrán Osuna. Bien en garantía: departamento ubicado en Calle Del Mar 318, Playa Hermosa, Ensenada, inscrito bajo el folio real 90231.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 5,
+      "clausula": "DÉCIMA CUARTA"
+    },
+    {
+      "clave": "causales",
+      "etiqueta": "Causales de rescisión",
+      "valor": "Falta de pago de 3 rentas, uso distinto al pactado, incumplimiento no subsanado en 30 días, pérdida de la posesión.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 4,
+      "clausula": "DÉCIMA TERCERA"
+    },
+    {
+      "clave": "jurisdiccion",
+      "etiqueta": "Jurisdicción",
+      "valor": "Tribunales de Tijuana, Baja California; leyes del Estado de Baja California.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 6,
+      "clausula": "VIGÉSIMA"
+    }
+  ]
+}

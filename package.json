@@ -12,7 +12,8 @@
     "prebuild": "node scripts/copy-pdf-worker.mjs",
     "predev": "node scripts/copy-pdf-worker.mjs",
     "check": "pnpm lint && pnpm build",
-    "gen:fund": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generar-comprobantes-fund.mts"
+    "gen:fund": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generar-comprobantes-fund.mts",
+    "gen:contratos": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/contratos/generar-contratos.mts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

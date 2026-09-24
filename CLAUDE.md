@@ -92,3 +92,15 @@ Plataforma de gestión de caja chica hotelera. Tres perfiles (`PerfilFund`): hot
 - Tesorería: `lib/sim/fund/refondeo.ts` (fórmula del documento, `proximoCorte` por calendario), `payconnect.ts` (`dispersar`/`dispersarLote` registran el fondeo y devuelven pasos para ProgressRunner; `alTerminarPaso` actualiza enviado → aceptado → depositado) y `cargaMasiva.ts` (plantilla, ejemplo generado, lectura con SheetJS y validación previa). `DialogoDispersion` muestra la dispersión; si se cierra antes, `finalizar()` completa el depósito.
 - Conciliación (`lib/sim/fund/conciliacion.ts`): cargos ↔ movimientos por `referenciaBancaria`, abonos ↔ fondeos por referencia; estatus cuadrado / no_cuadrado / sin_registro. "Sincronizar ahora" corre `sincronizarConciliacion()` al terminar el ProgressRunner.
 - Reportes (`lib/sim/fund/reportes.ts`) leen el store: SLA por hotel (desde `horasDeAprobacion`), gasto aprobado por centro, matriz hotel × centro y fondeos por mes. Gráficas con `components/fund/GraficaBarras.tsx` (recharts, barras horizontales de una serie; el documento pedía pastel para centros, pero con 7 categorías se compara mejor en barras).
+
+## Prototipo Contratos (/contratos)
+CLM para el equipo legal e inmobiliario. Perfiles (`PerfilContratos`): solicitante, abogado, directivo, admin. Documento completo: `../02-prototipo-contratos.md`.
+- Tipos en `lib/types/contratos.ts` (Solicitud, Contrato, CampoExtraido, Tanto, DefinicionFormulario) y `StatusMap` de solicitud, vigencia y tanto.
+- Estatus de Solicitud: 'nueva' | 'en_analisis' | 'en_aprobacion' | 'aprobada' | 'en_firma' | 'formalizada' | 'en_ajustes'. El directivo rechaza a ajustes → regresa a en_analisis; el abogado regresa al solicitante → en_ajustes.
+- El formulario dinámico se renderiza desde `lib/fixtures/contratos/formularios.ts` (8 combinaciones persona × tipo); nunca hardcodear campos en la vista.
+- Los 8 contratos de ejemplo salen de `lib/fixtures/contratos/catalogo.ts` (metadatos, sin imports) y `scripts/contratos/redaccion.mts` (redacción). `pnpm gen:contratos` genera PDF (y versión digitalizada si `ocr`), `textos/<id>.txt` + `textos.json`, `extracciones/<id>.json` con la página real de cada cláusula, `modelos/<tipo>.pdf` y el expediente de ejemplo. Las fechas de vigencia son fijas (están en el PDF): se eligieron para que en sep–nov 2026 haya 2 por vencer y 1 vencido.
+- Las extracciones de IA son precomputadas y se presentan como resultado del pipeline; cada contrato deja 1–2 campos sin confirmar. Guaymas: penalización pendiente y fiador.
+- La búsqueda inteligente usa un índice de texto en cliente más consultas precomputadas; si existe la ruta /api/contratos/buscar con LLM real, se usa solo cuando NEXT_PUBLIC_LLM_DEMO=1.
+- Días hábiles: lunes a viernes, sin festivos, en `lib/sim/contratos/sla.ts` (el fin de semana no avanza el SLA: con "+24 h" en viernes no cambia nada).
+- Store `lib/store/contratos.ts` (clave 'contratos', `VERSION_DATOS_CONTRATOS` con migrate). Asignación automática en `lib/sim/contratos/asignacion.ts` (menor carga activa; empate por orden). Carga inicial: Robles 4, Salgado 6, Nieto 3.
+

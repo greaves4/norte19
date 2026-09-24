@@ -1,0 +1,97 @@
+{
+  "contratoId": "nda-sitios",
+  "pipeline": "Extracción documental v0.3 · revisada por el equipo legal",
+  "paginas": 6,
+  "campos": [
+    {
+      "clave": "partes",
+      "etiqueta": "Partes",
+      "valor": "Norte 19 Operadora Hotelera, S.A. de C.V. y Consultoría Inmobiliaria Meridiano, S.C. (CIM170905AA3).",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 1,
+      "clausula": "DECLARACIONES"
+    },
+    {
+      "clave": "objeto",
+      "etiqueta": "Objeto",
+      "valor": "Confidencialidad de la información para la evaluación de sitios de nuevos hoteles en el Bajío y el Noreste.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 1,
+      "clausula": "PRIMERA"
+    },
+    {
+      "clave": "vigencia",
+      "etiqueta": "Vigencia",
+      "valor": "3 años (15 de septiembre de 2025 al 14 de septiembre de 2028); obligaciones subsisten 3 años más tras la terminación.",
+      "confianza": "media",
+      "confirmado": false,
+      "pagina": 3,
+      "clausula": "DÉCIMA PRIMERA"
+    },
+    {
+      "clave": "renta",
+      "etiqueta": "Contraprestación",
+      "valor": "No aplica: convenio sin contraprestación.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": null,
+      "clausula": null
+    },
+    {
+      "clave": "incremento",
+      "etiqueta": "Incremento",
+      "valor": "No aplica.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": null,
+      "clausula": null
+    },
+    {
+      "clave": "deposito",
+      "etiqueta": "Depósito",
+      "valor": "No aplica.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": null,
+      "clausula": null
+    },
+    {
+      "clave": "penalizacion",
+      "etiqueta": "Penalización",
+      "valor": "Pena convencional de $2,500,000.00 por incumplimiento de confidencialidad, más daños y perjuicios. Sin penalización por terminación anticipada.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 3,
+      "clausula": "DÉCIMA SEGUNDA"
+    },
+    {
+      "clave": "garantia",
+      "etiqueta": "Garantía",
+      "valor": "No aplica.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": null,
+      "clausula": null
+    },
+    {
+      "clave": "causales",
+      "etiqueta": "Causales de rescisión",
+      "valor": "No se pactan causales específicas; el incumplimiento genera la pena convencional.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": null,
+      "clausula": null
+    },
+    {
+      "clave": "jurisdiccion",
+      "etiqueta": "Jurisdicción",
+      "valor": "Tribunales de la Ciudad de México; leyes federales.",
+      "confianza": "alta",
+      "confirmado": true,
+      "pagina": 5,
+      "clausula": "VIGÉSIMA TERCERA"
+    }
+  ]
+}
