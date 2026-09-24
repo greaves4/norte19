@@ -52,8 +52,9 @@ export function DemoBar({ profiles, onReset }: Props) {
 
   function handleReset() {
     if (!window.confirm("¿Reiniciar la demo? Se pierden los cambios hechos en este prototipo.")) return;
-    onReset?.();
+    // Primero el reloj: así el prototipo regenera sus datos relativos a la hora real.
     demo.reset();
+    onReset?.();
   }
 
   return (

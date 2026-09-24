@@ -3,10 +3,12 @@
 import { House } from "lucide-react";
 import { AppShell, type NavItem } from "@/components/shared/AppShell";
 import type { DemoProfile } from "@/components/shared/DemoBar";
+import { useFund } from "@/lib/store/fund";
+import type { PerfilFund } from "@/lib/types/fund";
 
-// TODO F1: navegación por perfil, contexto y reset del store del prototipo.
-const profiles: DemoProfile[] = [
-  { value: "recepcion", label: "Recepción" },
+// TODO F3: navegación por perfil, contexto según perfil y redirección al selector si no hay perfil.
+const profiles: (DemoProfile & { value: PerfilFund })[] = [
+  { value: "hotel", label: "Recepción" },
   { value: "supervisor", label: "Supervisor" },
   { value: "tesoreria", label: "Tesorería" },
 ];
@@ -18,9 +20,10 @@ export function FundShell({ children }: { children: React.ReactNode }) {
     <AppShell
       title="Fund"
       subtitle="Caja chica hotelera"
-      context="City Express Plus Insurgentes Sur"
+      context="City Express Cancún Aeropuerto"
       items={items}
       profiles={profiles}
+      onReset={() => useFund.getState().reset()}
     >
       {children}
     </AppShell>

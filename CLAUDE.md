@@ -70,3 +70,15 @@ El proyecto vive en ~/Documents, que se sincroniza con iCloud. Para que iCloud n
 - Liga para compartir: `/<prototipo>?code=<valor>`. Guarda una cookie httpOnly `proto_<prototipo>` por 30 días y redirige a la ruta limpia.
 - Sin cookie válida redirige a `/acceso?p=<prototipo>&next=<ruta>`. Si la variable no está definida, el prototipo queda cerrado.
 - Local: `.env.local` trae los códigos `fund-local`, `contratos-local`, `desarrollo-local`.
+
+## Prototipo Fund (/fund)
+Plataforma de gestión de caja chica hotelera. Tres perfiles (`PerfilFund`): hotel (recepción), supervisor (gerente del hotel), tesoreria (corporativo). Documento completo: `../01-prototipo-fund.md`.
+- Tipos en `lib/types/fund.ts` (Hotel, Tarjeta, Movimiento, Fondeo, MovimientoBancario, Categoria, CentroCostos) y los `StatusMap` de movimiento, tarjeta y fondeo.
+- Estatus de Movimiento: 'registrado' | 'pendiente' | 'aprobado' | 'rechazado' | 'autorizado'.
+- El PAN de tarjeta NUNCA existe en el código ni en fixtures; solo token y ultimosCuatro (hay prueba que lo verifica).
+- Hotel de la demo: City Express Cancún Aeropuerto (hotelId 'ce-cun-apt', tarjeta 'tj-ce-cun-apt'). Usuarios por perfil en `USUARIOS_DEMO`.
+- Fixtures en `lib/fixtures/fund/`: generadas con semilla fija (`crearDatosFund(hoy)`), relativas al reloj de demo. Cambiar una fixture puede mover las invariantes de `fixtures.test.ts` (120 movimientos, 6 pendientes en Cancún, 40 movimientos bancarios con 2 discrepancias).
+- Store `lib/store/fund.ts` (zustand + persist, clave 'fund'). Toda transición pasa por sus acciones y agrega evento a la timeline con `demoNow()`. Usar `useFundHydrated()` antes de pintar datos del store.
+- Comprobantes de movimientos: `public/fixtures/fund/comprobantes/<slug>.{xml,pdf,jpg}` por proveedor de `proveedores.ts` (se generan en F2).
+- El parser de CFDI debe leer XML reales de CFDI 4.0 (namespace cfdi y tfd).
+- Las vistas bajo /fund/hotel deben funcionar en tablet 1024×768 y móvil 390.

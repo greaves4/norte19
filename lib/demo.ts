@@ -80,6 +80,11 @@ export function useDemo() {
   };
 }
 
+// Hora simulada fuera de React (stores, simulaciones).
+export function demoNow(): Date {
+  return new Date(simulatedMs(useDemoStore.getState()));
+}
+
 // Hora simulada que se re-renderiza cada `intervalMs` (y al cambiar el reloj).
 export function useNow(intervalMs = 1000): Date {
   const { clockSpeed, clockOffsetMs, clockAnchorMs } = useDemoStore();
