@@ -1,0 +1,4 @@
+allowBuilds:
+  unrs-resolver: true
+  sharp: true
+modulesDir: node_modules.nosync
