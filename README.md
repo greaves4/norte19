@@ -44,9 +44,9 @@ Si falta el código de un prototipo, ese prototipo queda cerrado. Los códigos n
 Una liga por prototipo, cada una con su código:
 
 ```
-https://<dominio>/fund?code=<PROTO_CODE_FUND>
-https://<dominio>/contratos?code=<PROTO_CODE_CONTRATOS>
-https://<dominio>/desarrollo?code=<PROTO_CODE_DESARROLLO>
+https://norte19.geekvibes.digital/fund?code=<PROTO_CODE_FUND>
+https://norte19.geekvibes.digital/contratos?code=<PROTO_CODE_CONTRATOS>
+https://norte19.geekvibes.digital/desarrollo?code=<PROTO_CODE_DESARROLLO>
 ```
 
 Sin código válido, la ruta muestra la página de acceso. Un código no abre los otros prototipos.
