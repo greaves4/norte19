@@ -30,7 +30,8 @@ export function crearFondeos(rng: Rng, tarjetas: Tarjeta[], movimientos: Movimie
         .filter((m) => m.tarjetaId === t.id && new Date(m.fecha) > desde && new Date(m.fecha) <= fecha)
         .reduce((sum, m) => sum + m.total, 0);
       const antesDeLosMovimientos = fecha < sumarDias(hoy, -DIAS_MOVIMIENTOS);
-      const aproximado = rng.int(Math.round(t.presupuesto * 0.002), Math.round(t.presupuesto * 0.004)) * 100;
+      // Aproximado comparable con los meses con movimientos: 8–16 % del presupuesto por cada 30 días del periodo.
+      const aproximado = redondear(t.presupuesto * (periodo / 30) * (0.08 + rng.next() * 0.08));
       if (repuesto === 0 && !antesDeLosMovimientos) return;
       const monto = repuesto > 0 ? redondear(repuesto) : aproximado;
       fondeos.push({

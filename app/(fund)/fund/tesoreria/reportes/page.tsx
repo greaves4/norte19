@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { EnConstruccion } from "@/components/fund/EnConstruccion";
+import { ReportesTesoreria } from "@/components/fund/ReportesTesoreria";
 
 export const metadata: Metadata = { title: "Reportes · Fund" };
 
 export default function Page() {
-  return <EnConstruccion titulo="Reportes" descripcion="Reporte general, SLA de aprobación, gastos y fondeos." />;
+  return <ReportesTesoreria />;
 }

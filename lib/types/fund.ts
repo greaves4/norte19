@@ -200,3 +200,11 @@ export const NOMBRE_TIPO_FONDEO: Record<TipoFondeo, string> = {
   automatico: "Automático",
   carga_masiva: "Carga masiva",
 };
+
+export type EstatusConciliacion = "cuadrado" | "no_cuadrado" | "sin_registro";
+
+export const ESTATUS_CONCILIACION: StatusMap<EstatusConciliacion> = {
+  cuadrado: { label: "Cuadrado", tone: "success" },
+  no_cuadrado: { label: "No cuadrado", tone: "warning" },
+  sin_registro: { label: "Sin registro", tone: "danger" },
+};
