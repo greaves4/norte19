@@ -144,7 +144,7 @@ export function NuevaSolicitud() {
         nuevos.map((d) => [d.clave, { clave: d.clave, etiqueta: d.etiqueta, nombre: `${d.clave}.pdf`, src: `/fixtures/contratos/expediente/${d.clave}.pdf`, tipo: "pdf" as const }]),
       ),
     }));
-    toast.success(nuevos.length ? `Se cargaron ${nuevos.length} documentos de ejemplo` : "El expediente ya estaba completo");
+    toast.success(nuevos.length === 0 ? "El expediente ya estaba completo" : nuevos.length === 1 ? "Se cargó 1 documento de ejemplo" : `Se cargaron ${nuevos.length} documentos de ejemplo`);
   }
 
   function siguiente() {
@@ -465,7 +465,7 @@ function ExpedienteGate({ faltantes, total, ocultarCompleto = false }: { faltant
     <GateBanner
       variant="bloqueado"
       title={faltantes.length === 1 ? "Falta 1 documento obligatorio" : `Faltan ${faltantes.length} documentos obligatorios`}
-      description="No se puede enviar a Legal sin ellos."
+      description={faltantes.length === 1 ? "No se puede enviar a Legal sin él." : "No se puede enviar a Legal sin ellos."}
       items={faltantes}
     />
   );

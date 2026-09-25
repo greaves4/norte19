@@ -105,6 +105,9 @@ export function SeguimientoFirma({ id }: { id: string }) {
             <CardContent className="flex flex-col gap-5">
               <Firmantes firmantes={firmantes} s={s} />
               <PasosConFecha s={s} />
+              <p className="text-xs text-muted-foreground">
+                Si una parte no firma, el proveedor le envía recordatorios y la solicitud sigue en firma. Legal puede cancelar el envío, ajustar y reenviar.
+              </p>
             </CardContent>
           </Card>
         </div>

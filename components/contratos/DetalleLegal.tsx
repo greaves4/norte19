@@ -85,9 +85,11 @@ function Detalle({ s }: { s: Solicitud }) {
       toast.error("Escribe el análisis antes de guardarlo");
       return false;
     }
+    // Escribir el análisis de una solicitud nueva equivale a iniciarlo.
+    const inicia = s.estatus === "nueva" && st().iniciarAnalisis(s.id, actor);
     st().guardarAnalisis(s.id, borrador, actor);
     setBorrador(null);
-    toast.success(`Versión ${s.versionesAnalisis.length + 1} del análisis guardada`);
+    toast.success(`Versión ${s.versionesAnalisis.length + 1} del análisis guardada`, inicia ? { description: `${s.folio} pasa a En análisis.` } : undefined);
     return true;
   }
 

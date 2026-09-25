@@ -39,6 +39,12 @@ function Monto({ s }: { s: Solicitud }) {
 
 const col = dataGridColumns<Solicitud>();
 
+// Llegó a aprobación en las últimas 24 h del reloj de demo.
+function recienLlegada(s: Solicitud, now: Date) {
+  const llegada = s.etapas.en_aprobacion ? new Date(s.etapas.en_aprobacion).getTime() : 0;
+  return now.getTime() - llegada < 86_400_000;
+}
+
 function columnasPendientes(now: Date) {
   return col.columns([
     col.accessor("folio", { header: "Folio", cell: (c) => <span className="font-mono text-xs whitespace-nowrap">{c.getValue()}</span>, meta: { hideOnMobile: true } }),
@@ -48,6 +54,11 @@ function columnasPendientes(now: Date) {
       cell: (c) => (
         <span className="flex min-w-0 flex-col gap-1 md:min-w-48">
           <span className="line-clamp-2 whitespace-normal">{c.getValue()}</span>
+          {recienLlegada(c.row.original, now) && (
+            <Badge variant="secondary" className="self-start">
+              Recién llegada
+            </Badge>
+          )}
           <span className="text-xs text-muted-foreground md:hidden">
             {c.row.original.folio} · {NOMBRE_TIPO_CONTRATO[c.row.original.tipoContrato]}
           </span>
@@ -138,7 +149,7 @@ export function AprobacionesDirectivo() {
             loading={!hidratado}
             getRowId={(s) => s.id}
             onRowClick={(s) => setAbiertaId(s.id)}
-            initialSorting={[{ id: "espera", desc: false }]}
+            initialSorting={[{ id: "espera", desc: true }]}
             searchPlaceholder="Buscar por folio, contraparte o abogado"
             exportFileName="aprobaciones-pendientes"
             emptyTitle="Nada pendiente de aprobar"

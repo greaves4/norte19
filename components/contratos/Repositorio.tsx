@@ -90,7 +90,7 @@ const columnas = col.columns([
   col.accessor("pendientes", {
     header: "Por confirmar",
     enableGlobalFilter: false,
-    cell: (c) => (c.getValue() ? <Badge variant="outline">{c.getValue()} campos</Badge> : <span className="text-muted-foreground">—</span>),
+    cell: (c) => (c.getValue() ? <Badge variant="outline">{c.getValue() === 1 ? "1 campo" : `${c.getValue()} campos`}</Badge> : <span className="text-muted-foreground">—</span>),
     meta: { hideBelow: "xl", align: "end" },
   }),
 ]);

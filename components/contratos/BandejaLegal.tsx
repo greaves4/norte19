@@ -72,7 +72,7 @@ export function BandejaLegal() {
   const { actor } = useActorContratos();
   const solicitudes = useContratos((s) => s.solicitudes);
   const now = useNow(1000);
-  const [filtro, setFiltro] = useState<Filtro>("todas");
+  const [filtro, setFiltro] = useState<Filtro>("mias");
   const [vista, setVista] = useState<Vista>("tablero");
   const [arrastrando, setArrastrando] = useState<string | null>(null);
   const [salto, setSalto] = useState<{ solicitud: Solicitud; pasos: PasoKanban[]; destino: ColumnaKanban } | null>(null);
@@ -256,7 +256,7 @@ function ColumnaTablero({
   return (
     <section
       ref={setNodeRef}
-      aria-label={`${titulo}, ${total} solicitudes`}
+      aria-label={`${titulo}, ${total === 1 ? "1 solicitud" : `${total} solicitudes`}`}
       data-over={isOver || undefined}
       className={cn(
         "flex min-h-96 flex-col gap-2 rounded-lg bg-muted/50 p-2 transition-colors",

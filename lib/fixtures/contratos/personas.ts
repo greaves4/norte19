@@ -17,7 +17,8 @@ export const SOLICITANTES: Solicitante[] = [
 // Usuario simulado por perfil (en producción viene de Active Directory).
 export const USUARIOS_CONTRATOS: Record<PerfilContratos, UsuarioContratos> = {
   solicitante: { perfil: "solicitante", id: "desarrollo", nombre: "Ing. Alejandro Ríos Maldonado", puesto: "Desarrollo" },
-  abogado: { perfil: "abogado", id: "ab-robles", nombre: "Lic. Mariana Robles", puesto: "Legal" },
+  // La abogada de la demo es la de menor carga inicial: la solicitud que crea el Solicitante en el guion le llega a ella.
+  abogado: { perfil: "abogado", id: "ab-nieto", nombre: "Lic. Patricia Nieto", puesto: "Legal" },
   directivo: { perfil: "directivo", id: "dir-villasenor", nombre: "Lic. Andrés Villaseñor", puesto: "Director Jurídico" },
   admin: { perfil: "admin", id: "adm-arriaga", nombre: "Lic. Sofía Arriaga", puesto: "Gerente Legal" },
 };
