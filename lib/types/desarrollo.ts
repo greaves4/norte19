@@ -305,6 +305,28 @@ export const SEVERIDAD_RIESGO: StatusMap<Riesgo["severidad"]> = {
   baja: { label: "Baja", tone: "neutral" },
 };
 
+export const SEVERIDAD_HALLAZGO: StatusMap<Severidad> = {
+  critico: { label: "Crítico", tone: "danger" },
+  medio: { label: "Medio", tone: "warning" },
+  menor: { label: "Menor", tone: "neutral" },
+};
+
+export const ESTATUS_HALLAZGO: StatusMap<EstatusHallazgo> = {
+  pendiente: { label: "Pendiente", tone: "warning" },
+  confirmado: { label: "Confirmado", tone: "info" },
+  ajustado: { label: "Ajustado", tone: "info" },
+  descartado: { label: "Descartado", tone: "neutral" },
+};
+
+export const RESOLUCION_HALLAZGO: StatusMap<NonNullable<Hallazgo["resolucion"]>> = {
+  abierto: { label: "Abierto", tone: "warning" },
+  en_proceso: { label: "En proceso", tone: "info" },
+  resuelto: { label: "Resuelto", tone: "success" },
+};
+
+export const NOMBRE_IMPACTO: Record<Impacto, string> = { costo: "Costo", tiempo: "Tiempo", operacion: "Operación", marca: "Marca", construccion: "Construcción" };
+export const NOMBRE_PRIORIDAD: Record<Hallazgo["prioridad"], string> = { alta: "Alta", media: "Media", baja: "Baja" };
+
 // --- Criterios, biblioteca y completitud --------------------------------------------------------------
 
 export type DisciplinaCriterio = "arquitectura" | "estructura" | "electrico" | "hidrosanitario" | "pci" | "hvac" | "interiores";
