@@ -1,0 +1,21 @@
+MEMORIA DE INSTALACIONES
+CITY EXPRESS ENSENADA
+
+1. INSTALACIÓN ELÉCTRICA
+Carga instalada de 3.1 kW por llave, 366 kW en total, con un factor de demanda de 0.65. Acometida en media tensión de 23 kV con subestación compacta tipo pedestal; tablero general en baja tensión, tableros de fuerza y alumbrado por nivel y centro de carga en cada habitación.
+
+Planta de emergencia diésel con transferencia automática que respalda elevadores, bombas, alumbrado de emergencia, SITE y el 30% del alumbrado de áreas públicas. Iluminación LED en todo el edificio y tarjetero ahorrador de energía en habitaciones.
+
+2. INSTALACIÓN HIDROSANITARIA
+Gasto medio de diseño de 0.042 L/s por llave (4.96 L/s en total). Cisterna de concreto con reserva para dos días de consumo más la reserva contra incendio; equipo hidroneumático triplex de velocidad variable.
+
+Agua caliente con calentadores de paso a gas de alta eficiencia, tanques de almacenamiento y recirculación. Muebles de bajo consumo: inodoros de 4.8 L, regaderas de 7.6 L/min y lavabos con aireador.
+
+3. INSTALACIÓN DE GAS
+Gas L.P. con tanque estacionario de 5,000 L, reguladores de alta y baja presión y tubería de cobre tipo L hacia calentadores y cocina.
+
+4. AIRE ACONDICIONADO Y VENTILACIÓN (HVAC)
+Capacidad de 0.75 TR por llave (89 TR en total). Habitaciones con equipos minisplit inverter y termostato programable; lobby, desayunador y áreas públicas con equipos paquete en azotea y unidad de aire exterior. Extracción mecánica en baños por núcleo y extracción de cocina con campana y aire de reposición.
+
+5. PROTECCIÓN CONTRA INCENDIO
+Red de rociadores automáticos en todo el edificio, gabinetes con manguera en cada nivel, bomba eléctrica, bomba de combustión interna y bomba jockey. Detección de humo direccionable en habitaciones y pasillos, estaciones manuales y sirenas con estrobo conforme a la NOM-002-STPS y al reglamento local.

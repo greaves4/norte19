@@ -13,7 +13,8 @@
     "predev": "node scripts/copy-pdf-worker.mjs",
     "check": "pnpm lint && pnpm build",
     "gen:fund": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generar-comprobantes-fund.mts",
-    "gen:contratos": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/contratos/generar-contratos.mts"
+    "gen:contratos": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/contratos/generar-contratos.mts",
+    "gen:desarrollo": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/desarrollo/generar-textos.mts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

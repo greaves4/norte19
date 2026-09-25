@@ -1,0 +1,38 @@
+MEMORIA DESCRIPTIVA ARQUITECTÓNICA
+CITY EXPRESS GUAYMAS
+Guaymas, Sonora · Proyecto 2021
+
+1. DESCRIPCIÓN GENERAL
+El proyecto corresponde a un hotel de servicio selecto (select-service) de la marca City Express, ubicado en Guaymas, Sonora. El edificio desarrolla 112 habitaciones distribuidas en 4 niveles, con planta baja destinada a lobby, desayunador, áreas de servicio y cuartos técnicos, y los niveles superiores a habitaciones con un núcleo de circulación vertical central y escaleras de emergencia en los extremos.
+
+La superficie construida total es de 5,040 m², equivalente a 45.0 m² construidos por llave. El estacionamiento se resuelve a nivel de terreno, fuera de la huella del edificio, y no forma parte de la superficie construida.
+
+2. PROGRAMA ARQUITECTÓNICO
+- Habitaciones: 112 llaves, de las cuales 3 son accesibles conforme al manual de marca y a la NOM-001-SEDATU-2021. Habitación tipo con cama king o dos matrimoniales, escritorio de trabajo, closet abierto y baño con regadera.
+- Áreas públicas: lobby con recepción, business center, desayunador con capacidad para el 35% de la ocupación, gimnasio y sanitarios públicos.
+- BOH: lavandería de blancos, almacén de blancos por nivel, cocina de desayunos, comedor y vestidores de personal, oficinas administrativas, cuarto de basura y andén de servicio.
+- Cuartos técnicos: subestación, planta de emergencia, cuarto de bombas, cisterna y SITE de telecomunicaciones.
+
+3. CUADRO DE ÁREAS (plano AQ-100)
+Las superficies se miden a paños exteriores de muros y se agrupan por zona funcional conforme al estándar de desarrollo de Norte 19.
+
+- Habitaciones: 2,912 m² · 26.0 m² por llave · 57.8% del construido
+- Áreas públicas: 437 m² · 3.9 m² por llave · 8.7% del construido
+- BOH (áreas de servicio): 672 m² · 6.0 m² por llave · 13.3% del construido
+- Circulaciones: 1,019 m² · 9.1 m² por llave · 20.2% del construido
+- Estacionamiento (exterior): 1,445 m² · 12.9 m² por llave
+
+Superficie construida total: 5,040 m² (45.0 m² por llave).
+
+La zona de habitaciones concentra 57.8% de la superficie construida. Las áreas públicas se mantienen compactas: el desayunador comparte circulaciones con el lobby y el business center se integra al mismo espacio. El BOH incluye la lavandería de blancos en planta baja y un almacén de blancos por nivel junto al núcleo de servicio.
+
+Las circulaciones horizontales se resuelven con pasillos de doble carga de 1.80 m de ancho libre, lo que mantiene el porcentaje de circulación por debajo del 20% del área construida.
+
+4. FACHADAS Y ENVOLVENTE
+Sistema de fachada: Panel de fibrocemento sobre bastidor metálico con barrera de humedad; ventanería de PVC. La selección considera el clima de Guaymas, el mantenimiento esperado y el costo por m² de fachada frente a los hoteles de referencia de la marca.
+
+5. CIRCULACIONES VERTICALES
+El edificio cuenta con 2 elevadores de pasajeros de 1,000 kg de capacidad a 1.0 m/s, ubicados en el núcleo central, y un elevador de servicio compartido con uno de los de pasajeros mediante control de prioridad. Dos escaleras de emergencia presurizadas o ventiladas naturalmente comunican todos los niveles con salidas directas al exterior.
+
+6. ESTACIONAMIENTO
+Estacionamiento descubierto de 1,445 m² con 58 cajones (0.52 cajones por llave), incluidos los cajones accesibles que exige el reglamento local, pavimento de concreto hidráulico y alumbrado con postes de 6 m.

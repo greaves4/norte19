@@ -1,0 +1,37 @@
+CATÁLOGO DE CONCEPTOS · OBRA CIVIL
+City Express Guaymas · Precios a 2021-02 (MXN sin IVA)
+
+OC-001 | Trazo y nivelación del terreno con equipo topográfico | m2 | 0.5637 por m² construido | P.U. $18.14
+OC-002 | Excavación a máquina en cepas, material tipo II | m3 | 0.4129 por m² construido | P.U. $132.44
+OC-003 | Relleno compactado al 95% Proctor con material de banco | m3 | 0.2026 por m² construido | P.U. $417.48
+OC-004 | Plantilla de concreto f'c=100 kg/cm² de 5 cm | m2 | 0.2023 por m² construido | P.U. $174.29
+OC-005 | Concreto premezclado f'c=250 kg/cm² en cimentación | m3 | 0.0747 por m² construido | P.U. $2,896.96
+OC-006 | Acero de refuerzo fy=4200 kg/cm² en cimentación | ton | 0.0065 por m² construido | P.U. $27,447.00
+OC-007 | Cimbra común en cimentación | m2 | 0.2497 por m² construido | P.U. $299.53
+OC-008 | Concreto premezclado f'c=300 kg/cm² en columnas | m3 | 0.0357 por m² construido | P.U. $3,137.34
+OC-009 | Concreto premezclado f'c=300 kg/cm² en trabes y losas | m3 | 0.1525 por m² construido | P.U. $3,209.30
+OC-010 | Acero de refuerzo fy=4200 kg/cm² en estructura | ton | 0.0235 por m² construido | P.U. $26,648.69
+OC-011 | Cimbra aparente en columnas | m2 | 0.2679 por m² construido | P.U. $376.13
+OC-012 | Cimbra en losas y trabes | m2 | 1.0570 por m² construido | P.U. $347.39
+OC-013 | Losa aligerada con casetón de poliestireno de 25 cm | m2 | 0.7794 por m² construido | P.U. $597.84
+OC-014 | Muro de block hueco de concreto de 15 cm | m2 | 1.3536 por m² construido | P.U. $362.30
+OC-015 | Muro divisorio de tablaroca con aislamiento acústico | m2 | 0.8578 por m² construido | P.U. $485.08
+OC-016 | Castillos y dalas de concreto armado | m | 0.9228 por m² construido | P.U. $211.23
+OC-017 | Aplanado de mortero cemento-arena en muros | m2 | 1.5490 por m² construido | P.U. $171.59
+OC-018 | Firme de concreto f'c=150 kg/cm² de 10 cm | m2 | 0.2475 por m² construido | P.U. $282.70
+OC-019 | Impermeabilización de azotea con sistema prefabricado APP | m2 | 0.2057 por m² construido | P.U. $367.95
+OC-020 | Relleno y entortado de azotea con pendiente | m2 | 0.2042 por m² construido | P.U. $257.61
+OC-021 | Pretil de concreto armado en azotea | m | 0.9807 por llave | P.U. $825.96
+OC-022 | Escalera de concreto armado, tramo entre niveles | pza | 1.9844 por nivel | P.U. $37,203.72
+OC-023 | Fosa de elevador de concreto armado | pza | 2.0000 por hotel | P.U. $62,951.71
+OC-024 | Cisterna de concreto armado impermeabilizada | m3 | 0.4308 por llave | P.U. $5,291.40
+OC-025 | Registro sanitario de tabique de 60×40 cm | pza | 0.0040 por m² construido | P.U. $3,324.65
+OC-026 | Banqueta perimetral de concreto estampado | m2 | 0.0601 por m² construido | P.U. $427.50
+OC-027 | Pavimento de concreto hidráulico en estacionamiento | m2 | 14.7679 por llave | P.U. $677.87
+OC-028 | Guarnición de concreto tipo pecho de paloma | m | 1.0383 por llave | P.U. $326.00
+OC-029 | Muro de contención de concreto armado | m3 | 0.0082 por m² construido | P.U. $3,787.90
+OC-030 | Junta constructiva con sellador de poliuretano | m | 0.0296 por m² construido | P.U. $183.45
+OC-031 | Limpieza gruesa y retiro de escombro | m2 | 1.0187 por m² construido | P.U. $22.09
+OC-032 | Acarreo de material producto de excavación fuera de obra | m3 | 0.3226 por m² construido | P.U. $144.34
+OC-034 | Mejoramiento de suelo con tepetate compactado | m3 | 0.3358 por m² construido | P.U. $466.30
+OC-035 | Losa de cimentación en cuarto de máquinas | m2 | 0.3139 por llave | P.U. $1,370.74

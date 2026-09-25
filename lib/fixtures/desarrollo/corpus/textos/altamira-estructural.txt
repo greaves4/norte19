@@ -1,0 +1,21 @@
+MEMORIA DE CÁLCULO ESTRUCTURAL
+CITY EXPRESS ALTAMIRA
+
+1. SISTEMA ESTRUCTURAL
+Sistema: Marcos de concreto reforzado con losa aligerada.
+Claros de diseño: 7.5 × 8.0 m.
+
+Criterio de selección: Arcillas blandas de alta compresibilidad y nivel freático a 2.5 m: los pilotes transmiten la carga a los estratos arenosos profundos y evitan asentamientos.
+
+El análisis se realizó con modelos tridimensionales de elementos finitos considerando cargas muertas, vivas (170 kg/m² en habitaciones y 350 kg/m² en áreas públicas), sismo conforme al Manual de Diseño de Obras Civiles de CFE (2015) y viento para la zona de Altamira. Las distorsiones de entrepiso se limitaron a 0.012 para proteger los muros divisorios y la fachada.
+
+2. CIMENTACIÓN
+Tipo: Pilotes precolados de concreto de 40×40 cm hincados a 18 m.
+
+La cimentación se diseñó con base en el estudio de mecánica de suelos del predio. Arcillas blandas de alta compresibilidad y nivel freático a 2.5 m. Se verificaron asentamientos inmediatos y diferidos, y la capacidad de carga admisible con un factor de seguridad de 3.
+
+3. MATERIALES
+Concreto premezclado f'c = 300 kg/cm² en columnas, trabes y losas; f'c = 250 kg/cm² en cimentación. Acero de refuerzo fy = 4,200 kg/cm². El recubrimiento mínimo se incrementa a 4 cm en elementos expuestos al exterior.
+
+4. ELEMENTOS NO ESTRUCTURALES
+Los muros divisorios de habitación se desligan de la estructura con juntas de 2.5 cm rellenas de material compresible. Los equipos en azotea se anclan con bases antivibratorias y restricción sísmica.
