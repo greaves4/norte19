@@ -74,7 +74,7 @@ export function crearInputs(): InputProyecto[] {
       nombre: "CAPEX objetivo",
       obligatorio: false,
       descripcion: "Presupuesto objetivo por llave aprobado por el comité de inversión.",
-      impacto: "Supuesto documentado: la estimación de CAPEX no se compara contra un objetivo aprobado.",
+      impacto: "La estimación de CAPEX no se compara contra un objetivo aprobado.",
       afecta: ["capex"],
     },
     {

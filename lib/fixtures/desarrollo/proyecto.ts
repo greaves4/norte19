@@ -1,30 +1,16 @@
 // Proyecto City Express Ciudad Juárez al iniciar la demo: fase 1 con el gate de inputs bloqueado.
-// El cuadro de áreas objetivo del anteproyecto se expresa contra el promedio del corpus para que las desviaciones
-// del guion sean estables: áreas públicas −20% (la mayor), BOH +10% y estacionamiento +12% (ámbar).
-import { CORPUS } from "@/lib/fixtures/desarrollo/corpus";
+import { cuadroAnteproyecto, LLAVES_JUAREZ, NIVELES_JUAREZ } from "@/lib/fixtures/desarrollo/anteproyecto";
 import { crearDecisiones, crearRiesgos } from "@/lib/fixtures/desarrollo/definicion";
 import { crearEntregables } from "@/lib/fixtures/desarrollo/entregables";
 import { crearInputs } from "@/lib/fixtures/desarrollo/inputs";
 import { crearRequisitosMarca } from "@/lib/fixtures/desarrollo/marca";
-import { ZONAS, type Proyecto, type ZonaId, type ZonaProyecto } from "@/lib/types/desarrollo";
+import { ORIGEN_TERRENO, SUPERFICIE_TERRENO_M2 } from "@/lib/fixtures/desarrollo/terreno";
+import type { Proyecto, ZonaProyecto } from "@/lib/types/desarrollo";
 
-export const LLAVES_JUAREZ = 128;
-
-const FACTOR_ANTEPROYECTO: Record<ZonaId, number> = {
-  habitaciones: 1.03,
-  areas_publicas: 0.8,
-  boh: 1.1,
-  circulaciones: 0.97,
-  estacionamiento: 1.12,
-};
-
-export function promedioCorpus(zona: ZonaId) {
-  return CORPUS.reduce((t, h) => t + h.cuadroAreas.find((z) => z.zona === zona)!.m2PorLlave, 0) / CORPUS.length;
-}
+export { LLAVES_JUAREZ, promedioCorpus } from "@/lib/fixtures/desarrollo/anteproyecto";
 
 function cuadroAreasJuarez(): ZonaProyecto[] {
-  return ZONAS.map((zona) => {
-    const m2 = Math.round(promedioCorpus(zona) * FACTOR_ANTEPROYECTO[zona] * LLAVES_JUAREZ);
+  return cuadroAnteproyecto().map(({ zona, m2 }) => {
     return {
       zona,
       m2,
@@ -41,8 +27,8 @@ export function crearProyecto(hoy: Date): Proyecto {
     ciudad: "Ciudad Juárez, Chihuahua",
     segmento: "Select-service",
     llaves: LLAVES_JUAREZ,
-    niveles: 5,
-    terreno: { superficieM2: 5480, direccion: "Blvd. Tomás Fernández 7815, Ciudad Juárez, Chih.", lat: 31.7196, lng: -106.4236 },
+    niveles: NIVELES_JUAREZ,
+    terreno: { superficieM2: Math.round(SUPERFICIE_TERRENO_M2), direccion: "Blvd. Tomás Fernández 7815, Ciudad Juárez, Chih.", lat: ORIGEN_TERRENO.lat, lng: ORIGEN_TERRENO.lng },
     fase: 1,
     inputs: crearInputs(),
     definicion: { cuadroAreas: cuadroAreasJuarez(), marca: crearRequisitosMarca(), decisiones: crearDecisiones(), riesgos: crearRiesgos() },

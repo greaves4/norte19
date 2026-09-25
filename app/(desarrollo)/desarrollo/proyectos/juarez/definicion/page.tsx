@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { EnConstruccion } from "@/components/desarrollo/EnConstruccion";
+import { FaseDefinicion } from "@/components/desarrollo/definicion/FaseDefinicion";
 
 export const metadata: Metadata = { title: "Fase de Definición · Desarrollo" };
 
 export default function Page() {
-  return <EnConstruccion titulo="Fase de Definición" descripcion="Cuadro de áreas, marca, decisiones, riesgos y CAPEX." />;
+  return <FaseDefinicion />;
 }

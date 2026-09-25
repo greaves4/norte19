@@ -280,3 +280,27 @@ export const COBERTURA: StatusMap<Cobertura> = {
   parcial: { label: "Parcial", tone: "warning" },
   ausente: { label: "Ausente", tone: "danger" },
 };
+
+export const SEMAFORO: StatusMap<Semaforo> = {
+  verde: { label: "Verde", tone: "success" },
+  ambar: { label: "Ámbar", tone: "warning" },
+  rojo: { label: "Rojo", tone: "danger" },
+};
+
+export const ESTATUS_MARCA: StatusMap<EstatusMarca> = {
+  cumple: { label: "Cumple", tone: "success" },
+  desvia: { label: "Desvía", tone: "danger" },
+  sin_dato: { label: "Sin dato", tone: "warning" },
+};
+
+export const ESTATUS_RIESGO: StatusMap<EstatusRiesgo> = {
+  pendiente: { label: "Pendiente de revisión experta", tone: "warning" },
+  confirmado: { label: "Confirmado", tone: "danger" },
+  descartado: { label: "Descartado", tone: "neutral" },
+};
+
+export const SEVERIDAD_RIESGO: StatusMap<Riesgo["severidad"]> = {
+  alta: { label: "Alta", tone: "danger" },
+  media: { label: "Media", tone: "warning" },
+  baja: { label: "Baja", tone: "neutral" },
+};

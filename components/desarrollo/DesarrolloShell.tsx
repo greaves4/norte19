@@ -3,6 +3,7 @@
 import { BookMarked, Building2, ClipboardCheck, ClipboardList, Compass, Database, FileBarChart, HardHat, Library, ListChecks, Table2 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { ProveedorFuentes } from "@/components/desarrollo/Fuentes";
 import { AppShell, type NavItem } from "@/components/shared/AppShell";
 import { DemoBar, type DemoProfile } from "@/components/shared/DemoBar";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -116,7 +117,7 @@ export function DesarrolloShell({ children }: { children: React.ReactNode }) {
       profiles={PERFILES_DESARROLLO}
       onReset={reset}
     >
-      {listo ? children : <Cargando />}
+      {listo ? <ProveedorFuentes>{children}</ProveedorFuentes> : <Cargando />}
     </AppShell>
   );
 }
