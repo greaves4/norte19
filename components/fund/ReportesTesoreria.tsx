@@ -2,8 +2,8 @@
 
 import { endOfDay, startOfDay } from "date-fns";
 import { useMemo, useState } from "react";
-import { GraficaBarras } from "@/components/fund/GraficaBarras";
-import { Indicador } from "@/components/fund/Indicador";
+import { GraficaBarras } from "@/components/shared/GraficaBarras";
+import { Indicador } from "@/components/shared/Indicador";
 import { MovimientoDetalle } from "@/components/fund/MovimientoDetalle";
 import { DataGrid, dataGridColumns } from "@/components/shared/DataGrid";
 import { PageHeader } from "@/components/shared/PageHeader";

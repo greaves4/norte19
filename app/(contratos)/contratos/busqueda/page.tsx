@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { EnConstruccion } from "@/components/contratos/EnConstruccion";
+import { BusquedaContratos } from "@/components/contratos/BusquedaContratos";
 
-export const metadata: Metadata = { title: "Búsqueda inteligente · Contratos" };
+export const metadata: Metadata = { title: "Búsqueda · Contratos" };
 
 export default function Page() {
-  return <EnConstruccion titulo="Búsqueda inteligente" descripcion="Pregunta en lenguaje natural sobre los contratos." />;
+  return <BusquedaContratos />;
 }

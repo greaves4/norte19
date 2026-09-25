@@ -3,7 +3,7 @@
 import { RefreshCw } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
-import { Indicador } from "@/components/fund/Indicador";
+import { Indicador } from "@/components/shared/Indicador";
 import { MovimientoDetalle } from "@/components/fund/MovimientoDetalle";
 import { DataGrid, dataGridColumns } from "@/components/shared/DataGrid";
 import { PageHeader } from "@/components/shared/PageHeader";

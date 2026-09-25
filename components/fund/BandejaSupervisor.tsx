@@ -4,7 +4,7 @@ import { CheckCheck } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
-import { Indicador } from "@/components/fund/Indicador";
+import { Indicador } from "@/components/shared/Indicador";
 import { DataGrid, dataGridColumns } from "@/components/shared/DataGrid";
 import { PageHeader } from "@/components/shared/PageHeader";
 import {

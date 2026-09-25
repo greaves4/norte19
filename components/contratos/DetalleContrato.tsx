@@ -27,7 +27,7 @@ import { CONFIANZA, ESTATUS_TANTO, ESTATUS_VIGENCIA, NOMBRE_TIPO_CONTRATO, type 
 
 type Pestana = "datos" | "custodia" | "historial";
 
-export function DetalleContrato({ id }: { id: string }) {
+export function DetalleContrato({ id, paginaInicial }: { id: string; paginaInicial?: number }) {
   const hidratado = useContratosHydrated();
   const c = useContratos((st) => st.contratos.find((x) => x.id === id));
   if (!hidratado) return null;
@@ -43,15 +43,16 @@ export function DetalleContrato({ id }: { id: string }) {
       </div>
     );
   }
-  return <Detalle key={c.id} c={c} />;
+  return <Detalle key={c.id} c={c} paginaInicial={paginaInicial} />;
 }
 
-function Detalle({ c }: { c: Contrato }) {
+function Detalle({ c, paginaInicial }: { c: Contrato; paginaInicial?: number }) {
   const now = useNow(60_000);
   const { perfil, actor } = useActorContratos();
   const [pestana, setPestana] = useState<Pestana>("datos");
-  const [pagina, setPagina] = useState(1);
-  const [solicitudPagina, setSolicitudPagina] = useState(0);
+  const [pagina, setPagina] = useState(paginaInicial && paginaInicial <= c.paginas ? paginaInicial : 1);
+  // Llegar desde la búsqueda con ?pagina=N también muestra el documento en móvil.
+  const [solicitudPagina, setSolicitudPagina] = useState(paginaInicial ? 1 : 0);
   const pendientes = c.extraccion.filter((x) => !x.confirmado);
   const vigencia = estatusVigencia(c.vigenciaFin, now);
 

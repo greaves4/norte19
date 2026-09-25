@@ -9,7 +9,7 @@ import { DialogoCargaMasiva } from "@/components/fund/DialogoCargaMasiva";
 import { DialogoCorteGlobal } from "@/components/fund/DialogoCorteGlobal";
 import { DialogoDispersion } from "@/components/fund/DialogoDispersion";
 import { DialogoRefondeo } from "@/components/fund/DialogoRefondeo";
-import { Indicador } from "@/components/fund/Indicador";
+import { Indicador } from "@/components/shared/Indicador";
 import { DataGrid, dataGridColumns } from "@/components/shared/DataGrid";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { StatusBadge } from "@/components/shared/StatusBadge";
