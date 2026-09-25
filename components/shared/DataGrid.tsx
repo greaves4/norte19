@@ -128,6 +128,8 @@ type Props<T extends RowData> = {
   actions?: (selected: T[]) => React.ReactNode;
   searchPlaceholder?: string;
   exportFileName?: string;
+  // false oculta "Exportar Excel/PDF" cuando la vista tiene su propia exportación.
+  exportable?: boolean;
   emptyTitle?: string;
   emptyDescription?: string;
   initialPageSize?: (typeof PAGE_SIZES)[number];
@@ -146,6 +148,7 @@ export function DataGrid<T extends RowData>({
   actions,
   searchPlaceholder = "Buscar",
   exportFileName = "exportacion",
+  exportable = true,
   emptyTitle = "Sin resultados",
   emptyDescription = "No hay registros que coincidan con la búsqueda o los filtros.",
   initialPageSize = 10,
@@ -246,14 +249,18 @@ export function DataGrid<T extends RowData>({
         )}
         <div className="ml-auto flex flex-wrap items-center gap-2">
           {actions?.(selected)}
-          <Button variant="outline" size="sm" onClick={exportExcel} disabled={loading || filteredCount === 0}>
-            <FileSpreadsheet data-icon="inline-start" />
-            Exportar Excel
-          </Button>
-          <Button variant="outline" size="sm" onClick={exportPdf} disabled={loading || filteredCount === 0}>
-            <Printer data-icon="inline-start" />
-            Exportar PDF
-          </Button>
+          {exportable && (
+            <>
+              <Button variant="outline" size="sm" onClick={exportExcel} disabled={loading || filteredCount === 0}>
+                <FileSpreadsheet data-icon="inline-start" />
+                Exportar Excel
+              </Button>
+              <Button variant="outline" size="sm" onClick={exportPdf} disabled={loading || filteredCount === 0}>
+                <Printer data-icon="inline-start" />
+                Exportar PDF
+              </Button>
+            </>
+          )}
         </div>
       </div>
 

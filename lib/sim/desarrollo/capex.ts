@@ -24,7 +24,7 @@ export const SUPUESTOS_PARAMETRICOS = [
   { id: "indirectos", concepto: "Indirectos, proyecto y licencias", pct: 0.12 },
 ] as const;
 
-const a2022 = (precio: number, fecha: string) => precio * (1 + INFLACION_CONSTRUCCION) ** (2022 - Number(fecha.slice(0, 4)));
+export const a2022 = (precio: number, fecha: string) => precio * (1 + INFLACION_CONSTRUCCION) ** (2022 - Number(fecha.slice(0, 4)));
 
 type CostoHotel = { hotel: HotelCorpus; edificioPorM2: number; estacionamientoPorM2: number };
 

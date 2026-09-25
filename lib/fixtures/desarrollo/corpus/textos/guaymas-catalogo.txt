@@ -27,7 +27,7 @@ OC-023 | Fosa de elevador de concreto armado | pza | 2.0000 por hotel | P.U. $62
 OC-024 | Cisterna de concreto armado impermeabilizada | m3 | 0.4308 por llave | P.U. $5,291.40
 OC-025 | Registro sanitario de tabique de 60×40 cm | pza | 0.0040 por m² construido | P.U. $3,324.65
 OC-026 | Banqueta perimetral de concreto estampado | m2 | 0.0601 por m² construido | P.U. $427.50
-OC-027 | Pavimento de concreto hidráulico en estacionamiento | m2 | 14.7679 por llave | P.U. $677.87
+OC-027 | Pavimento de concreto hidráulico en estacionamiento | m2 | 13.0000 por llave | P.U. $677.87
 OC-028 | Guarnición de concreto tipo pecho de paloma | m | 1.0383 por llave | P.U. $326.00
 OC-029 | Muro de contención de concreto armado | m3 | 0.0082 por m² construido | P.U. $3,787.90
 OC-030 | Junta constructiva con sellador de poliuretano | m | 0.0296 por m² construido | P.U. $183.45

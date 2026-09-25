@@ -105,8 +105,9 @@ function catalogos(p: ParametrosHotel, sinInstalaciones: boolean): Catalogo[] {
         concepto,
         unidad,
         base,
-        // Las cantidades globales enteras (equipos) no varían; el resto sí, según la dispersión del concepto.
-        ratio: base === "global" && Number.isInteger(ratio) ? ratio : redondear(ratio * (1 + ruido(`${p.id}:${clave}:q`) * AMPLITUD[dispersion]), 4),
+        // Las cantidades enteras por hotel o por llave (equipos, piezas por habitación) no varían; el resto sí,
+        // según la dispersión del concepto.
+        ratio: (base === "global" || base === "llave") && Number.isInteger(ratio) ? ratio : redondear(ratio * (1 + ruido(`${p.id}:${clave}:q`) * AMPLITUD[dispersion]), 4),
         precioUnitario: redondear((precio2022 / deflactor) * (1 + ruido(`${p.id}:${clave}:p`) * 0.08), 2),
       })),
   }));

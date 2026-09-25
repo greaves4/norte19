@@ -27,7 +27,7 @@ OC-023 | Fosa de elevador de concreto armado | pza | 2.0000 por hotel | P.U. $55
 OC-024 | Cisterna de concreto armado impermeabilizada | m3 | 0.3917 por llave | P.U. $4,429.15
 OC-025 | Registro sanitario de tabique de 60×40 cm | pza | 0.0036 por m² construido | P.U. $3,106.15
 OC-026 | Banqueta perimetral de concreto estampado | m2 | 0.0632 por m² construido | P.U. $408.29
-OC-027 | Pavimento de concreto hidráulico en estacionamiento | m2 | 13.7298 por llave | P.U. $556.66
+OC-027 | Pavimento de concreto hidráulico en estacionamiento | m2 | 13.0000 por llave | P.U. $556.66
 OC-028 | Guarnición de concreto tipo pecho de paloma | m | 1.1108 por llave | P.U. $312.63
 OC-029 | Muro de contención de concreto armado | m3 | 0.0148 por m² construido | P.U. $3,608.44
 OC-030 | Junta constructiva con sellador de poliuretano | m | 0.0318 por m² construido | P.U. $181.82
@@ -44,7 +44,7 @@ IE-002 | Subestación compacta tipo pedestal de 500 kVA | pza | 1.0000 por hotel
 IE-003 | Planta de emergencia diésel de 300 kW con tanque de día | pza | 1.0000 por hotel | P.U. $932,456.25
 IE-004 | Tablero general de distribución en baja tensión | pza | 1.0000 por hotel | P.U. $237,490.16
 IE-005 | Tablero de fuerza y alumbrado por nivel | pza | 1.0385 por nivel | P.U. $32,311.62
-IE-006 | Centro de carga de habitación de 12 circuitos | pza | 1.0075 por llave | P.U. $2,938.51
+IE-006 | Centro de carga de habitación de 12 circuitos | pza | 1.0000 por llave | P.U. $2,938.51
 IE-007 | Alimentador principal en cable THHW-LS 350 kcmil | m | 180.0000 por hotel | P.U. $1,132.58
 IE-008 | Alimentadores a tableros de nivel en cable THHW-LS | m | 73.5545 por nivel | P.U. $379.92
 IE-009 | Tubería conduit galvanizada pared gruesa de 3/4" | m | 0.8778 por m² construido | P.U. $118.74
@@ -53,8 +53,8 @@ IE-011 | Cable THW-LS calibre 12 AWG | m | 3.7993 por m² construido | P.U. $12.
 IE-012 | Cable THW-LS calibre 10 AWG | m | 1.2515 por m² construido | P.U. $21.81
 IE-013 | Salida de alumbrado en losa | sal | 0.1444 por m² construido | P.U. $554.63
 IE-014 | Salida de contacto dúplex polarizado | sal | 0.1536 por m² construido | P.U. $491.73
-IE-015 | Salida especial para equipo de aire acondicionado de habitación | sal | 0.9850 por llave | P.U. $1,288.30
-IE-016 | Luminario LED empotrable de 12 W en habitación | pza | 6.1674 por llave | P.U. $753.89
+IE-015 | Salida especial para equipo de aire acondicionado de habitación | sal | 1.0000 por llave | P.U. $1,288.30
+IE-016 | Luminario LED empotrable de 12 W en habitación | pza | 6.0000 por llave | P.U. $753.89
 IE-017 | Luminario LED lineal en pasillos | pza | 0.0390 por m² construido | P.U. $1,386.80
 IE-018 | Luminario de emergencia con batería de respaldo | pza | 0.0117 por m² construido | P.U. $1,599.94
 IE-019 | Letrero de salida iluminado | pza | 6.1990 por nivel | P.U. $1,483.18
@@ -62,11 +62,11 @@ IE-020 | Sistema de tierras físicas con electrodos y registro | lote | 1.0000 p
 IE-021 | Pararrayos tipo ionizante con bajada y electrodo | pza | 1.0000 por hotel | P.U. $83,474.52
 IE-022 | Charola portacables tipo escalerilla de 30 cm | m | 55.3042 por nivel | P.U. $567.05
 IE-023 | Interruptor termomagnético derivado | pza | 3.5279 por llave | P.U. $338.91
-IE-024 | Apagador sencillo y de escalera | pza | 3.9346 por llave | P.U. $192.76
+IE-024 | Apagador sencillo y de escalera | pza | 4.0000 por llave | P.U. $192.76
 IE-025 | Luminario de fachada tipo bañador LED | pza | 24.0000 por hotel | P.U. $3,697.44
 IE-026 | Alumbrado exterior de estacionamiento con poste de 6 m | pza | 0.1176 por llave | P.U. $14,869.00
 IE-027 | Sistema de control de iluminación de áreas públicas | lote | 1.0000 por hotel | P.U. $149,928.78
-IE-028 | Tarjetero ahorrador de energía en habitación | pza | 1.0097 por llave | P.U. $1,854.82
+IE-028 | Tarjetero ahorrador de energía en habitación | pza | 1.0000 por llave | P.U. $1,854.82
 IE-029 | Medición y banco de capacitores | lote | 1.0000 por hotel | P.U. $104,905.83
 IE-030 | Canalización para voz y datos | m | 0.5658 por m² construido | P.U. $78.83
 IE-031 | Registro eléctrico prefabricado de concreto | pza | 0.0036 por m² construido | P.U. $2,214.58
@@ -80,26 +80,26 @@ City Express Tijuana El Florido · Precios a 2019-03 (MXN sin IVA)
 IH-001 | Toma domiciliaria de agua potable de 2" | pza | 1.0000 por hotel | P.U. $34,534.91
 IH-002 | Cuadro de medición de agua potable | lote | 1.0000 por hotel | P.U. $22,342.57
 IH-003 | Equipo hidroneumático triplex de velocidad variable | pza | 1.0000 por hotel | P.U. $258,320.56
-IH-004 | Tubería de cobre tipo M de 1/2" | m | 14.1545 por llave | P.U. $166.01
-IH-005 | Tubería de cobre tipo M de 3/4" | m | 5.1707 por llave | P.U. $211.26
+IH-004 | Tubería de cobre tipo M de 1/2" | m | 14.0000 por llave | P.U. $166.01
+IH-005 | Tubería de cobre tipo M de 3/4" | m | 5.0000 por llave | P.U. $211.26
 IH-006 | Tubería de cobre tipo L de 2" en columnas | m | 28.5464 por nivel | P.U. $617.73
-IH-007 | Tubería de CPVC para agua caliente de 3/4" | m | 6.8466 por llave | P.U. $111.52
+IH-007 | Tubería de CPVC para agua caliente de 3/4" | m | 6.0000 por llave | P.U. $111.52
 IH-008 | Calentador de agua de paso a gas de alta eficiencia | pza | 4.0000 por hotel | P.U. $54,900.41
 IH-009 | Tanque de almacenamiento de agua caliente de 1,000 L | pza | 2.0000 por hotel | P.U. $57,621.35
 IH-010 | Bomba de recirculación de agua caliente | pza | 2.0000 por hotel | P.U. $20,373.17
-IH-011 | Tubería de PVC sanitario de 4" | m | 5.7152 por llave | P.U. $137.38
-IH-012 | Tubería de PVC sanitario de 2" | m | 8.2692 por llave | P.U. $69.11
+IH-011 | Tubería de PVC sanitario de 4" | m | 6.0000 por llave | P.U. $137.38
+IH-012 | Tubería de PVC sanitario de 2" | m | 8.0000 por llave | P.U. $69.11
 IH-013 | Bajante pluvial de PVC de 4" | m | 24.7694 por nivel | P.U. $144.64
 IH-014 | Coladera de azotea de fierro fundido | pza | 0.0038 por m² construido | P.U. $1,493.01
 IH-015 | Inodoro de bajo consumo de 4.8 L | pza | 1.0407 por llave | P.U. $4,268.40
 IH-016 | Lavabo de sobreponer con llave monomando | pza | 1.0841 por llave | P.U. $3,350.00
-IH-017 | Regadera con mezcladora termostática | pza | 1.0083 por llave | P.U. $4,430.46
+IH-017 | Regadera con mezcladora termostática | pza | 1.0000 por llave | P.U. $4,430.46
 IH-018 | Muebles sanitarios de áreas públicas | lote | 1.0000 por hotel | P.U. $115,188.99
 IH-019 | Trampa de grasas de concreto armado | pza | 1.0000 por hotel | P.U. $51,478.61
 IH-020 | Planta de tratamiento de aguas residuales | lote | 1.0000 por hotel | P.U. $841,108.32
 IH-021 | Válvula de seccionamiento de bronce de 1" | pza | 12.0600 por nivel | P.U. $703.56
 IH-022 | Válvula reductora de presión por nivel | pza | 0.9904 por nivel | P.U. $5,726.03
-IH-023 | Aislamiento térmico en tubería de agua caliente | m | 4.4272 por llave | P.U. $87.26
+IH-023 | Aislamiento térmico en tubería de agua caliente | m | 4.0000 por llave | P.U. $87.26
 IH-024 | Tubería de cobre para gas L.P. de 3/4" | m | 18.9017 por nivel | P.U. $281.47
 IH-025 | Tanque estacionario de gas L.P. de 5,000 L | pza | 1.0000 por hotel | P.U. $163,564.17
 IH-026 | Regulador de gas de alta presión | pza | 2.0000 por hotel | P.U. $5,561.82
@@ -147,7 +147,7 @@ PCI-030 | Hidrante de banqueta con toma para bomberos | pza | 1.0000 por hotel |
 CATÁLOGO DE CONCEPTOS · HVAC
 City Express Tijuana El Florido · Precios a 2019-03 (MXN sin IVA)
 
-HV-001 | Equipo minisplit inverter de 1 TR para habitación | pza | 0.9565 por llave | P.U. $13,708.17
+HV-001 | Equipo minisplit inverter de 1 TR para habitación | pza | 1.0000 por llave | P.U. $13,708.17
 HV-002 | Equipo paquete de 10 TR para lobby y áreas públicas | pza | 2.0000 por hotel | P.U. $199,782.44
 HV-003 | Equipo paquete de 5 TR para desayunador | pza | 1.0000 por hotel | P.U. $101,909.57
 HV-004 | Unidad de aire exterior dedicada (DOAS) | pza | 1.0000 por hotel | P.U. $320,951.78
@@ -156,21 +156,21 @@ HV-006 | Aislamiento de ducto con colchoneta de fibra de vidrio | m2 | 0.3180 po
 HV-007 | Rejilla de inyección de aluminio | pza | 0.0204 por m² construido | P.U. $1,016.03
 HV-008 | Rejilla de retorno de aluminio | pza | 0.0121 por m² construido | P.U. $899.13
 HV-009 | Difusor de techo de 4 vías | pza | 0.0103 por m² construido | P.U. $1,164.16
-HV-010 | Tubería de cobre para refrigerante (par) | m | 9.6045 por llave | P.U. $356.14
-HV-011 | Aislamiento para tubería de refrigerante | m | 8.3206 por llave | P.U. $60.33
-HV-012 | Drenaje de condensados en PVC | m | 5.9167 por llave | P.U. $53.53
-HV-013 | Extractor de baño en habitación | pza | 1.0453 por llave | P.U. $1,514.60
+HV-010 | Tubería de cobre para refrigerante (par) | m | 9.0000 por llave | P.U. $356.14
+HV-011 | Aislamiento para tubería de refrigerante | m | 9.0000 por llave | P.U. $60.33
+HV-012 | Drenaje de condensados en PVC | m | 6.0000 por llave | P.U. $53.53
+HV-013 | Extractor de baño en habitación | pza | 1.0000 por llave | P.U. $1,514.60
 HV-014 | Ducto de extracción de baños por núcleo | m | 23.1540 por nivel | P.U. $412.60
 HV-015 | Extractor centrífugo de azotea para baños | pza | 4.0000 por hotel | P.U. $31,114.51
 HV-016 | Campana de extracción de cocina con filtros | pza | 1.0000 por hotel | P.U. $141,079.17
 HV-017 | Extractor de cocina de azotea | pza | 1.0000 por hotel | P.U. $59,545.77
 HV-018 | Ducto de extracción de cocina en lámina negra calibre 16 | m | 28.0000 por hotel | P.U. $2,630.45
 HV-019 | Inyector de aire de reposición de cocina | pza | 1.0000 por hotel | P.U. $51,722.01
-HV-020 | Termostato programable en habitación | pza | 1.0262 por llave | P.U. $1,095.98
+HV-020 | Termostato programable en habitación | pza | 1.0000 por llave | P.U. $1,095.98
 HV-021 | Sistema de control centralizado (BMS) | lote | 1.0000 por hotel | P.U. $234,662.33
 HV-022 | Compuerta cortafuego | pza | 6.0204 por nivel | P.U. $4,902.36
 HV-023 | Compuerta de balanceo manual | pza | 10.3366 por nivel | P.U. $1,094.24
-HV-024 | Soportería para condensadoras en azotea | pza | 1.0080 por llave | P.U. $769.79
+HV-024 | Soportería para condensadoras en azotea | pza | 1.0000 por llave | P.U. $769.79
 HV-025 | Base antivibratoria para equipos | pza | 6.0000 por hotel | P.U. $3,191.51
 HV-026 | Pruebas, ajuste y balanceo | lote | 1.0000 por hotel | P.U. $69,863.95
 HV-027 | Extracción de cuarto de basura | pza | 1.0000 por hotel | P.U. $20,941.20
