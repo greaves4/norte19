@@ -304,3 +304,50 @@ export const SEVERIDAD_RIESGO: StatusMap<Riesgo["severidad"]> = {
   media: { label: "Media", tone: "warning" },
   baja: { label: "Baja", tone: "neutral" },
 };
+
+// --- Criterios, biblioteca y completitud --------------------------------------------------------------
+
+export type DisciplinaCriterio = "arquitectura" | "estructura" | "electrico" | "hidrosanitario" | "pci" | "hvac" | "interiores";
+
+export const DISCIPLINAS_CRITERIO: DisciplinaCriterio[] = ["arquitectura", "estructura", "electrico", "hidrosanitario", "pci", "hvac", "interiores"];
+
+export const NOMBRE_DISCIPLINA_CRITERIO: Record<DisciplinaCriterio, string> = {
+  arquitectura: "Arquitectura",
+  estructura: "Estructura",
+  electrico: "Eléctrico",
+  hidrosanitario: "Hidrosanitario y gas",
+  pci: "PCI",
+  hvac: "HVAC",
+  interiores: "Interiores",
+};
+
+export type Criterio = {
+  id: string;
+  disciplina: DisciplinaCriterio;
+  titulo: string;
+  valor: string; // valor de referencia para Juárez
+  rango?: string; // rango observado en el corpus
+  sitio?: string; // relación con los inputs del sitio
+  fuentes: Fuente[];
+};
+
+export type TipoBiblioteca = "detalle" | "acabado" | "ffe" | "especificacion";
+
+export const NOMBRE_TIPO_BIBLIOTECA: Record<TipoBiblioteca, string> = {
+  detalle: "Detalle constructivo",
+  acabado: "Ficha de acabado",
+  ffe: "Lista de FF&E",
+  especificacion: "Especificación",
+};
+
+export type ElementoBiblioteca = {
+  id: string;
+  tipo: TipoBiblioteca;
+  titulo: string;
+  disciplina: DisciplinaCriterio;
+  area: string;
+  hotelId: string;
+  clave: string; // clave de plano o de documento en el hotel de origen
+  descripcion: string;
+  puntos: string[]; // contenido de la lámina
+};

@@ -59,6 +59,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { imprimirHtml } from "@/lib/imprimir";
 import { cn } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
@@ -503,42 +504,15 @@ function ariaSort(sorted: false | "asc" | "desc") {
   return sorted === "asc" ? "ascending" : sorted === "desc" ? "descending" : undefined;
 }
 
-// Hoja de impresión mínima; el iframe no hereda Tailwind.
-const PRINT_CSS = `
-  @page { margin: 12mm; }
-  body { font: 10pt system-ui, sans-serif; margin: 0; }
-  h1 { font-size: 12pt; margin: 0 0 8pt; }
-  table { width: 100%; border-collapse: collapse; }
-  th, td { border-bottom: 0.5pt solid; padding: 4pt 6pt; text-align: left; vertical-align: top; }
-  th { font-weight: 600; }
-  thead { display: table-header-group; }
-  tr { break-inside: avoid; }
-  .text-right { text-align: right; }
-  [data-print-hide], button svg, input, [role="checkbox"] { display: none !important; }
-  button { all: unset; }
-`;
-
+// Sin columna de selección en el impreso.
 function printHtml(tableHtml: string, title: string) {
-  const iframe = document.createElement("iframe");
-  iframe.setAttribute("aria-hidden", "true");
-  iframe.style.cssText = "position:fixed;width:0;height:0;border:0;right:0;bottom:0";
-  document.body.appendChild(iframe);
-  const doc = iframe.contentDocument;
-  const win = iframe.contentWindow;
-  if (!doc || !win) return iframe.remove();
-
-  const safeTitle = title.replace(/[<>&]/g, "");
-  doc.open();
-  doc.write(
-    `<!doctype html><html lang="es-MX"><head><meta charset="utf-8"><title>${safeTitle}</title><style>${PRINT_CSS}</style></head><body><h1>${safeTitle}</h1>${tableHtml}</body></html>`,
-  );
-  doc.close();
-  // Sin columna de selección en el impreso.
-  doc.querySelectorAll("tr").forEach((tr) => {
-    const first = tr.firstElementChild;
-    if (first?.querySelector('[role="checkbox"]')) first.remove();
+  imprimirHtml({
+    titulo: title,
+    html: tableHtml,
+    preparar: (doc) =>
+      doc.querySelectorAll("tr").forEach((tr) => {
+        const first = tr.firstElementChild;
+        if (first?.querySelector('[role="checkbox"]')) first.remove();
+      }),
   });
-  win.focus();
-  win.print();
-  setTimeout(() => iframe.remove(), 1000);
 }

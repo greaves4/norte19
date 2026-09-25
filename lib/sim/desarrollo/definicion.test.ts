@@ -100,3 +100,23 @@ describe("fases del tablero", () => {
     expect(estadoModulos(aprobado).completitud.estado).toBe("atencion");
   });
 });
+
+describe("criterios y biblioteca", () => {
+  it("5–8 criterios por disciplina, cada uno con fuente; 30 soluciones en la biblioteca", async () => {
+    const { crearCriterios } = await import("@/lib/fixtures/desarrollo/criterios");
+    const { BIBLIOTECA } = await import("@/lib/fixtures/desarrollo/biblioteca");
+    const { DISCIPLINAS_CRITERIO } = await import("@/lib/types/desarrollo");
+    const criterios = crearCriterios();
+    for (const d of DISCIPLINAS_CRITERIO) {
+      const n = criterios.filter((c) => c.disciplina === d).length;
+      expect(n, d).toBeGreaterThanOrEqual(5);
+      expect(n, d).toBeLessThanOrEqual(8);
+    }
+    expect(criterios.every((c) => c.fuentes.length > 0)).toBe(true);
+    expect(new Set(criterios.map((c) => c.id)).size).toBe(criterios.length);
+    expect(BIBLIOTECA).toHaveLength(30);
+    expect(BIBLIOTECA.some((b) => /cancelería/i.test(b.titulo))).toBe(true);
+    // El rango de carga eléctrica del criterio sale del corpus (Guaymas no aporta).
+    expect(criterios.find((c) => c.id === "IE-01")!.rango).toMatch(/^3\.1–3\.7 kW/);
+  });
+});

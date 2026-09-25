@@ -2,12 +2,17 @@
 // - inputs/*.pdf: anteproyecto (3 láminas con plantas esquemáticas), uso de suelo, mecánica de suelos,
 //   topografía, brand standards, programa, reglamento, estudio de mercado y CAPEX objetivo
 // - terreno.kmz: poligonal del predio (KML comprimido) con las mismas coordenadas que usa el tablero
+// - paquete/*.pdf: los 60 archivos del paquete ejecutivo de ejemplo (una lámina con cajetín cada uno)
+// - biblioteca/<id>.pdf: una lámina por elemento de la biblioteca de soluciones
 // Uso: pnpm gen:desarrollo-inputs (requiere `zip`, incluido en macOS)
 import { execFileSync } from "node:child_process";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PDFDocument, StandardFonts, rgb, type PDFFont, type PDFPage } from "pdf-lib";
 import { CAPEX_OBJETIVO_USD_POR_LLAVE, cuadroAnteproyecto, LLAVES_JUAREZ, NIVELES_JUAREZ } from "../../lib/fixtures/desarrollo/anteproyecto.ts";
+import { BIBLIOTECA } from "../../lib/fixtures/desarrollo/biblioteca.ts";
+import { CORPUS } from "../../lib/fixtures/desarrollo/corpus/index.ts";
+import { archivoPaquete, PAQUETE_EJEMPLO } from "../../lib/fixtures/desarrollo/paquete.ts";
 import { aGeografica, ESTACIONAMIENTO_M, HUELLA_EDIFICIO_M, POLIGONAL_M, SUPERFICIE_TERRENO_M2 } from "../../lib/fixtures/desarrollo/terreno.ts";
 
 const RAIZ = join(import.meta.dirname, "..", "..", "public", "fixtures", "desarrollo");
@@ -333,7 +338,86 @@ async function main() {
   execFileSync("zip", ["-X", "-q", "-j", join(RAIZ, "terreno.kmz"), tmp]);
   rmSync(tmp);
 
-  console.log(`Inputs de ejemplo generados en ${RAIZ}`);
+  await paquete();
+  await biblioteca();
+
+  console.log(`Inputs, paquete (${PAQUETE_EJEMPLO.length}) y biblioteca (${BIBLIOTECA.length}) generados en ${RAIZ}`);
+}
+
+// --- Paquete ejecutivo: una lámina por archivo; los no identificables parecen escaneos sin clave. -----------
+async function paquete() {
+  const dir = join(RAIZ, "paquete");
+  mkdirSync(dir, { recursive: true });
+  for (const nombre of PAQUETE_EJEMPLO) {
+    const { pdf, f } = await nuevo(nombre);
+    const clave = nombre.split(" ")[0];
+    const titulo = nombre.slice(clave.length + 1);
+    if (!/^([0-9]{3}-[A-Z]+-|[A-Z]+-)/.test(clave)) {
+      const page = pdf.addPage([612, 792]);
+      page.drawRectangle({ x: 60, y: 120, width: 492, height: 560, borderColor: GRIS, borderWidth: 0.5 });
+      page.drawText("Documento escaneado sin clave de plano", { x: 90, y: 640, size: 12, font: f.b, color: GRIS });
+      page.drawText(nombre, { x: 90, y: 620, size: 9, font: f.r, color: GRIS });
+    } else {
+      const page = pdf.addPage([1224, 792]);
+      for (let x = 80; x <= 860; x += 60) page.drawLine({ start: { x, y: 150 }, end: { x, y: 720 }, thickness: 0.3, color: CLARO });
+      for (let y = 150; y <= 720; y += 60) page.drawLine({ start: { x: 80, y }, end: { x: 860, y }, thickness: 0.3, color: CLARO });
+      page.drawText(titulo.toUpperCase(), { x: 90, y: 690, size: 14, font: f.b });
+      page.drawText("Lámina de ejemplo del paquete ejecutivo: el contenido del plano no forma parte del prototipo.", { x: 90, y: 670, size: 9, font: f.r, color: GRIS });
+      cajetin(page, f, clave, titulo, "Indicada");
+    }
+    writeFileSync(join(dir, archivoPaquete(nombre)), await pdf.save());
+  }
+}
+
+// --- Biblioteca de soluciones: lámina con esquema según el tipo y el contenido del elemento. ---------------
+async function biblioteca() {
+  const dir = join(RAIZ, "biblioteca");
+  mkdirSync(dir, { recursive: true });
+  const TIPO = { detalle: "DETALLE CONSTRUCTIVO", acabado: "FICHA DE ACABADO", ffe: "LISTA DE FF&E", especificacion: "ESPECIFICACIÓN" } as const;
+  for (const b of BIBLIOTECA) {
+    const hotel = CORPUS.find((h) => h.id === b.hotelId)!;
+    const { pdf, f } = await nuevo(`${b.titulo} · ${hotel.nombre}`);
+    const page = pdf.addPage([792, 612]);
+    page.drawText(TIPO[b.tipo], { x: 48, y: 560, size: 9, font: f.b, color: GRIS });
+    page.drawText(b.titulo, { x: 48, y: 540, size: 16, font: f.b });
+    page.drawText(`${hotel.nombre} · ${b.clave} · ${b.area}`, { x: 48, y: 522, size: 9, font: f.r, color: GRIS });
+    // Esquema: capas de un corte (detalle), muestra con trama (acabado) o tabla (FF&E y especificación).
+    const x0 = 48;
+    const y0 = 150;
+    if (b.tipo === "detalle") {
+      const capas = [40, 16, 70, 12, 24];
+      let y = y0;
+      capas.forEach((alto, i) => {
+        page.drawRectangle({ x: x0, y, width: 300, height: alto, borderColor: NEGRO, borderWidth: 0.8, color: i % 2 ? CLARO : undefined });
+        y += alto;
+      });
+      page.drawLine({ start: { x: x0 + 300, y: y0 + 60 }, end: { x: x0 + 340, y: y0 + 90 }, thickness: 0.5 });
+      page.drawText("Corte esquemático", { x: x0, y: y0 - 16, size: 8, font: f.r, color: GRIS });
+    } else if (b.tipo === "acabado") {
+      page.drawRectangle({ x: x0, y: y0, width: 300, height: 300, borderColor: NEGRO, borderWidth: 0.8 });
+      for (let i = 0; i <= 300; i += 30) page.drawLine({ start: { x: x0 + i, y: y0 }, end: { x: x0 + i, y: y0 + 300 }, thickness: 0.3, color: GRIS });
+      page.drawText("Muestra y modulación", { x: x0, y: y0 - 16, size: 8, font: f.r, color: GRIS });
+    } else {
+      page.drawRectangle({ x: x0, y: y0, width: 300, height: 300, borderColor: NEGRO, borderWidth: 0.8 });
+      for (let i = 1; i < 10; i++) page.drawLine({ start: { x: x0, y: y0 + i * 30 }, end: { x: x0 + 300, y: y0 + i * 30 }, thickness: 0.3, color: GRIS });
+      page.drawText(b.tipo === "ffe" ? "Cuadro de mobiliario y equipo" : "Hoja de datos", { x: x0, y: y0 - 16, size: 8, font: f.r, color: GRIS });
+    }
+    let y = 460;
+    for (const l of lineas(b.descripcion, f.r, 10, 330)) {
+      page.drawText(l, { x: 400, y, size: 10, font: f.r });
+      y -= 14;
+    }
+    y -= 10;
+    for (const punto of b.puntos) {
+      for (const [i, l] of lineas(punto, f.r, 9.5, 320).entries()) {
+        page.drawText(i === 0 ? `- ${l}` : `  ${l}`, { x: 400, y, size: 9.5, font: f.r });
+        y -= 13;
+      }
+      y -= 3;
+    }
+    page.drawText(`Biblioteca de soluciones del corpus · ${b.id} · ejemplo`, { x: 48, y: 36, size: 8, font: f.r, color: GRIS });
+    writeFileSync(join(dir, `${b.id}.pdf`), await pdf.save());
+  }
 }
 
 await main();
