@@ -76,7 +76,8 @@ export function DemoBar({ profiles, onReset }: Props) {
           <span className="text-muted-foreground">Perfil</span>
           <Select
             items={profiles}
-            value={demo.profile}
+            // El perfil guardado puede ser de otro prototipo: si no es de este, se muestra "Elegir perfil".
+            value={profiles.some((p) => p.value === demo.profile) ? demo.profile : null}
             onValueChange={(value) => demo.setProfile(value as string | null)}
           >
             <SelectTrigger size="sm" className="min-w-40" aria-label="Perfil activo">

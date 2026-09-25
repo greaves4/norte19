@@ -1,5 +1,7 @@
 // Tipos del prototipo Desarrollo hotelero. Fechas como ISO string para persistir en localStorage.
-// Sin imports con alias: los importan las fixtures del corpus, que también usa el script de Node.
+// Sin imports de valores con alias: los importan las fixtures del corpus, que también usa el script de Node
+// (el import de tipo se borra al ejecutar).
+import type { StatusMap } from "@/components/shared/StatusBadge";
 
 export type PerfilDesarrollo = "direccion" | "revisor" | "proyectista";
 
@@ -272,3 +274,9 @@ export const ZONAS: ZonaId[] = ["habitaciones", "areas_publicas", "boh", "circul
 export const DISCIPLINAS: Disciplina[] = ["arquitectonico", "estructural", "instalaciones", "interiores", "equipamiento"];
 export const TIPOS_DOC: TipoDoc[] = ["planos", "xref", "memoria", "catalogo"];
 export const CATALOGOS: CatalogoId[] = ["obra_civil", "electrico", "hidrosanitario", "pci", "hvac"];
+
+export const COBERTURA: StatusMap<Cobertura> = {
+  completo: { label: "Completo", tone: "success" },
+  parcial: { label: "Parcial", tone: "warning" },
+  ausente: { label: "Ausente", tone: "danger" },
+};

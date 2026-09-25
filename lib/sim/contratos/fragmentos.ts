@@ -29,7 +29,4 @@ export function fragmentar(contratoId: string, paginas: string[]): Fragmento[] {
   return out.map((f, n) => ({ ...f, id: `${contratoId}-${n}` }));
 }
 
-// Minúsculas y sin acentos, para comparar.
-export function normalizar(s: string) {
-  return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
-}
+export { normalizar } from "@/lib/texto";

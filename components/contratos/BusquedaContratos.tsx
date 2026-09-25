@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { PageHeader } from "@/components/shared/PageHeader";
+import { Resaltado } from "@/components/shared/Resaltado";
 import { StatusBadge } from "@/components/shared/StatusBadge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,7 +16,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useNow } from "@/lib/demo";
 import { PREGUNTAS_SUGERIDAS } from "@/lib/fixtures/contratos/consultas";
-import { buscar, totalFragmentos, type ModoBusqueda, type RespuestaBusqueda, type Resultado, type Segmento } from "@/lib/sim/contratos/busqueda";
+import { buscar, totalFragmentos, type ModoBusqueda, type RespuestaBusqueda, type Resultado } from "@/lib/sim/contratos/busqueda";
 import { estatusVigencia } from "@/lib/sim/contratos/vencimientos";
 import { useContratos, useContratosHydrated } from "@/lib/store/contratos";
 import { ESTATUS_VIGENCIA, NOMBRE_TIPO_CONTRATO, type Contrato, type EstatusVigencia, type TipoContrato } from "@/lib/types/contratos";
@@ -295,23 +296,6 @@ function TarjetaContrato({ contrato: c, resultados, extra, now }: { contrato: Co
         {extra > 0 && <p className="text-xs text-muted-foreground">{extra === 1 ? "1 cláusula más" : `${extra} cláusulas más`} en este contrato.</p>}
       </CardContent>
     </Card>
-  );
-}
-
-function Resaltado({ segmentos }: { segmentos: Segmento[] }) {
-  return (
-    <>
-      {segmentos.map((s, i) =>
-        s.resaltado ? (
-          // TODO tokens: color de resaltado de búsqueda; hoy el acento neutro del tema.
-          <mark key={i} className="rounded-sm bg-accent px-0.5 font-medium text-accent-foreground">
-            {s.texto}
-          </mark>
-        ) : (
-          <span key={i}>{s.texto}</span>
-        ),
-      )}
-    </>
   );
 }
 
