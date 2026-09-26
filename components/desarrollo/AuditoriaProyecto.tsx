@@ -149,7 +149,10 @@ function Ejecucion({ pasos, hallazgos, onFin }: { pasos: ReturnType<typeof pasos
   const inicioPaso = useRef(0);
   const contenedor = useRef<HTMLDivElement>(null);
 
-  useEffect(() => contenedor.current?.scrollIntoView({ behavior: "smooth", block: "start" }), []);
+  // Cuerpo con llaves: scrollIntoView devuelve una promesa en Chrome reciente y React la trataría como limpieza.
+  useEffect(() => {
+    contenedor.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
 
   const actual = pasos.find((s) => !hechos.includes(s.id));
   const rubroActual = actual ? rubroDePaso(actual.id) : null;

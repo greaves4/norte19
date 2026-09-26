@@ -52,10 +52,10 @@ export function BibliotecaSoluciones() {
   function alternar(b: ElementoBiblioteca) {
     if (agregados.includes(b.id)) {
       quitar(b.id);
-      toast.info(`${b.titulo} se quitó del paquete de criterios`);
+      toast.info("Se quitó del paquete de criterios", { description: b.titulo });
     } else {
       agregar(b.id);
-      toast.success(`${b.titulo} agregado al paquete de criterios`, { description: `Origen: ${corto(b.hotelId)} · ${b.clave}` });
+      toast.success("Se agregó al paquete de criterios", { description: `${b.titulo} · origen: ${corto(b.hotelId)} · ${b.clave}` });
     }
   }
 

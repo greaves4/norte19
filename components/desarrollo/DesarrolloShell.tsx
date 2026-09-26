@@ -1,6 +1,6 @@
 "use client";
 
-import { BookMarked, Building2, ClipboardCheck, ClipboardList, Compass, Database, FileBarChart, HardHat, Library, ListChecks, Table2 } from "lucide-react";
+import { BookMarked, Building2, ClipboardCheck, ClipboardList, Compass, Database, FileBarChart, FileSearch, HardHat, Library, ListChecks, Table2 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { ProveedorFuentes } from "@/components/desarrollo/Fuentes";
@@ -75,6 +75,7 @@ function navegacion(perfil: PerfilDesarrollo): NavItem[] {
         { label: "Biblioteca", href: `${P}/biblioteca`, icon: Library },
         { label: "Completitud", href: `${P}/completitud`, icon: ListChecks },
         { label: "Catálogos", href: `${P}/catalogos`, icon: Table2 },
+        { label: "Reporte de auditoría", href: `${P}/auditoria/reporte`, icon: FileSearch },
       ];
   }
 }

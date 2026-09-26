@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, BookMarked, CheckCircle2, Circle, CircleDot, Download, FileInput, Gauge, Library, ListChecks, Lock, OctagonAlert, ScrollText, ShieldCheck, Table2 } from "lucide-react";
+import { ArrowRight, BookMarked, CheckCircle2, Circle, CircleDot, Download, FileInput, FileSearch, Gauge, ListChecks, Lock, OctagonAlert, ScrollText, ShieldCheck, Table2 } from "lucide-react";
 import Link from "next/link";
 import { MapaTerreno } from "@/components/desarrollo/MapaTerreno";
 import { puedeVerDesarrollo } from "@/components/desarrollo/DesarrolloShell";
@@ -32,7 +32,7 @@ const MODULOS = [
   { id: "catalogos", titulo: "Catálogos de obra", descripcion: "Conceptos por ratio del corpus", href: `${P}/catalogos`, icono: Table2 },
   { id: "semaforo", titulo: "Semáforo y trazabilidad", descripcion: "Avance ponderado de 13 entregables", href: `${P}/semaforo`, icono: Gauge },
   { id: "auditoria", titulo: "Auditoría", descripcion: "Auditoría integral del paquete ejecutivo", href: `${P}/auditoria`, icono: ShieldCheck },
-  { id: "reporte", titulo: "Reporte de auditoría", descripcion: "Score, hallazgos, clash report y plan de acción", href: `${P}/auditoria/reporte`, icono: Library },
+  { id: "reporte", titulo: "Reporte de auditoría", descripcion: "Score, hallazgos, clash report y plan de acción", href: `${P}/auditoria/reporte`, icono: FileSearch },
 ] as const;
 
 const VARIANTE_MODULO: Record<EstadoModulo["estado"], "secondary" | "outline" | "destructive"> = { listo: "secondary", en_curso: "outline", atencion: "destructive", bloqueado: "outline" };

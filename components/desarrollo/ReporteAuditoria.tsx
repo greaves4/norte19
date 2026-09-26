@@ -115,6 +115,13 @@ export function ReporteAuditoria() {
       <p id="nota-comparar" className="-mt-3 text-xs text-muted-foreground">
         Comparar con la auditoría anterior se habilita desde la segunda auditoría del proyecto.
       </p>
+      {p.notaSupuestoPaquete && (
+        <GateBanner
+          variant="advertencia"
+          title="Auditada con supuesto documentado"
+          description={`${p.notaSupuestoPaquete.trim().replace(/\.?$/, ".")} Los hallazgos de las disciplinas con entregables faltantes se consideran preliminares.`}
+        />
+      )}
 
       <div className="grid gap-4 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)]">
         <Card>
@@ -587,6 +594,7 @@ function exportar(p: Proyecto, score: Score) {
       <p class="score">${esc(n1(score.global))} / 100</p>
       <p><strong>Semáforo ${semaforo} · Recomendación: ${esc(score.recomendacion)}</strong></p>
       <p class="muted">Ejecutada el ${esc(new Date(a.ejecutadaEn).toLocaleString("es-MX", { dateStyle: "long", timeStyle: "short" }))} por ${esc(a.ejecutadaPor)} · Verificación geométrica 2D</p>
+      ${p.notaSupuestoPaquete ? `<p><strong>Supuesto documentado:</strong> ${esc(p.notaSupuestoPaquete)}</p>` : ""}
       <p class="muted">Impreso el ${esc(demoNow().toLocaleDateString("es-MX", { dateStyle: "long" }))}</p>
     </section>
     <h1>Reporte de auditoría · ${esc(p.nombre)}</h1>

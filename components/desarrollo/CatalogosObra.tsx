@@ -97,16 +97,19 @@ export function CatalogosObra() {
   const revision = requierenRevision(catalogos);
   const conceptos = catalogos.reduce((t, c) => t + c.conceptos.length, 0);
 
-  async function exportar() {
+  async function exportar(lista: CatalogoGenerado[]) {
     const XLSX = await import("xlsx");
     const libro = XLSX.utils.book_new();
-    for (const c of catalogos) {
+    for (const c of lista) {
       const hoja = XLSX.utils.aoa_to_sheet(filasExcel(c));
       hoja["!cols"] = [{ wch: 10 }, { wch: 60 }, { wch: 8 }, { wch: 12 }, { wch: 14 }, { wch: 16 }];
       XLSX.utils.book_append_sheet(libro, hoja, c.nombre.slice(0, 31));
     }
-    XLSX.writeFile(libro, "catalogos-de-obra-juarez.xlsx");
-    toast.success("Catálogos exportados a Excel", { description: "Una hoja por catálogo: clave, concepto, unidad, cantidad, P.U. e importe." });
+    const uno = lista.length === 1 ? lista[0] : null;
+    XLSX.writeFile(libro, uno ? `catalogo-${uno.id.replace(/_/g, "-")}-juarez.xlsx` : "catalogos-de-obra-juarez.xlsx");
+    toast.success(uno ? `Catálogo ${uno.nombre} exportado a Excel` : "Catálogos exportados a Excel", {
+      description: uno ? `${uno.conceptos.length} conceptos con clave, unidad, cantidad, P.U. e importe.` : "Una hoja por catálogo: clave, concepto, unidad, cantidad, P.U. e importe.",
+    });
   }
 
   return (
@@ -115,9 +118,9 @@ export function CatalogosObra() {
         title="Catálogos de obra"
         description="Cantidades por ratio del corpus sobre el cuadro de áreas aprobado, con precios históricos actualizados. La confianza refleja cuánto varía el ratio entre hoteles."
         actions={
-          <Button onClick={() => void exportar()}>
+          <Button variant="outline" onClick={() => void exportar(catalogos)}>
             <FileSpreadsheet data-icon="inline-start" />
-            Exportar a Excel
+            Exportar los 5 catálogos
           </Button>
         }
       />
@@ -152,7 +155,7 @@ export function CatalogosObra() {
           </TabsList>
           {catalogos.map((c) => (
             <TabsContent key={c.id} value={c.id} className="flex flex-col gap-3">
-              <TotalCatalogo c={c} />
+              <TotalCatalogo c={c} onExportar={() => void exportar([c])} />
               <DataGrid columns={columnas} data={c.conceptos} getRowId={(k) => k.clave} initialPageSize={50} searchPlaceholder="Buscar concepto o clave" exportable={false} />
             </TabsContent>
           ))}
@@ -211,16 +214,22 @@ export function CatalogosObra() {
   );
 }
 
-function TotalCatalogo({ c }: { c: CatalogoGenerado }) {
+function TotalCatalogo({ c, onExportar }: { c: CatalogoGenerado; onExportar: () => void }) {
   const conteo = (x: Confianza) => c.conceptos.filter((k) => k.confianza === x).length;
   return (
-    <div className="flex flex-wrap items-baseline justify-between gap-2 text-sm">
-      <span>
-        Total {c.nombre}: <span className="font-semibold tabular-nums">{mxn(c.total)}</span>
+    <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
+      <span className="flex flex-col gap-0.5">
+        <span>
+          Total {c.nombre}: <span className="font-semibold tabular-nums">{mxn(c.total)}</span>
+        </span>
+        <span className="text-muted-foreground">
+          {c.conceptos.length} conceptos · confianza alta {conteo("alta")}, media {conteo("media")}, baja {conteo("baja")}
+        </span>
       </span>
-      <span className="text-muted-foreground">
-        {c.conceptos.length} conceptos · confianza alta {conteo("alta")}, media {conteo("media")}, baja {conteo("baja")}
-      </span>
+      <Button size="sm" onClick={onExportar}>
+        <FileSpreadsheet data-icon="inline-start" />
+        Exportar {c.nombre} a Excel
+      </Button>
     </div>
   );
 }
