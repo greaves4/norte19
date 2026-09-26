@@ -6,7 +6,7 @@ export function Resaltado({ segmentos }: { segmentos: Segmento[] }) {
     <>
       {segmentos.map((s, i) =>
         s.resaltado ? (
-          // TODO tokens: color de resaltado de búsqueda; hoy el acento neutro del tema.
+          // Resaltado con color-green-extralight (accent) y texto color-green.
           <mark key={i} className="rounded-sm bg-accent px-0.5 font-medium text-accent-foreground">
             {s.texto}
           </mark>

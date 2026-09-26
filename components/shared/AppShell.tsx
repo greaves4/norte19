@@ -1,6 +1,7 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -72,10 +73,15 @@ export function AppShell({
     <SidebarProvider open={open} onOpenChange={setOpen} className="h-svh">
       <Sidebar collapsible="icon">
         <SidebarHeader>
-          <div className="flex min-w-0 flex-col px-2 py-1.5 group-data-[collapsible=icon]:hidden">
-            <span className="truncate font-semibold">{title}</span>
-            {subtitle && <span className="truncate text-xs text-muted-foreground">{subtitle}</span>}
+          {/* Logotipo verde sobre fondo blanco; con la barra en iconos, el monograma. Imágenes sin optimizar: PNG ya ligeros. */}
+          <div className="flex min-w-0 flex-col gap-3 px-2 pt-2 pb-1.5 group-data-[collapsible=icon]:hidden">
+            <Image src="/brand/norte19-logo-verde.png" alt="Norte 19 · Operadora hotelera" width={621} height={160} unoptimized priority className="h-8 w-auto self-start" />
+            <div className="flex min-w-0 flex-col">
+              <span className="truncate text-sm tracking-[1.4px] uppercase">{title}</span>
+              {subtitle && <span className="truncate text-xs text-muted-foreground">{subtitle}</span>}
+            </div>
           </div>
+          <Image src="/brand/n19-monograma.png" alt="Norte 19" width={512} height={512} unoptimized className="hidden size-8 group-data-[collapsible=icon]:block" />
         </SidebarHeader>
         <SidebarContent className="pb-(--demo-bar-h)">
           <SidebarGroup>

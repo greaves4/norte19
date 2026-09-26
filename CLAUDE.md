@@ -51,7 +51,13 @@ Prototipos navegables y semi-funcionales para tres propuestas de Geek Vibes a No
 
 ## Estructura base
 - Estilos globales en `styles/globals.css` (tema shadcn) y `styles/tokens.css` (design system). Ambos se importan en `app/layout.tsx`.
-- El design system de Claude Design vive en `../norte19-design-system/` (tokens.css, tokens.json, README con reglas de marca, assets). Se integra en el prompt B8.
+- El design system de Claude Design vive en `../norte19-design-system/` (tokens.css, tokens.json, README con reglas de marca, assets). Integrado (B8):
+  - `styles/tokens.css` es copia exacta del sistema (se reemplaza completo al actualizarlo; su `@font-face` carga Manrope de `styles/fonts/`). No hay `next/font`.
+  - `globals.css` mapea las variables de shadcn a los tokens (primary/foreground = color-green, secondary/muted/accent/border/input = color-green-extralight, muted-foreground = text-body, radius = radius-0; gráficas: --chart-1 color-green-light, --chart-2 color-green).
+  - `components/ui` sigue el README: botones en mayúsculas con tracking 1.4px (el `link` no), títulos de Card/Dialog/Sheet en mayúsculas con tracking, tarjetas planas con borde de 1px, sombras solo en paneles flotantes (`shadow-(--shadow-dropdown)`), pestañas como chips (radius-6; activa rellena con radius-4). `PageHeader` usa el estilo section-title (ligero, mayúsculas, tracking .125em).
+  - Logotipo verde en el AppShell (monograma con la barra en iconos) desde `public/brand/`; favicon `app/icon.png` y `app/apple-icon.png`.
+  - Unidades y códigos dentro de botones: usar `normal-case` si las mayúsculas cambian el sentido (p. ej. "+24 h").
+  - Sin tokens de estado todavía (--status-success/warning/danger/info): los `// TODO tokens` de semáforos y avisos siguen abiertos y `--destructive` es el rojo por defecto de shadcn.
 - Componentes shadcn con preset `base-nova` (Base UI). Agregar componentes con `pnpm dlx shadcn@latest add <componente>`.
 - Pruebas con vitest: `pnpm test`.
 

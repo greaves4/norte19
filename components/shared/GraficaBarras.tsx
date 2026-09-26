@@ -16,7 +16,7 @@ type Props = {
 };
 
 // Barras horizontales de una sola serie: un color, valor en la punta, tooltip por barra.
-// TODO tokens: color de serie del design system; hoy --chart-2 (gris del tema).
+// Serie en --chart-2 = color-green, el verde de marca.
 export function GraficaBarras({ datos, formato, formatoEje = formato, medida, ariaLabel, anchoEtiquetas = 200 }: Props) {
   const alto = Math.max(datos.length * 32 + 40, 160);
   return (

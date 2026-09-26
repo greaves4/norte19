@@ -27,7 +27,7 @@ function columnas(enviar: (s: Solicitud) => void) {
       id: "contraparte",
       header: "Contraparte",
       cell: (c) => (
-        <span className="flex min-w-0 flex-col gap-1 md:min-w-48">
+        <span className="flex min-w-0 flex-col gap-1 md:min-w-40">
           <span className="line-clamp-2 whitespace-normal">{c.getValue()}</span>
           <span className="md:hidden">
             <StatusBadge status={c.row.original.estatus} map={ESTATUS_SOLICITUD} />
@@ -64,7 +64,8 @@ function columnas(enviar: (s: Solicitud) => void) {
             {c.getValue()} de {PASOS_FIRMA.length}
           </span>
         ),
-      meta: { hideBelow: "lg" },
+      // En tablet el estatus basta; el avance ocupa el ancho del botón de acción.
+      meta: { hideBelow: "xl" },
     }),
     col.accessor((s) => new Date(s.etapas.formalizada ?? s.etapas.en_firma ?? s.etapas.aprobada ?? s.creadaEn), {
       id: "fecha",
@@ -87,7 +88,7 @@ function columnas(enviar: (s: Solicitud) => void) {
               enviar(c.row.original);
             }}
           >
-            <Signature data-icon="inline-start" />
+            <Signature data-icon="inline-start" className="hidden xl:block" />
             Enviar a firma
           </Button>
         ) : null,

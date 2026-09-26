@@ -171,7 +171,8 @@ function FilaCuadro({ f, bloqueado }: { f: FilaBenchmark; bloqueado: boolean }) 
 }
 
 // Barras horizontales agrupadas: Juárez y promedio del corpus por zona (dos series con leyenda y tooltip).
-// TODO tokens: paleta categórica del design system; hoy los grises --chart-3 (Juárez) y --chart-1 (corpus).
+// Un solo verde de marca en dos intensidades: Juárez --chart-2 (color-green), corpus --chart-1 (color-green-light).
+// El claro no llega a 3:1 sobre blanco; la leyenda, el tooltip y "Ver tabla" cubren la lectura.
 function GraficaComparativa({ filas }: { filas: FilaBenchmark[] }) {
   const datos = filas.map((f) => ({ zona: NOMBRE_ZONA[f.zona], juarez: Number(f.m2PorLlave.toFixed(1)), corpus: Number(f.promedio.toFixed(1)) }));
   return (
@@ -197,7 +198,7 @@ function GraficaComparativa({ filas }: { filas: FilaBenchmark[] }) {
             }
           />
           <Legend wrapperStyle={{ fontSize: 12 }} formatter={(valor) => <span style={{ color: "var(--foreground)" }}>{valor}</span>} />
-          <Bar dataKey="juarez" name="Juárez" fill="var(--chart-3)" radius={[0, 4, 4, 0]} maxBarSize={14} isAnimationActive={false} />
+          <Bar dataKey="juarez" name="Juárez" fill="var(--chart-2)" radius={[0, 4, 4, 0]} maxBarSize={14} isAnimationActive={false} />
           <Bar dataKey="corpus" name="Promedio del corpus" fill="var(--chart-1)" radius={[0, 4, 4, 0]} maxBarSize={14} isAnimationActive={false} />
         </BarChart>
       </ResponsiveContainer>

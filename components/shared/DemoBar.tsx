@@ -113,7 +113,7 @@ export function DemoBar({ profiles, onReset }: Props) {
               </ToggleGroupItem>
             ))}
           </ToggleGroup>
-          <Button variant="outline" size="sm" onClick={() => demo.advanceHours(24)}>
+          <Button variant="outline" size="sm" className="normal-case" onClick={() => demo.advanceHours(24)}>
             +24 h
           </Button>
         </div>

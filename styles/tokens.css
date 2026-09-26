@@ -1,1 +1,60 @@
-/* Tokens del design system — se reemplaza completo */
+/* Norte 19 — tokens.css (generado desde tokens.json) */
+@font-face { font-family: "Manrope"; src: url("fonts/Manrope-Variable-latin.woff2") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
+:root {
+  --color-green: #004851;
+  --color-green-dark: #18232b;
+  --color-green-light: #98b6b9;
+  --color-green-extralight: #d2e4e3;
+  --color-white: #ffffff;
+  --surface-cool: #f1f3fa;
+  --surface-mint: #cee5e3;
+  --footer-bg: #081f29;
+  --header-bg: rgba(24, 35, 43, 0.7);
+  --hero-overlay: rgba(0, 0, 0, 0.3);
+  --text-body: #666666;
+  --text-legal: #888b8d;
+  --color-gray: #c3c3c3;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --corner-accent: 90px;
+  --header-height: 81px;
+  --logo-header: 45px;
+  --logo-footer: 60px;
+  --control-sm: 34px;
+  --control-md: 44px;
+  --radius-0: 0px;
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-full: 50%;
+  --shadow-dropdown: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+  --shadow-card: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+  --shadow-soft: 0 8px 26px 0 rgba(0, 42, 48, 0.04);
+  --shadow-lift: 0 20px 42px 0 rgba(3, 31, 37, 0.22);
+  --font-sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
+}
+.stat-number { font-family: var(--font-sans); font-size: 96px; line-height: 144px; font-weight: 700; }
+.hero-kicker { font-family: var(--font-sans); font-size: 48px; line-height: 57.6px; font-weight: 300; letter-spacing: 24px; }
+.page-title { font-family: var(--font-sans); font-size: 48px; line-height: 57.6px; font-weight: 400; letter-spacing: 12px; }
+.section-title { font-family: var(--font-sans); font-size: 36px; line-height: 43.2px; font-weight: 300; letter-spacing: 4.5px; }
+.section-title-regular { font-family: var(--font-sans); font-size: 36px; line-height: 43.2px; font-weight: 400; letter-spacing: 4.5px; }
+.statement-title { font-family: var(--font-sans); font-size: 36px; line-height: 43.2px; font-weight: 400; letter-spacing: 16.2px; }
+.about-title { font-family: var(--font-sans); font-size: 32px; line-height: 38.4px; font-weight: 500; letter-spacing: 12px; }
+.card-title-lg { font-family: var(--font-sans); font-size: 30px; line-height: 36px; font-weight: 500; }
+.card-title { font-family: var(--font-sans); font-size: 24px; line-height: 28.8px; font-weight: 500; }
+.statement { font-family: var(--font-sans); font-size: 20px; line-height: 30px; font-weight: 300; }
+.lead { font-family: var(--font-sans); font-size: 18px; line-height: 27px; font-weight: 400; }
+.body { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; }
+.stat-label { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: 2px; }
+.button { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: 1.4px; }
+.nav { font-family: var(--font-sans); font-size: 14px; line-height: 21px; font-weight: 400; letter-spacing: 0.7px; }
+.label { font-family: var(--font-sans); font-size: 14px; line-height: 21px; font-weight: 600; }
+.small { font-family: var(--font-sans); font-size: 14px; line-height: 21px; font-weight: 400; }
+.footer-heading { font-family: var(--font-sans); font-size: 14px; line-height: 16.8px; font-weight: 400; letter-spacing: 1.4px; }
+.legal { font-family: var(--font-sans); font-size: 13px; line-height: 19.5px; font-weight: 400; }
