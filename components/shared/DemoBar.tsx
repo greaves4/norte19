@@ -3,7 +3,7 @@
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { ChevronDown, FlaskConical, RotateCcw } from "lucide-react";
-import { useCallback } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -30,11 +30,14 @@ export function DemoBar({ profiles, onReset }: Props) {
   const hydrated = useDemoHydrated();
   const demo = useDemo();
   const now = useNow(1000);
-  const measureRef = useDemoBarHeight(demo.barCollapsed);
+  const mobile = useIsMobileViewport();
+  // Sin elección guardada, en móvil arranca colapsada para no tapar la pantalla.
+  const collapsed = demo.barCollapsed ?? mobile;
+  const measureRef = useDemoBarHeight(collapsed);
 
   if (!demo.isDemo || !hydrated) return null;
 
-  if (demo.barCollapsed) {
+  if (collapsed) {
     return (
       <Button
         variant="outline"
@@ -134,6 +137,22 @@ export function DemoBar({ profiles, onReset }: Props) {
         </div>
       </div>
     </div>
+  );
+}
+
+// Mismo corte que hooks/use-mobile (768 px). Con useSyncExternalStore el valor ya es el real
+// en el primer render tras hidratar, así la barra no aparece abierta un instante en móvil.
+const MOBILE_QUERY = "(max-width: 767px)";
+
+function useIsMobileViewport() {
+  return useSyncExternalStore(
+    (cb) => {
+      const mql = window.matchMedia(MOBILE_QUERY);
+      mql.addEventListener("change", cb);
+      return () => mql.removeEventListener("change", cb);
+    },
+    () => window.matchMedia(MOBILE_QUERY).matches,
+    () => false,
   );
 }
 

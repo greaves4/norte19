@@ -27,6 +27,7 @@ Prototipos navegables y semi-funcionales para tres propuestas de Geek Vibes a No
 - Toda fecha "actual" sale del reloj simulado: `now()` en handlers y `useNow(intervalMs)` para re-renderizar (SLAs, timers). Nunca `new Date()` directo.
 - `useDemoHydrated()` indica que ya se leyó localStorage; úsalo antes de pintar algo que dependa del perfil para evitar errores de hidratación.
 - `DemoBar` (`components/shared/DemoBar.tsx`) recibe `profiles` y `onReset`. Se monta en el AppShell de cada prototipo.
+- `barCollapsed` es `boolean | null`: `null` (sin elegir) = colapsada en móvil (< 768 px) y abierta en tablet y escritorio; al abrirla o cerrarla se guarda la elección.
 - "Reiniciar demo" llama a `onReset` (reset del store del prototipo: restaura fixtures) y a `reset()` de demo (regresa el reloj al tiempo real; conserva el perfil).
 - `NEXT_PUBLIC_DEMO=0` oculta la DemoBar.
 

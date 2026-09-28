@@ -16,7 +16,8 @@ type DemoState = {
   // Reloj simulado = real + clockOffsetMs + (real − clockAnchorMs) × (clockSpeed − 1).
   clockOffsetMs: number;
   clockAnchorMs: number;
-  barCollapsed: boolean;
+  // null = sin elegir: colapsada en móvil y abierta en tablet y escritorio (ver DemoBar).
+  barCollapsed: boolean | null;
   setProfile: (profile: string | null) => void;
   setClockSpeed: (speed: ClockSpeed) => void;
   advanceHours: (hours: number) => void;
@@ -35,7 +36,7 @@ const useDemoStore = create<DemoState>()(
       clockSpeed: 1,
       clockOffsetMs: 0,
       clockAnchorMs: Date.now(),
-      barCollapsed: false,
+      barCollapsed: null,
       setProfile: (profile) => set({ profile }),
       setClockSpeed: (clockSpeed) => {
         // Consolida el tiempo simulado transcurrido antes de cambiar de velocidad.
@@ -49,6 +50,12 @@ const useDemoStore = create<DemoState>()(
     }),
     {
       name: "demo",
+      // v1: barCollapsed admite null. El false de v0 era el valor por defecto, no una elección: pasa a null.
+      version: 1,
+      migrate: (persisted, version) => {
+        const state = persisted as DemoState;
+        return version < 1 && state.barCollapsed === false ? { ...state, barCollapsed: null } : state;
+      },
       storage: createJSONStorage(() => localStorage),
       partialize: ({ profile, clockSpeed, clockOffsetMs, clockAnchorMs, barCollapsed }) => ({
         profile,
