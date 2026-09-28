@@ -7,8 +7,9 @@ type Props = {
 
 export function PageHeader({ title, description, actions }: Props) {
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-      <div className="flex min-w-0 flex-col gap-1">
+    // Las acciones bajan a su propia línea si no caben junto a un título de al menos 20rem.
+    <div className="flex flex-wrap items-start justify-between gap-3">
+      <div className="flex min-w-[min(100%,20rem)] flex-1 flex-col gap-1">
         <h1 className="text-xl font-light tracking-[0.125em] uppercase">{title}</h1>
         {description && <p className="text-sm text-muted-foreground">{description}</p>}
       </div>
