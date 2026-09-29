@@ -3,6 +3,7 @@
 import {
   BookOpen,
   ChartColumn,
+  CircleHelp,
   ClipboardList,
   CreditCard,
   History,
@@ -65,6 +66,8 @@ function navegacion(perfil: PerfilFund, pendientes: number): NavItem[] {
   }
 }
 
+const AYUDA: NavItem = { label: "Ayuda", href: "/fund/ayuda", icon: CircleHelp };
+
 const reset = () => useFund.getState().reset();
 
 export function FundShell({ children }: { children: React.ReactNode }) {
@@ -76,9 +79,9 @@ export function FundShell({ children }: { children: React.ReactNode }) {
   const perfil = esPerfilFund(profile) ? profile : null;
   const pendientes = useFund((s) => s.movimientos.filter((m) => m.hotelId === HOTEL_DEMO_ID && enBandeja(m)).length);
 
-  // /fund/<seccion>/…: sin perfil se va al selector; con otro perfil, a su inicio.
+  // /fund/<seccion>/…: sin perfil se va al selector; con otro perfil, a su inicio. Selector y Ayuda van sin barra lateral.
   const seccion = pathname.split("/")[2];
-  const enSelector = !seccion;
+  const enSelector = !seccion || seccion === "ayuda";
   const destino = !demoHydrated || enSelector ? null : !perfil ? "/fund" : seccion !== perfil ? INICIO_PERFIL[perfil] : null;
 
   useEffect(() => {
@@ -103,7 +106,7 @@ export function FundShell({ children }: { children: React.ReactNode }) {
       subtitle="Caja chica hotelera"
       context={usuario?.hotelId ? hotelPorId(usuario.hotelId)?.nombre : "Corporativo Norte 19 · Tesorería"}
       userName={usuario?.nombre}
-      items={perfil ? navegacion(perfil, pendientes) : []}
+      items={perfil ? [...navegacion(perfil, pendientes), AYUDA] : []}
       profiles={PERFILES_FUND}
       onReset={reset}
     >

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChartColumn, FilePlus2, FileSearch, Inbox, Library, ListChecks, Settings, ShieldCheck, Signature, Stamp, Vault } from "lucide-react";
+import { ChartColumn, CircleHelp, FilePlus2, FileSearch, Inbox, Library, ListChecks, Settings, ShieldCheck, Signature, Stamp, Vault } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useShallow } from "zustand/react/shallow";
@@ -78,6 +78,8 @@ function navegacion(perfil: PerfilContratos, pendientes: { bandeja: number; apro
   }
 }
 
+const AYUDA: NavItem = { label: "Ayuda", href: "/contratos/ayuda", icon: CircleHelp };
+
 const reset = () => useContratos.getState().reset();
 
 export function ContratosShell({ children }: { children: React.ReactNode }) {
@@ -98,7 +100,8 @@ export function ContratosShell({ children }: { children: React.ReactNode }) {
     })),
   );
 
-  const enSelector = pathname === "/contratos";
+  // Selector y Ayuda van sin barra lateral y sin perfil obligatorio.
+  const enSelector = pathname === "/contratos" || pathname === "/contratos/ayuda";
   const destino = !demoHydrated || enSelector ? null : !perfil ? "/contratos" : puedeVer(perfil, pathname) ? null : INICIO_CONTRATOS[perfil];
 
   useEffect(() => {
@@ -121,7 +124,7 @@ export function ContratosShell({ children }: { children: React.ReactNode }) {
       subtitle="Gestión de contratos"
       context={perfil === "solicitante" ? "Desarrollo · Norte 19" : "Dirección Jurídica · Norte 19"}
       userName={usuario?.nombre}
-      items={perfil ? navegacion(perfil, pendientes) : []}
+      items={perfil ? [...navegacion(perfil, pendientes), AYUDA] : []}
       profiles={PERFILES_CONTRATOS}
       onReset={reset}
     >

@@ -1,8 +1,10 @@
 "use client";
 
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, CircleHelp } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ICONOS_PERFIL_DESARROLLO, INICIO_DESARROLLO } from "@/components/desarrollo/DesarrolloShell";
+import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDemo } from "@/lib/demo";
 import { USUARIOS_DESARROLLO } from "@/lib/fixtures/desarrollo";
@@ -24,6 +26,10 @@ export function SelectorPerfilDesarrollo() {
         <p className="text-sm text-muted-foreground">Desarrollo hotelero · Asistente de proyecto ejecutivo y auditoría</p>
         <h1 className="text-2xl font-semibold">Entrar como…</h1>
         <p className="text-muted-foreground">En producción el acceso es con tu usuario de red.</p>
+        <Button variant="link" className="self-start px-0" nativeButton={false} render={<Link href="/desarrollo/ayuda" />}>
+          <CircleHelp data-icon="inline-start" />
+          Cómo usar este prototipo
+        </Button>
       </header>
       <ul className="grid gap-4 md:grid-cols-3">
         {OPCIONES.map((o) => {

@@ -1,8 +1,10 @@
 "use client";
 
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, CircleHelp } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ICONOS_PERFIL, INICIO_CONTRATOS } from "@/components/contratos/ContratosShell";
+import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDemo } from "@/lib/demo";
 import { USUARIOS_CONTRATOS } from "@/lib/fixtures/contratos";
@@ -25,6 +27,10 @@ export function SelectorPerfilContratos() {
         <p className="text-sm text-muted-foreground">Contratos · Gestión de contratos con inteligencia documental</p>
         <h1 className="text-2xl font-semibold">Entrar como…</h1>
         <p className="text-muted-foreground">En producción el acceso es con tu usuario de red (Active Directory), sin correos.</p>
+        <Button variant="link" className="self-start px-0" nativeButton={false} render={<Link href="/contratos/ayuda" />}>
+          <CircleHelp data-icon="inline-start" />
+          Cómo usar este prototipo
+        </Button>
       </header>
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {OPCIONES.map((o) => {

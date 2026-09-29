@@ -1,8 +1,10 @@
 "use client";
 
-import { Building2, ChevronRight, ClipboardList, Inbox } from "lucide-react";
+import { Building2, ChevronRight, CircleHelp, ClipboardList, Inbox } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { INICIO_PERFIL } from "@/components/fund/FundShell";
+import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDemo } from "@/lib/demo";
 import { hotelPorId, USUARIOS_DEMO } from "@/lib/fixtures/fund";
@@ -47,6 +49,10 @@ export function SelectorPerfil() {
         <p className="text-sm text-muted-foreground">Fund · Caja chica hotelera</p>
         <h1 className="text-2xl font-semibold">Entrar como…</h1>
         <p className="text-muted-foreground">En producción el acceso es con tu usuario de red (Active Directory).</p>
+        <Button variant="link" className="self-start px-0" nativeButton={false} render={<Link href="/fund/ayuda" />}>
+          <CircleHelp data-icon="inline-start" />
+          Cómo usar este prototipo
+        </Button>
       </header>
 
       <ul className="grid gap-4 md:grid-cols-3">

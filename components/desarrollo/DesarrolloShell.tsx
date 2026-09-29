@@ -1,6 +1,6 @@
 "use client";
 
-import { BookMarked, Building2, ClipboardCheck, ClipboardList, Compass, Database, FileBarChart, FileSearch, HardHat, Library, ListChecks, Table2 } from "lucide-react";
+import { BookMarked, Building2, CircleHelp, ClipboardCheck, ClipboardList, Compass, Database, FileBarChart, FileSearch, HardHat, Library, ListChecks, Table2 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { ProveedorFuentes } from "@/components/desarrollo/Fuentes";
@@ -80,6 +80,8 @@ function navegacion(perfil: PerfilDesarrollo): NavItem[] {
   }
 }
 
+const AYUDA: NavItem = { label: "Ayuda", href: "/desarrollo/ayuda", icon: CircleHelp };
+
 const reset = () => useDesarrollo.getState().reset();
 
 export function DesarrolloShell({ children }: { children: React.ReactNode }) {
@@ -91,7 +93,8 @@ export function DesarrolloShell({ children }: { children: React.ReactNode }) {
   const perfil = esPerfilDesarrollo(profile) ? profile : null;
   const usuario = perfil ? USUARIOS_DESARROLLO[perfil] : null;
 
-  const enSelector = pathname === "/desarrollo";
+  // Selector y Ayuda van sin barra lateral y sin perfil obligatorio.
+  const enSelector = pathname === "/desarrollo" || pathname === "/desarrollo/ayuda";
   const destino = !demoHydrated || enSelector ? null : !perfil ? "/desarrollo" : puedeVerDesarrollo(perfil, pathname) ? null : INICIO_DESARROLLO[perfil];
 
   useEffect(() => {
@@ -114,7 +117,7 @@ export function DesarrolloShell({ children }: { children: React.ReactNode }) {
       subtitle="Proyecto ejecutivo y auditoría"
       context={perfil === "proyectista" ? "Despacho externo · Norte 19" : "Dirección de Desarrollo · Norte 19"}
       userName={usuario?.nombre}
-      items={perfil ? navegacion(perfil) : []}
+      items={perfil ? [...navegacion(perfil), AYUDA] : []}
       profiles={PERFILES_DESARROLLO}
       onReset={reset}
     >
